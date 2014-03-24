@@ -1,0 +1,69 @@
+/*
+ChaparralPro: Main text font
+Italic: used for italic style
+Semibold: used for bold style
+*/
+
+@font-face {
+    font-family: 'ChaparralPro';
+    font-weight: normal;
+    font-style: normal;
+    src: url('chaparralpro-regular.eot');
+    src: url('chaparralpro-regular.eot') format('embedded-opentype'),
+         url('chaparralpro-regular.woff') format('woff'),
+         url('chaparralpro-regular.ttf') format('truetype'),
+         url('chaparralpro-regular.svg#ChaparralProRegular') format('svg');
+}
+
+@font-face {
+    font-family: 'ChaparralPro';
+    font-weight: normal;
+    font-style: italic;
+    src: url('chaparralpro-italic.eot');
+    src: url('chaparralpro-italic.eot') format('embedded-opentype'),
+         url('chaparralpro-italic.woff') format('woff'),
+         url('chaparralpro-italic.ttf') format('truetype'),
+         url('chaparralpro-italic.svg#ChaparralProItalic') format('svg');
+}
+
+@font-face {
+    font-family: 'ChaparralPro';
+    font-weight: bold;
+    font-style: normal;
+    src: url('chaparralpro-semibold.eot');
+    src: url('chaparralpro-semibold.eot') format('embedded-opentype'),
+         url('chaparralpro-semibold.woff') format('woff'),
+         url('chaparralpro-semibold.ttf') format('truetype'),
+         url('chaparralpro-semibold.svg#ChaparralProSemibold') format('svg');
+}
+
+/*
+Avenir Next: currently using
+*/
+
+@font-face {
+    font-family: 'AvenirNextLTProDemi';
+    src: url('avenirnextltpro-demi.eot');
+    src: url('avenirnextltpro-demi.eot') format('embedded-opentype'),
+         url('avenirnextltpro-demi.woff') format('woff'),
+         url('avenirnextltpro-demi.ttf') format('truetype'),
+         url('avenirnextltpro-demi.svg#AvenirNextLTProDemi') format('svg');
+}
+
+@font-face {
+    font-family: 'AvenirNextLTProMedium';
+    src: url('avenirnextltpro-medium.eot');
+    src: url('avenirnextltpro-medium.eot') format('embedded-opentype'),
+         url('avenirnextltpro-medium.woff') format('woff'),
+         url('avenirnextltpro-medium.ttf') format('truetype'),
+         url('avenirnextltpro-medium.svg#AvenirNextLTProMedium') format('svg');
+}
+
+@font-face {
+    font-family: 'AvenirNextLTProRegular';
+    src: url('avenirnextltpro-regular.eot');
+    src: url('avenirnextltpro-regular.eot') format('embedded-opentype'),
+         url('avenirnextltpro-regular.woff') format('woff'),
+         url('avenirnextltpro-regular.ttf') format('truetype'),
+         url('avenirnextltpro-regular.svg#AvenirNextLTProRegular') format('svg');
+}

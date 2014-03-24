@@ -1,0 +1,134 @@
+/* line 25, ../scss/partials/_buttons.scss */
+.button {
+  -webkit-box-shadow: inset 0px 1px 0px rgba(255, 255, 255, 0.5), 0px 1px 2px rgba(0, 0, 0, 0.15);
+  -moz-box-shadow: inset 0px 1px 0px rgba(255, 255, 255, 0.5), 0px 1px 2px rgba(0, 0, 0, 0.15);
+  box-shadow: inset 0px 1px 0px rgba(255, 255, 255, 0.5), 0px 1px 2px rgba(0, 0, 0, 0.15);
+  background-color: #eeeeee;
+  background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #fbfbfb), color-stop(100%, #e1e1e1));
+  background: -webkit-linear-gradient(top, #fbfbfb, #e1e1e1);
+  background: -moz-linear-gradient(top, #fbfbfb, #e1e1e1);
+  background: -o-linear-gradient(top, #fbfbfb, #e1e1e1);
+  background: linear-gradient(top, #fbfbfb, #e1e1e1);
+  display: -moz-inline-stack;
+  display: inline-block;
+  vertical-align: middle;
+  *vertical-align: auto;
+  zoom: 1;
+  *display: inline;
+  border: 1px solid #d4d4d4;
+  height: 32px;
+  line-height: 32px;
+  padding: 0px 25.6px;
+  font-weight: 300;
+  font-size: 14px;
+  font-family: "AvenirNextLTProRegular", sans-serif;
+  color: #666666;
+  text-shadow: 0 1px 1px white;
+  margin: 0;
+  text-decoration: none;
+  text-align: center;
+}
+/* line 43, ../scss/partials/_buttons.scss */
+.button:hover {
+  background-color: #eeeeee;
+  background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #ffffff), color-stop(100%, #dcdcdc));
+  background: -webkit-linear-gradient(top, #ffffff, #dcdcdc);
+  background: -moz-linear-gradient(top, #ffffff, #dcdcdc);
+  background: -o-linear-gradient(top, #ffffff, #dcdcdc);
+  background: linear-gradient(top, #ffffff, #dcdcdc);
+}
+/* line 47, ../scss/partials/_buttons.scss */
+.button:active {
+  -webkit-box-shadow: inset 0px 1px 3px rgba(0, 0, 0, 0.3), 0px 1px 0px white;
+  -moz-box-shadow: inset 0px 1px 3px rgba(0, 0, 0, 0.3), 0px 1px 0px white;
+  box-shadow: inset 0px 1px 3px rgba(0, 0, 0, 0.3), 0px 1px 0px white;
+  text-shadow: 0px 1px 0px rgba(255, 255, 255, 0.4);
+  background: #eeeeee;
+  color: #bbbbbb;
+}
+/* line 53, ../scss/partials/_buttons.scss */
+.button:focus {
+  outline: none;
+}
+
+/* line 59, ../scss/partials/_buttons.scss */
+input.button, button.button {
+  height: 34px;
+  cursor: pointer;
+}
+
+/* line 65, ../scss/partials/_buttons.scss */
+.button-block {
+  display: block;
+}
+
+/* line 74, ../scss/partials/_buttons.scss */
+.button.disabled,
+.button.disabled:hover,
+.button.disabled:active,
+input.button:disabled,
+button.button:disabled {
+  -webkit-box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.1);
+  -moz-box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.1);
+  box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.1);
+  background: #EEE;
+  border: 1px solid #DDD;
+  text-shadow: 0 1px 1px white;
+  color: #CCC;
+  cursor: default;
+}
+
+/* line 100, ../scss/partials/_buttons.scss */
+.button-circle {
+  -webkit-border-radius: 240px;
+  -moz-border-radius: 240px;
+  -ms-border-radius: 240px;
+  -o-border-radius: 240px;
+  border-radius: 240px;
+  -webkit-box-shadow: inset 0px 1px 1px rgba(255, 255, 255, 0.5), 0px 1px 2px rgba(0, 0, 0, 0.2);
+  -moz-box-shadow: inset 0px 1px 1px rgba(255, 255, 255, 0.5), 0px 1px 2px rgba(0, 0, 0, 0.2);
+  box-shadow: inset 0px 1px 1px rgba(255, 255, 255, 0.5), 0px 1px 2px rgba(0, 0, 0, 0.2);
+  width: 120px;
+  height: 120px;
+  padding: 0px;
+  border-width: 4px;
+  font-size: 18px;
+  line-height: 120px;
+}
+/* line 189, ../scss/partials/_buttons.scss */
+.button-flat-caution {
+  -webkit-box-shadow: none;
+  -moz-box-shadow: none;
+  box-shadow: none;
+  -webkit-transition-property: background;
+  -moz-transition-property: background;
+  -o-transition-property: background;
+  transition-property: background;
+  -webkit-transition-duration: 0.3s;
+  -moz-transition-duration: 0.3s;
+  -o-transition-duration: 0.3s;
+  transition-duration: 0.3s;
+  background: #b8333e;
+  color: white;
+  text-shadow: none;
+  border: none;
+}
+/* line 198, ../scss/partials/_buttons.scss */
+.button-flat-caution:hover {
+  background: #e03f4c;
+}
+/* line 201, ../scss/partials/_buttons.scss */
+.button-flat-caution:active {
+  -webkit-transition-duration: 0s;
+  -moz-transition-duration: 0s;
+  -o-transition-duration: 0s;
+  transition-duration: 0s;
+  background: #992b34;
+  color: #b85c66;
+}
+/* line 206, ../scss/partials/_buttons.scss */
+.button-flat-caution.disabled {
+  -webkit-box-shadow: none;
+  -moz-box-shadow: none;
+  box-shadow: none;
+}
