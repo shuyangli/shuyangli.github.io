@@ -1,0 +1,11 @@
+#messageList {
+	width: 60%;
+	height: 400px;
+	overflow: scroll;
+}
+
+#codeWrapper {
+	width: 40%;
+	height: 60%;
+	float: right;
+}

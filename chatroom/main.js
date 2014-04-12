@@ -12,7 +12,7 @@ $(document).ready(function() {
 			var name = $('#nameInput').val();
 			var message = $('#messageInput').val();
 			var encrStr;
-			var forLoop = "var encrypted = ''; for (var i = 0; i < message.length; i++) {encrypted += encrypt(message.charAt(i));}	";
+			var forLoop = "var encrypted = ''; encrypted = encrypt(message);";
 			var setText = "console.log(encrypted); encrStr=encrypted;"
 			var jsCode = myCodeMirror.getValue();
 			console.log(eval(jsCode + forLoop + setText));

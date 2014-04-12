@@ -8,19 +8,20 @@
 	<script src="codemirror.js"></script>
 	<script src="javascript.js"></script>
 	<link rel="stylesheet" href="codemirror.css">
+	<link rel="stylesheet" href="chatroom.css">
 </head>
 
 <body>
+	<div id="codeWrapper">
+		<textarea id="codeForm" rows="20">function encrypt(str){ return str; }</textarea>
+		<div id="inputForm"><form>
+			<input type="text" id="nameInput" placeholder="name">
+			<input type="text" id="messageInput" placeholder="message">
+			</form>
+		</div>
+	</div>
 	<div id="messageList"></div>
-	<div id="inputForm">
-	<form>
-		<input type="text" id="nameInput" placeholder="name">
-		<input type="text" id="messageInput" placeholder="message">
-	</form>
-	</div>
-	<div >
-		<textarea id="codeForm" rows="10">function encrypt(c){ return c; }</textarea>
-	</div>
+	
 	<div id="encryptedText"></div>
 </body>
 </html>
