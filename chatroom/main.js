@@ -22,6 +22,8 @@ $(document).ready(function() {
 				cipherText: encrStr,
 			});
 			$('#messageInput').val('');
+
+			$("#messageList").animate({ scrollTop: $('#messageList')[0].scrollHeight}, 400);
 		}
 	});
 
@@ -29,6 +31,7 @@ $(document).ready(function() {
 	messageQuery.on('child_added', function (snapshot) {
 		var message = snapshot.val();
 		$('<p/>').text(message.cipherText).prepend($('<strong/>').text(message.name + ": ")).appendTo($('#messageList'));
+		$("#messageList").animate({ scrollTop: $('#messageList')[0].scrollHeight}, 400);
 	});
 
 });
