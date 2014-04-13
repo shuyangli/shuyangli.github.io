@@ -73,18 +73,9 @@ main color: #B8333E
 assistant color: #484E4B
 */
 
-html {
-	height: 100%;
-	width: 100%;
-	overflow: hidden;
-}
-
 body {
 	font-family: "AvenirNextLTProRegular", sans-serif;
 	background-image: url(images/background.png);
-	height: 100%;
-	width: 100%;
-	/*overflow: auto;*/
 }
 
 #landing {
