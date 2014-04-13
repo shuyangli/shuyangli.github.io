@@ -84,7 +84,12 @@ body {
 	float: none;
 	overflow: hidden;
 	color: #ffffff;
-	background: url(images/shenzhen.jpg) center 15% no-repeat fixed;
+	background-image: url(images/shenzhen.jpg);
+	background-position: center;
+	background-origin: 15%;
+	background-repeat: no-repeat;;
+	background-position: fixed;
+	/*background: url(images/shenzhen.jpg) center 15% no-repeat fixed;*/
 	display: table;
 }
 
