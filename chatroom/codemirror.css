@@ -1,8 +1,14 @@
+.CodeMirror.cm-s-default {
+  background-color: black;
+}
+
 /* BASICS */
 
 .CodeMirror {
   /* Set height, width, borders, and global font properties here */
-  font-family: monospace;
+  font-family: "PressStart2PRegular";
+  background: black;
+  color: black;
   height: 300px;
 }
 .CodeMirror-scroll {
@@ -27,7 +33,9 @@
 
 .CodeMirror-gutters {
   border-right: 1px solid #ddd;
-  background-color: #f7f7f7;
+  /*background-color: #f7f7f7;*/
+  background-color: black;
+  color: gray;
   white-space: nowrap;
 }
 .CodeMirror-linenumbers {}
@@ -43,7 +51,7 @@
 /* CURSOR */
 
 .CodeMirror div.CodeMirror-cursor {
-  border-left: 1px solid black;
+  border-left: 1px solid green;
 }
 /* Shown when moving in bi-directional text */
 .CodeMirror div.CodeMirror-secondarycursor {
@@ -70,11 +78,11 @@ div.CodeMirror-overwrite div.CodeMirror-cursor {}
 .cm-s-default .cm-atom {color: #219;}
 .cm-s-default .cm-number {color: #164;}
 .cm-s-default .cm-def {color: #00f;}
-.cm-s-default .cm-variable {color: black;}
+.cm-s-default .cm-variable {color: green;}
 .cm-s-default .cm-variable-2 {color: #05a;}
 .cm-s-default .cm-variable-3 {color: #085;}
-.cm-s-default .cm-property {color: black;}
-.cm-s-default .cm-operator {color: black;}
+.cm-s-default .cm-property {color: green;}
+.cm-s-default .cm-operator {color: green;}
 .cm-s-default .cm-comment {color: #a50;}
 .cm-s-default .cm-string {color: #a11;}
 .cm-s-default .cm-string-2 {color: #f50;}
@@ -88,6 +96,7 @@ div.CodeMirror-overwrite div.CodeMirror-cursor {}
 .cm-s-default .cm-quote {color: #090;}
 .cm-s-default .cm-hr {color: #999;}
 .cm-s-default .cm-link {color: #00c;}
+.cm-s-default {background-color: black;}
 
 .cm-negative {color: #d44;}
 .cm-positive {color: #292;}
@@ -108,11 +117,11 @@ div.CodeMirror span.CodeMirror-nonmatchingbracket {color: #f22;}
    the editor. You probably shouldn't touch them. */
 
 .CodeMirror {
-  line-height: 1;
+  line-height: 1.5;
   position: relative;
   overflow: hidden;
   background: white;
-  color: black;
+  color: green;
 }
 
 .CodeMirror-scroll {

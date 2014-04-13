@@ -1,11 +1,84 @@
-#messageList {
+
+body {
+	font-family: "PressStart2PRegular", sans-serif;
+	font-size: 10px;
+	background-color: black;
+	color: green;
+}
+
+input {
+	background-color: transparent;
+	outline: 0;
+	color: green;
+	font-family: "PressStart2PRegular", sans-serif;
+	font-size: 10px;
+}
+
+::-webkit-input-placeholder {
+	color: green;
+}
+
+::-moz-placeholder {
+	color: green;
+}
+
+:-moz-placeholder {
+	color: green;
+}
+:-ms-input-placeholder {
+	color: green;
+}
+
+#leftCol {
 	width: 60%;
+	height: 100%;
+	float: left;
+}
+
+#rightCol {
+	width: 40%;
+	height: 100%;
+	float: right;
+}
+
+#messageList {
+	width: 100%;
 	height: 400px;
-	overflow: scroll;
+	overflow: hidden;
+	margin-left: 12px;
+}
+
+#inputForm {
+	margin-left: 12px;
+	margin-bottom: 10px;
+}
+
+#nameInput {
+	font-weight: bold;
+	width: 10%;
+}
+
+#decryptForm {
+	width: 100%;
+	height: 400px;
+	overflow: hidden;
 }
 
 #codeWrapper {
-	width: 40%;
+	width: 100%;
 	height: 60%;
-	float: right;
+}
+
+.indMessage:hover {
+	background-color: rgba(0, 200, 0, 0.3);
+}
+
+#runButton {
+	position: relative;
+	bottom: 0;
+	margin-bottom: 10px;
+}
+
+#hintButton {
+	margin-bottom: 10px;
 }
