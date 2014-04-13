@@ -93,7 +93,7 @@ body {
 	float: none;
 	overflow: hidden;
 	color: #ffffff;
-	background: url(images/shenzhen.jpg) center 15% no-repeat fixxed;
+	background: url(images/shenzhen.jpg) center 15% no-repeat fixed;
 	display: table;
 }
 
