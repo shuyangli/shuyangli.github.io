@@ -76,7 +76,7 @@ assistant color: #484E4B
 html {
 	height: 100%;
 	width: 100%;
-	/*overflow: hidden;*/
+	overflow: hidden;
 }
 
 body {
@@ -84,7 +84,7 @@ body {
 	background-image: url(images/background.png);
 	height: 100%;
 	width: 100%;
-	overflow: auto;
+	/*overflow: auto;*/
 }
 
 #landing {
