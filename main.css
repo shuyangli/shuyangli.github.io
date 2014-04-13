@@ -86,7 +86,6 @@ body {
 	color: #ffffff;
 	background-image: url(images/shenzhen.jpg);
 	background-position: center;
-	/*background-origin: 15%;*/
 	background-repeat: no-repeat;
 	background-attachment: fixed;
 	/*background: url(images/shenzhen.jpg) center 15% no-repeat fixed;*/
@@ -193,3 +192,10 @@ footer {
 		color: #ffffff;
 		line-height: 1.7em;
 	}
+
+
+@media screen and (max-width: 1024px) {
+	#landing {
+		background-attachment: scroll;
+	}
+}
