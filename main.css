@@ -138,11 +138,6 @@ section {
 	margin-top: 35px;
 	margin-bottom: 35px;
 	text-indent: 2em;
-	
-	-webkit-hyphens: auto;
-	-moz-hyphens: auto;
-	-ms-hyphens: auto;
-	hyphens: auto;
 }
 	
 	#intro {
@@ -224,6 +219,14 @@ footer {
 	section {
 		padding-left: 5%;
 		padding-right: 5%;
+
+		/* justification and hyphenation */
+		-webkit-hyphens: auto;
+		-moz-hyphens: auto;
+		-ms-hyphens: auto;
+		hyphens: auto;
+
+		text-align: justify;
 	}
 	
 	section h1 {
