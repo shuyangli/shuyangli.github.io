@@ -199,3 +199,18 @@ footer {
 		background-attachment: scroll;
 	}
 }
+
+@media screen and (max-width: 800px) {
+	#landing {
+		background-attachment: scroll;
+	}
+
+	#bigtitle {
+		font-size: 4em;
+		line-height: 0.6em;
+	}
+
+	section h1 {
+		font-size: 1.8em;
+	}
+}
