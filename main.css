@@ -211,6 +211,11 @@ footer {
 		line-height: 1em;
 	}
 
+	section {
+		line-height: 1.3em;
+		font-size: 0.9em;
+	}
+	
 	section h1 {
 		font-size: 1.8em;
 	}
