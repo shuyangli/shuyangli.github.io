@@ -75,7 +75,7 @@ assistant color: #484E4B
 
 body {
 	font-family: "AvenirNextLTProRegular", sans-serif;
-	background-image: url(images/background.png);
+	background-image: url('images/background.png');
 }
 
 #landing {
@@ -193,7 +193,6 @@ footer {
 		line-height: 1.7em;
 	}
 
-
 @media screen and (max-width: 1024px) {
 	#landing {
 		background-attachment: scroll;
@@ -218,7 +217,6 @@ footer {
 	}
 
 	section {
-		line-height: 1.5em;
 		padding-left: 5%;
 		padding-right: 5%;
 	}
