@@ -203,11 +203,12 @@ footer {
 @media screen and (max-width: 767px) {
 	#landing {
 		background-attachment: scroll;
+		height: 450px;
 	}
 
 	#bigtitle {
 		font-size: 4em;
-		line-height: 0.6em;
+		line-height: 1em;
 	}
 
 	section h1 {
