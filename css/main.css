@@ -26,6 +26,13 @@ h2 {
 	font-size: 1.2em;
 }
 
+p {
+	-webkit-hyphens: auto;
+	-moz-hyphens: auto;
+	-ms-hyphens: auto;
+	hyphens: auto;
+}
+
 #landing {
 	display: block;
 	position: relative;
