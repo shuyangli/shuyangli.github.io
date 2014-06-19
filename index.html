@@ -12,6 +12,9 @@
 	<!-- jQuery -->
 	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
 
+	<!-- Parse -->
+	<script type="text/javascript" src="http://www.parsecdn.com/js/parse-1.2.18.min.js"></script>
+
 	<!-- Bootstrap -->
 	<link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
 	<script src="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
@@ -24,7 +27,10 @@
 	<!-- <script type="text/javascript" src="js/smoothscroll.js"></script> -->
 
 	<!-- Google Analytics -->
-	<!-- <script type="text/javascript" src="js/tracking.js"></script> -->
+	<script type="text/javascript" src="js/tracking.js"></script>
+
+	<!-- Initialize Parse -->
+	<script type="text/javascript">Parse.initialize("poEdjYhI6lQ7sKRwVjzq1VbO61rYbgTJqZeqZR33", "dri69uYxuUSSD4xc0OrXQNbGxVBL9fvSFhQQNb7r");</script>
 
 	<title>shuyang li</title>
 </head>
@@ -64,13 +70,25 @@
 			<h1 id="where-i-find-inspiration">where i find inspiration</h1>
 			<p>Having free time is scary, so I listen to podcasts: my favorites are <a href="http://longform.org/podcast">Longform Podcast</a>, <a href="http://www.newyorker.com/audio#outloud">New Yorker: Out Loud</a>, and <a href="http://99percentinvisible.org">99% Invisible</a>; I also listen to <a href="http://atp.fm">Accidental Tech Podcast</a> and <a href="http://daringfireball.net/thetalkshow/">The Talk Show</a>.</p>
 			<p>I read <a href="https://news.ycombinator.com">Hacker News</a>, <a href="http://www.underconsideration.com/brandnew/">Brand New</a>, and <a href="http://www.trendlist.org">Trend List</a>.</p>
-			<p>There are more intriguing things on the internet than I could possibly find out, and if you think I should take a look at something, <a href="#">let me know</a>.</p>
+			<p>There are more intriguing things on the internet than I could possibly find out, and if you think I should take a look at something, <a onclick="introduceRecForm()">let me know</a>.</p>
+			<div id="recFormContainer"></div>
 		</div>
 
 		<div class="col-sm-10">
 			<h1 id="how-i-spend-free-time">how i spend free time</h1>
 			<p>I learn stuff on <a href="https://www.coursera.org">Coursera</a>: I'm currently learning <a href="https://www.coursera.org/course/microecon">Microeconomics Principles</a>.</p>
-			<p>I play <a href="http://en.wikipedia.org/wiki/Go_(game)">the game of Go</a> and I need an opponent, but no one around me knows how.</p>
+			<p>I play <a href="http://en.wikipedia.org/wiki/Go_(game)">the game of Go</a> and I need an opponent, but no one around me knows how to play it.</p>
+		</div>
+
+		<div class="col-sm-10">
+			<h1 id="get-in-touch-with-me">get in touch with me</h1>
+			<p>Email me at <a href="mailto:shuyang.li.95@gmail.com">shuyang.li.95@gmail.com</a>, and we can talk about anything.</p>
+			<!-- <p>If you want to talk to me, <a onclick="introduceNoteForm()">leave me a note</a>.</p> -->
+			<!-- <form class="sl-form">
+				<label>your name: <input /></label><label>your note: <input /></label><br />
+				<label>your email (feel free to leave it blank): <input type="email" /></label><br />
+				<button>submit</button>
+			</form> -->
 		</div>
 	</div>
 

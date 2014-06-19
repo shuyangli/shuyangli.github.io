@@ -53,6 +53,19 @@ footer p {
 	margin: 0;
 }
 
+.sl-form label {
+	font-style: normal;
+	font-weight: normal;
+}
+
+.sl-form label input {
+	border-left: none;
+	border-top: none;
+	border-right: none;
+	border-bottom-color: #e83015;
+	border-bottom-width: 1px;
+}
+
 /*.btn {
 	margin-top: 10px;
 	margin-right: 10px;
