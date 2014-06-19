@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+
+<html>
+
+<!-- It's a shame that Sublime does folding by indentation -->
+<head>
+	<meta name="description" content="Personal website of Shuyang Li">
+	<meta name="author" content="Shuyang Li">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta charset="UTF-8">
+
+	<!-- jQuery -->
+	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+
+	<!-- Parse -->
+	<script type="text/javascript" src="http://www.parsecdn.com/js/parse-1.2.18.min.js"></script>
+
+	<!-- Bootstrap -->
+	<link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
+	<script src="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+
+	<!-- Actual Styling -->
+	<link rel="stylesheet" type="text/css" href="css/main.css">
+	<!-- <link rel="stylesheet" type="text/css" href="typeface/typeface.css"> -->
+	<!-- <link rel="stylesheet" type="text/css" href="css/bootstrap-social.css"> -->
+	<script type="text/javascript" src="js/main.js"></script>
+	<!-- <script type="text/javascript" src="js/smoothscroll.js"></script> -->
+
+	<!-- Google Analytics -->
+	<script type="text/javascript" src="js/tracking.js"></script>
+
+	<!-- Initialize Parse -->
+	<script type="text/javascript">Parse.initialize("poEdjYhI6lQ7sKRwVjzq1VbO61rYbgTJqZeqZR33", "dri69uYxuUSSD4xc0OrXQNbGxVBL9fvSFhQQNb7r");</script>
+
+	<title>shuyang li</title>
+</head>
+
+<body>
+	<div id="landing" class="container-fluid">
+		<!-- Background of this could use http://css-tricks.com/frosting-glass-css-filters/ -->
+		<!-- Logo -->
+		<div class="col-sm-10" id="site-title">
+			<div id="logo">
+				<h1>hi, i'm shuyang.</h1>
+				<p>you can read <a href="http://blog.shuyang.li">my blog (haven't started yet)</a>, look at <a href="Shuyang-Li-Resume.pdf" onclick="sendResumeClick()">my r&eacute;sum&eacute;</a>, or find me on <a href="https://github.com/shuyangli">github</a> or <a href="https://twitter.com/shuyangl">twitter</a> or <a href="https://www.linkedin.com/in/shuyangli">linkedin</a> or <a href="https://www.behance.net/shuyangli">behance</a> or even <a href="http://www.douban.com/people/panelcu">豆瓣 (douban)</a></p>
+				<p>email me at <a href="mailto:shuyang.li.95@gmail.com">shuyang.li.95@gmail.com</a>, and we can talk about anything</p>
+			</div>
+		</div>
+	</div>
+
+	<div class="container-fluid">
+
+		<!-- Content -->
+		<div class="col-sm-10">
+			<h1 id="who-am-i">who am i</h1>
+			<p>I'm Shuyang Li (李舒扬) from Shenzhen, China. I study Computer Science at <a href="http://nd.edu">Notre Dame</a>.</p>
+			<p>I'm obsessed with technology, data science, design, and communications. I'm concerned with how we could enhance individuals and transform communities through tech and design, and I'm currently interested in the Internet of Things, wearable technology, and gamification.</p>
+			<p>I am currently a software engineering intern at <a href="http://www.apple.com">Apple</a>. I build apps I can't talk about.</p>
+		</div>
+
+		<div class="col-sm-10">
+			<h1 id="what-i-do">what i do</h1>
+			<p>I am research assistant for <a href="http://www.icensa.com">iCeNSA (Interdisciplinary Center for Network Sciences and Applications)</a>, where I worked on an Android app for a healthcare analytics project about diabetes diagnosis and intervention.</p>
+			<p>I am Director of Campus Technology in <a href="http://studentgovernment.nd.edu">Notre Dame Student Government</a>. I discuss university strategy on tech with our VP and CIO, represent undergraduate student on the <a href="http://committees.nd.edu/committees-a-z/university-council-for-academic-technologies-ucat/">University Council for Academic Technologies</a>, and lead a team of 15 to address undergraduate student needs in technology.</p>
+			<p>I am producer and graphic designer for <a href="http://www.ndshowsomeskin.com">Show Some Skin</a>, an annual theatrical production at Notre Dame.</p>
+			<p>You can find more about my experience on <a href="https://www.linkedin.com/in/shuyangli">LinkedIn</a>.</p>
+		</div>
+
+		<div class="col-sm-10">
+			<h1 id="where-i-find-inspiration">where i find inspiration</h1>
+			<p>Having free time is scary, so I listen to podcasts: my favorites are <a href="http://longform.org/podcast">Longform Podcast</a>, <a href="http://www.newyorker.com/audio#outloud">New Yorker: Out Loud</a>, and <a href="http://99percentinvisible.org">99% Invisible</a>; I also listen to <a href="http://atp.fm">Accidental Tech Podcast</a> and <a href="http://daringfireball.net/thetalkshow/">The Talk Show</a>.</p>
+			<p>I read <a href="https://news.ycombinator.com">Hacker News</a>, <a href="http://www.underconsideration.com/brandnew/">Brand New</a>, and <a href="http://www.trendlist.org">Trend List</a>.</p>
+			<p>There are more intriguing things on the internet than I could possibly find out, and if you think I should take a look at something, <a onclick="introduceRecForm()">let me know</a>.</p>
+			<div id="recFormContainer"></div>
+		</div>
+
+		<div class="col-sm-10">
+			<h1 id="how-i-spend-free-time">how i spend free time</h1>
+			<p>I learn stuff on <a href="https://www.coursera.org">Coursera</a>: I'm currently learning <a href="https://www.coursera.org/course/microecon">Microeconomics Principles</a>.</p>
+			<p>I play <a href="http://en.wikipedia.org/wiki/Go_(game)">the game of Go</a> and I need an opponent, but no one around me knows how to play it.</p>
+		</div>
+
+		<div class="col-sm-10">
+			<h1 id="get-in-touch-with-me">get in touch with me</h1>
+			<p>Email me at <a href="mailto:shuyang.li.95@gmail.com">shuyang.li.95@gmail.com</a>, and we can talk about anything.</p>
+			<!-- <p>If you want to talk to me, <a onclick="introduceNoteForm()">leave me a note</a>.</p> -->
+			<!-- <form class="sl-form">
+				<label>your name: <input /></label><label>your note: <input /></label><br />
+				<label>your email (feel free to leave it blank): <input type="email" /></label><br />
+				<button>submit</button>
+			</form> -->
+		</div>
+	</div>
+
+	<footer class="container-fluid">
+		<div class="col-sm-10">
+			<p>written by shuyang li on a mac; all rights reserved</p>
+			<p>last updated: june 18, 2014; r&eacute;sum&eacute; last updated: april 18, 2014</p>
+			<br />
+			<p>a world without dragons is boring.</p>
+		</div>
+	</footer>
+
+	<!-- <footer>
+		<div class="social-icons">
+			<a href="https://twitter.com/shuyangl" class="btn btn-social-icon btn-twitter btn-xs"><i class="fa fa-twitter"></i></a>
+			<a href="https://www.linkedin.com/in/shuyangli" class="btn btn-social-icon btn-linkedin btn-xs"><i class="fa fa-linkedin"></i></a>
+			<a href="https://github.com/shuyangli" class="btn btn-social-icon btn-github btn-xs"><i class="fa fa-github"></i></a>
+			<a href="https://www.behance.net/shuyangli" class="btn btn-social-icon btn-behance btn-xs"><i class="fa fa-behance"></i></a>
+		</div>
+	</footer> -->
+</body>
+
+</html>
