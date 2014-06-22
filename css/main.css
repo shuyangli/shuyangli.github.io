@@ -37,6 +37,18 @@ p {
 #landing {
 	display: block;
 	position: relative;
+	background-image: url(../images/binocular.jpg);
+	background-size: cover;
+	color: #d0d0d0;
+}
+
+#landing a {
+	color: #b54434;
+}
+
+#landing a:hover {
+	color: #e83015;
+	cursor: pointer;
 }
 
 #site-title {
