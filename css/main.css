@@ -37,7 +37,7 @@ p {
 #landing {
 	display: block;
 	position: relative;
-	background-image: url(../images/binocular.jpg);
+	background-image: url(../images/binocular_mini.jpg);
 	background-size: cover;
 	color: #d0d0d0;
 }
