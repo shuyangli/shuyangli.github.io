@@ -1,0 +1,8 @@
+@font-face {
+    font-family: 'NeueHaasGroteskTextPro55Roman';
+    src: url('nhaasgrotesktxpro-55rg.eot');
+    src: url('nhaasgrotesktxpro-55rg.eot') format('embedded-opentype'),
+         url('nhaasgrotesktxpro-55rg.woff') format('woff'),
+         url('nhaasgrotesktxpro-55rg.ttf') format('truetype'),
+         url('nhaasgrotesktxpro-55rg.svg#NeueHaasGroteskTextPro55Roman') format('svg');
+}

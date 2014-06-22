@@ -1,0 +1,8 @@
+@font-face {
+    font-family: 'NeueHaasGroteskTextPro75Bold';
+    src: url('nhaasgrotesktxpro-75bd.eot');
+    src: url('nhaasgrotesktxpro-75bd.eot') format('embedded-opentype'),
+         url('nhaasgrotesktxpro-75bd.woff') format('woff'),
+         url('nhaasgrotesktxpro-75bd.ttf') format('truetype'),
+         url('nhaasgrotesktxpro-75bd.svg#NeueHaasGroteskTextPro75Bold') format('svg');
+}
