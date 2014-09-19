@@ -4,6 +4,22 @@ function resizeLandingContent() {
 	$('#landing').css("height", e + "px")
 }
 
+// Scroll to form
+function scrollToSayHiForm () {
+
+	// Scroll
+	$('html, body').animate({
+		scrollTop: $("#talk-to-me").offset().top
+	}, 1000, "swing");
+
+	// Color change
+	$("#talk-to-me").delay(100).animate({
+		color:"#b54434"
+	}, 800).delay(200).animate({
+		color:"#000000"
+	}, 800);
+}
+
 // Introduce recommendation form at "let me know" click
 function introduceRecForm() {
 	if (!$("#recFormContainer").has("#recForm").length) {

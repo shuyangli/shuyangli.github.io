@@ -34,6 +34,7 @@ p {
 	-moz-hyphens: auto;
 	-ms-hyphens: auto;
 	hyphens: auto;
+	line-height: 1.75em;
 }
 
 #landing {
@@ -73,6 +74,7 @@ footer {
 
 footer p {
 	margin: 0;
+	line-height: 1.5em;
 }
 
 .sl-form label {
@@ -80,10 +82,38 @@ footer p {
 	font-weight: normal;
 }
 
-.sl-form label input {
+.sl-form input {
+	width: 100%;
+	max-width: 700px;
 	border-left: none;
 	border-top: none;
 	border-right: none;
 	border-bottom-color: #e83015;
 	border-bottom-width: 1px;
+	margin-bottom: 1em;
+}
+
+.sl-form textarea {
+	width: 100%;
+	max-width: 700px;
+	border-left: none;
+	border-top: none;
+	border-right: none;
+	border-bottom-color: #e83015;
+	border-bottom-width: 1px;
+	margin-bottom: 1em;
+}
+
+.sl-form button {
+	background: none!important;
+	border: none;
+	padding: 0!important;
+	color: #e83015;
+	cursor: pointer;
+	margin-bottom: 1em;
+}
+
+.sl-form button:hover {
+	color: #b54434;
+	text-decoration: underline;
 }
