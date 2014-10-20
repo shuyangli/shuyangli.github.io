@@ -1,0 +1,40 @@
+$font-stack: "Avenir Next", "Helvetica Neue", Helvetica, Arial, sans-serif;
+
+body {
+	font-family: $font-stack;
+	margin: 0;
+}
+
+#app-container {
+	width: 1032px;
+	max-width: 1040px;
+	height: 768px;
+	// background-color: gray;
+}
+
+#order-bar, #main-selection, #control-bar {
+	display: inline-block;
+	margin: 0 auto !important;
+	height: 100%;
+}
+
+#order-bar {
+	width: 224px;
+	background-color: gray;
+}
+
+#main-selection {
+	width: 608px;
+	background-color: blue;
+}
+
+#control-bar {
+	width: 192px;
+	background-color: gray;
+}
+
+.bar-button {
+	display: inline-block;
+	position: static;
+	width: 100%;
+}
