@@ -13,8 +13,8 @@ body {
 }
 
 #app-container {
-	width: 1032px;
-	max-width: 1040px;
+	width: 1024px;
+	max-width: 1024px;
 	height: 768px;
 	// background-color: gray;
 }
@@ -23,6 +23,7 @@ body {
 	display: inline-block;
 	position: relative;
 	height: 100%;
+	margin-right: -4px;
 }
 
 #order-bar {
