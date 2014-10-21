@@ -4,6 +4,54 @@ function resizeLandingContent() {
 	$('#landing').css("height", e + "px")
 }
 
+// Redraw canvas contents
+function draw(mouseX, mouseY) {
+	var canvas = $("#landing-canvas")[0];
+	var ctx = canvas.getContext("2d");
+
+	// Resize canvas so that it's as large as the landing area
+	canvas.width = $("#landing").width();
+	canvas.height = $("#landing").height();;
+	var diagonalDist = Math.sqrt(Math.pow(canvas.width, 2) + Math.pow(canvas.height, 2));
+
+	// Size of box
+	var boxNumVertical = Math.floor(canvas.height / 64);
+	var boxSize = canvas.height / boxNumVertical;
+	var boxNumHorizontal = Math.ceil(canvas.width / boxSize);
+	var boxXOffset = Math.ceil((boxNumHorizontal * boxSize - canvas.width) / 2);
+
+	// Color setting
+	var centerColor = [0x51, 0x7f, 0xa4];
+	var edgeColor = [0x24, 0x39, 0x49];
+
+	// Actual drawing
+	for (var i = 0; i < boxNumHorizontal; ++i) {
+		for (var j = 0; j < boxNumVertical; ++j) {
+
+			// Set color
+			var boxCenterX = i * boxSize - boxXOffset + boxSize / 2;
+			var boxCenterY = j * boxSize + boxSize / 2;
+			var dist = Math.sqrt(Math.pow(boxCenterX - mouseX, 2) + Math.pow(boxCenterY - mouseY, 2));
+
+			var currentColor = [
+				Math.ceil(centerColor[0] - (centerColor[0] - edgeColor[0]) * dist / diagonalDist),
+				Math.ceil(centerColor[1] - (centerColor[1] - edgeColor[1]) * dist / diagonalDist),
+				Math.ceil(centerColor[2] - (centerColor[2] - edgeColor[2]) * dist / diagonalDist)
+			]
+
+			var currentColorString = "#"
+				+ ("0" + currentColor[0].toString(16)).slice(-2)
+				+ ("0" + currentColor[1].toString(16)).slice(-2)
+				+ ("0" + currentColor[2].toString(16)).slice(-2);
+
+			// Draw box
+			ctx.fillStyle = currentColorString
+			ctx.strokeStyle = currentColorString
+			ctx.fillRect(i * boxSize - boxXOffset, j * boxSize, boxSize, boxSize);
+		}
+	}
+}
+
 // Scroll to form
 function scrollToSayHiForm () {
 
@@ -20,68 +68,33 @@ function scrollToSayHiForm () {
 	}, 800);
 }
 
-// Introduce recommendation form at "let me know" click
-function introduceRecForm() {
-	if (!$("#recFormContainer").has("#recForm").length) {
-		var formHTMLString = "<form id=\"recForm\" class=\"sl-form col-sm-offset-1\">\
-			<label>your name: <input type=\"text\" name=\"friendName\" id=\"friendName\" /></label><br />\
-			<label>link or title of your recommendation: <input type=\"text\" name=\"recDetail\" id=\"recDetail\" /></label><br />\
-			<label>how can i contact you: <input type=\"text\" name=\"friendContact\" id=\"friendContact\" /></label><br />\
-			<a id=\"submitRecFormButton\" role=\"button\" onClick=\"submitRecForm()\">submit</span>\
-		</form>";
-		$(formHTMLString).hide().appendTo("#recFormContainer").fadeIn(300);
-	} else {
-		$("#recForm").fadeOut(300, function(){$(this).remove()});
-	}
-}
-
-// Submit recommendation form to Parse
-function submitRecForm() {
-
-	// Send
-	if ($('#recDetail').val().length > 0) {
-
-		var Recommendation = Parse.Object.extend("Recommendation");
-		var newRec = new Recommendation();
-
-		newRec.save({
-						friendName: $('#friendName').val(), 
-						recDetail: $('#recDetail').val(),
-						friendContact: $('#friendContact').val()
-					})
-		.then(function(newRec) {
-			// Remove onClick on #submitRecFormButton
-			$("#submitRecFormButton").attr('onclick', '');
-
-			// Display a "thanks" label
-			$("<span>thank you</span>").hide().appendTo('#recForm').fadeIn(300);
-			$("#recForm").delay(1500).fadeOut(300, function() {$(this).remove()});
-		});
-	} else {
-		// recommendation field is empty
-	}
-}
+// Hack for mousemove timeout
+var mousemoveTimeout = null;
 
 $(document).ready(function() {
-
 	// Set up laning element resize
 	resizeLandingContent();
 
-	// Bind the resize function to window resizing function
+	// On window resize, resize landing contents
 	$(window).resize(function() {
 		resizeLandingContent();
+
+		// And then redraw canvas contents
+		draw($("#landing").width() / 2, $("#landing").height() / 2);
 	})
 
+	// Bind draw function to mouse move over canvas
+	$("#landing").mousemove(function (e) {
 
-	// Resize the text input
-	// $(".sl-form").find("label").find("input").keydown(function() {
-	// 	var len = $(this).val().length;
-	// 	if (len > 3) {
-	// 		// increase width
-	// 		$(this).width(len * 11);
-	// 	} else {
-	// 		// restore minimal width;
-	// 		$(this).width(50);
-	// 	}
-	// });
+		// HACK!
+		if (mousemoveTimeout == null)
+			mousemoveTimeout = window.setTimeout(function() {
+				draw(e.clientX, e.clientY);
+				window.clearTimeout(mousemoveTimeout);
+				mousemoveTimeout = null;
+			}, 10);
+	});
+
+	// Initial drawing
+	draw($("#landing").width() / 2, $("#landing").height() / 2);
 });
