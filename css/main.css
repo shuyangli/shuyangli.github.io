@@ -37,6 +37,12 @@ p {
 	line-height: 1.75em;
 }
 
+pre {
+	font-size: 11px;
+	background: none;
+	border: none;
+}
+
 #landing {
 	display: block;
 	position: relative;
