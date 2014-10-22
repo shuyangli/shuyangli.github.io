@@ -3,7 +3,7 @@ var cachedMouseX = 0, cachedMouseY = 0;
 
 // Resize landing div so that it's always the size of the window
 function resizeLandingContent() {
-	var e = Math.floor($(window).height() * 0.9);
+	var e = $(window).height();
 	$('#landing').css("height", e + "px")
 }
 
