@@ -17,9 +17,15 @@
 
 	<div class="row" id="app-container">
 		<!-- Order bar containing current order, clear button, and checkout button -->
-		<div id="order-bar">
-			<div class="bar-button" id="clear-button">Clear</div>
-			<div class="bar-button" id="order-button">Order</div>
+		<div class="shade-right" id="order-bar">
+			<div class="bar-button shade-bottom" id="clear-button">Clear Order</div>
+
+			<div class="order-list">
+				
+			</div>
+
+			<div class="bar-button full-justify shade-bottom" id="tax-display">Tax $0.32</div>
+			<div class="bar-button shade-bottom" id="charge-button">Charge $4.02</div>
 		</div>
 
 		<!-- Main area containing iten selection, gift card button, and promo code button -->
@@ -28,12 +34,13 @@
 		</div>
 
 		<!-- Control bar containing datetime, random control buttons, and logout button -->
-		<div id="control-bar">
-			<div class="bar-button">Bulk Order</div>
-			<div class="bar-button">Open Cash Drawer</div>
-			<div class="bar-button">Reprint Receipt</div>
-			<div class="bar-button">Manager Control</div>
-			<div class="bar-button" id="signout-button">Sign Out</div>
+		<div class="shade-left" id="control-bar">
+			<div id="info-box">October 8<br />9:41 AM<br /><br />Good morning,<br />John Appleseed!</div>
+			<div class="bar-button shade-bottom" id="bulk-button">Bulk Order</div>
+			<div class="bar-button shade-bottom" id="drawer-button">Open Cash Drawer</div>
+			<div class="bar-button shade-bottom" id="reprint-button">Reprint Receipt</div>
+			<div class="bar-button shade-bottom" id="manager-button">Manager Control</div>
+			<div class="bar-button shade-bottom" id="signout-button">Sign Out</div>
 		</div>
 	</div>
 

@@ -1,4 +1,34 @@
+// Standard configurations
 $font-stack: "Avenir Next", "Helvetica Neue", Helvetica, Arial, sans-serif;
+$screen-width: 1024px;
+$screen-height: 768px;
+
+// Grid size specification
+$grid-size-full: 64px;
+$grid-size-half: $grid-size-full / 2;
+
+// Background color specification
+$bg-color-cool-white: rgb(247, 251, 255);
+$bg-color-light: rgba(235, 238, 242, 0.6);
+$bg-color-dark: rgba(210, 213, 217, 0.6);
+
+// Mixins
+@mixin bg-textured-color($color) {
+	// Background color, with pattern overlay
+	background-image: url(../img/bg-pattern.png);
+	background-repeat: repeat;
+	background-color: $color;
+	background-blend-mode: multiply;
+}
+
+@mixin bg-linear-gradient($color-top, $color-bottom) {
+	background-image: linear-gradient(90deg, $color-top, $color-bottom);
+	background-blend-mode: normal;
+}
+
+// ========================
+//  Actual CSS starts here
+// ========================
 
 * {
 	margin: 0;
@@ -10,43 +40,155 @@ body {
 	font-family: $font-stack;
 	margin: 0;
 	padding: 0;
+
+	// Disable selection
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+}
+
+// Bar button: buttons in both order-bar and control-bar
+.bar-button {
+	display: block;
+	width: 100%;
+	height: $grid-size-full;
+
+	// Center text
+	line-height: $grid-size-full - 20px;
+	text-align: center;
+
+	padding: 10px;
+
+	background-color: $bg-color-cool-white;
+}
+
+// Full-justify
+.full-justify {
+	text-align: justify;
+}
+.full-justify:after {
+	content: "";
+	display: inline-block;
+	width: 100%;
 }
 
 #app-container {
-	width: 1024px;
-	max-width: 1024px;
-	height: 768px;
-	// background-color: gray;
+	width: $screen-width;
+	max-width: $screen-width;
+	height: $screen-height;
 }
 
 #order-bar, #main-selection, #control-bar {
 	display: inline-block;
 	position: relative;
 	height: 100%;
+
+	// Fix for inline-block gutter
 	margin-right: -4px;
 }
 
 #order-bar {
 	top: 0px;
-	width: 224px;
-	background-color: gray;
+	width: $grid-size-full * 3 + $grid-size-half;
+
+	@include bg-textured-color($bg-color-dark);
+
+	#clear-button {
+		// Trick to vertically center text
+		height: $grid-size-half;
+		line-height: $grid-size-half - 20px;
+
+		position: absolute;
+		top: 0;
+
+		color: rgb(255, 255, 255);
+		@include bg-linear-gradient(rgb(217, 112, 108), rgb(207, 107, 103));
+	}
+
+	#tax-display {
+		height: $grid-size-half;
+		line-height: $grid-size-half - 20px;
+		position: absolute;
+		bottom: $grid-size-full * 2;
+	}
+
+	#charge-button {
+		// Trick to vertically center text
+		height: $grid-size-full * 2;
+		line-height: $grid-size-full * 2 - 20px;
+
+		position: absolute;
+		bottom: 0;
+
+		color: rgb(255, 255, 255);
+		@include bg-linear-gradient(rgb(82, 191, 82), rgb(71, 164, 71));
+	}
 }
 
 #main-selection {
-	width: 608px;
-	background-color: blue;
+	width: $screen-width - $grid-size-full * 6 - $grid-size-half;
+	@include bg-textured-color($bg-color-light);
 }
 
 #control-bar {
-	width: 192px;
-	background-color: gray;
+	width: $grid-size-full * 3;
+	@include bg-textured-color($bg-color-dark);
+
+	#info-box {
+		height: $grid-size-full * 3;
+		padding: $grid-size-half / 2 * 1.5;
+
+		position: absolute;
+		top: 0;
+	}
+
+	.bar-button {
+		position: absolute;
+	}
+
+	#bulk-button {
+		bottom: $grid-size-full * 5;
+	}
+
+	#drawer-button {
+		bottom: $grid-size-full * 3 + $grid-size-half;
+	}
+
+	#reprint-button {
+		bottom: $grid-size-full * 2 + $grid-size-half;
+	}
+
+	#manager-button {
+		bottom: $grid-size-full * 1 + $grid-size-half;
+	}
+
+	#signout-button {
+		bottom: 0;
+		color: rgb(216, 83, 79);
+	}
 }
 
-.bar-button {
-	display: block;
-	position: static;
-	width: 100%;
-	height: 64px;
-	border-bottom: 1px solid black;
-	border-left: 1px solid black;
+// ============
+//  1px Shades
+// ============
+
+$shade-color: rgba(198, 201, 204, 0.8);
+
+.shade-bottom {
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+	border-bottom-color: $shade-color;
+}
+
+.shade-left {
+	border-left-width: 1px;
+	border-left-style: solid;
+	border-left-color: $shade-color;
+}
+
+.shade-right {
+	border-right-width: 1px;
+	border-right-style: solid;
+	border-right-color: $shade-color;
 }
