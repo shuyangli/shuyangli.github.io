@@ -1,6 +1,9 @@
+// Cached mouse position for redrawing canvas on resize
+var cachedMouseX = 0, cachedMouseY = 0;
+
 // Resize landing div so that it's always the size of the window
 function resizeLandingContent() {
-	var e = $(window).height();
+	var e = Math.floor($(window).height() * 0.9);
 	$('#landing').css("height", e + "px")
 }
 
@@ -16,13 +19,15 @@ function draw(mouseX, mouseY) {
 
 	// Size of box
 	var boxNumVertical = Math.floor(canvas.height / 64);
-	var boxSize = canvas.height / boxNumVertical;
+	var boxSize = Math.ceil(canvas.height / boxNumVertical);
 	var boxNumHorizontal = Math.ceil(canvas.width / boxSize);
 	var boxXOffset = Math.ceil((boxNumHorizontal * boxSize - canvas.width) / 2);
 
 	// Color setting
-	var centerColor = [0x51, 0x7f, 0xa4];
-	var edgeColor = [0x24, 0x39, 0x49];
+	// var centerColor = [0x51, 0x7f, 0xa4]; 	// 81, 127, 164
+	var centerColor = [81, 127, 164];
+	// var edgeColor = [0x24, 0x39, 0x49];		// 36, 57, 73
+	var edgeColor = [36, 57, 73];
 
 	// Actual drawing
 	for (var i = 0; i < boxNumHorizontal; ++i) {
@@ -39,10 +44,7 @@ function draw(mouseX, mouseY) {
 				Math.ceil(centerColor[2] - (centerColor[2] - edgeColor[2]) * dist / diagonalDist)
 			]
 
-			var currentColorString = "#"
-				+ ("0" + currentColor[0].toString(16)).slice(-2)
-				+ ("0" + currentColor[1].toString(16)).slice(-2)
-				+ ("0" + currentColor[2].toString(16)).slice(-2);
+			var currentColorString = "rgb(" + currentColor[0] + "," + currentColor[1] + "," + currentColor[2] + ")"
 
 			// Draw box
 			ctx.fillStyle = currentColorString
@@ -62,39 +64,33 @@ function scrollToSayHiForm () {
 
 	// Color change
 	$("#talk-to-me").delay(100).animate({
-		color:"#b54434"
+		color:"#008DFF"
 	}, 800).delay(200).animate({
 		color:"#000000"
 	}, 800);
 }
 
-// Hack for mousemove timeout
-var mousemoveTimeout = null;
-
+// Document ready!
 $(document).ready(function() {
+
+	$(window).resize(function() {
+		// On window resize, resize landing contents, and then redraw canvas contents
+		resizeLandingContent();
+		draw(cachedMouseX, cachedMouseY);
+	})
+
+	$("#landing").mousemove(function (e) {
+		// On mouse move over landing area, redraw canvas contents
+		cachedMouseX = e.pageX;
+		cachedMouseY = e.pageY;
+		draw(cachedMouseX, cachedMouseY);
+	});
+
 	// Set up laning element resize
 	resizeLandingContent();
 
-	// On window resize, resize landing contents
-	$(window).resize(function() {
-		resizeLandingContent();
-
-		// And then redraw canvas contents
-		draw($("#landing").width() / 2, $("#landing").height() / 2);
-	})
-
-	// Bind draw function to mouse move over canvas
-	$("#landing").mousemove(function (e) {
-
-		// HACK!
-		if (mousemoveTimeout == null)
-			mousemoveTimeout = window.setTimeout(function() {
-				draw(e.clientX, e.clientY);
-				window.clearTimeout(mousemoveTimeout);
-				mousemoveTimeout = null;
-			}, 10);
-	});
-
 	// Initial drawing
-	draw($("#landing").width() / 2, $("#landing").height() / 2);
+	cachedMouseX = $("#landing").width() / 2;
+	cachedMouseY = $("#landing").height() / 2;
+	draw(cachedMouseX, cachedMouseY);
 });

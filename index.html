@@ -11,9 +11,6 @@
 	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
 	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.11.1/jquery-ui.min.js"></script>
 
-	<!-- Parse -->
-	<script type="text/javascript" src="http://www.parsecdn.com/js/parse-1.2.18.min.js"></script>
-
 	<!-- Bootstrap -->
 	<link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
 	<script src="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
@@ -36,7 +33,7 @@
 	<div id="landing" class="container-fluid">
 		<canvas id="landing-canvas" width="100%" height="100%"></canvas>
 		<!-- Logo -->
-		<div class="col-sm-10" id="site-title">
+		<div class="col-md-8 col-md-offset-2" id="site-title">
 			<div id="logo">
 				<h1>Hi, i'm Shuyang.</h1>
 				<p>You can read <a href="/blog">my blog</a>, look at <a href="Shuyang-Li-Resume.pdf" onclick="sendResumeClick()">my r&eacute;sum&eacute;</a>, or find me on <a href="https://github.com/shuyangli">github</a> / <a href="https://twitter.com/shuyangl">twitter</a> / <a href="https://www.linkedin.com/in/shuyangli">linkedin</a> / <a href="https://www.behance.net/shuyangli">behance</a> / <a href="http://www.douban.com/people/panelcu">豆瓣 (douban)</a></p>
@@ -48,39 +45,49 @@
 	<div class="container-fluid">
 
 		<!-- Content -->
-		<div class="col-sm-10">
-			<h1 id="who-i-am">who i am</h1>
+		<div class="col-md-2 col-md-offset-1 col-title">
+			<h2 id="who-i-am">who i am</h2>
+		</div>
+		<div class="col-md-6 col-content">
 			<p>I'm Shuyang Li (李舒扬) from Shenzhen, China. I study Computer Science at <a href="http://nd.edu">Notre Dame</a>.</p>
-			<p>I'm obsessed with technology, data science, design, and communications. I'm concerned with how we could enhance individuals and transform communities through tech and design, and I'm currently interested in the Internet of Things, wearable technology, and gamification.</p>
+			<p>I'm obsessed with technology, data science, design, and communications. I'm concerned with how we could enhance individuals and transform communities through tech and design, and I'm currently interested in the Internet of Things, wearables, and gamification.</p>
 			<p>I was a software engineering intern at <a href="http://www.apple.com">Apple</a> from May 2014 to August 2014.</p>
-			<p>Fun fact: OS X Yosemite shipped with a recording of my voice (reading Chinese). If you're running Yosemite, you can listen to it by running the following command:</p>
+			<p>Fun fact: <a href="https://www.apple.com/osx/">OS X Yosemite</a> shipped with a recording of my voice (in Chinese). If you're running Yosemite, you can listen to it by running the following command on Terminal:</p>
 			<pre>afplay /System/Library/PrivateFrameworks/ScreenReader.framework/Versions/A/Resources/VoiceOver\ Quickstart.app/Contents/Resources/VOTraining.bundle/Contents/Resources/intro-zh_CN.m4a</pre>
 		</div>
 
-		<div class="col-sm-10">
-			<h1 id="what-i-do">what i do</h1>
+		<div class="col-md-2 col-md-offset-1 col-title">
+			<h2 id="what-i-do">what i do</h2>
+		</div>
+		<div class="col-md-6 col-content">
 			<p>I am research assistant for <a href="http://www.icensa.com">iCeNSA (Interdisciplinary Center for Network Sciences and Applications)</a>, where I worked on an Android app for a project on diabetes intervention, and am working on a project on healthcare.</p>
-			<p>I am Director of Campus Technology in <a href="http://studentgovernment.nd.edu">Notre Dame Student Government</a>. I represent undergraduate student on the <a href="http://committees.nd.edu/committees-a-z/university-council-for-academic-technologies-ucat/">University Council for Academic Technologies</a>, and lead a team of 15 to address undergraduate student needs in technology.</p>
+			<p>I am Director of Campus Technology in <a href="http://studentgovernment.nd.edu">Notre Dame Student Government</a>. I represent undergraduate student on the <a href="http://committees.nd.edu/committees-a-z/university-council-for-academic-technologies-ucat/">University Council for Academic Technologies</a>, and lead a team of 15 to address undergraduate student needs in technology. I also represent undergraduate engineering students on the <a href="http://provost.nd.edu/committees/academic-council/">Academic Council</a>.</p>
 			<p>I am producer and graphic designer for <a href="http://www.ndshowsomeskin.com">Show Some Skin</a>, an annual theatrical production at Notre Dame.</p>
 			<p>You can find more about my experience on <a href="https://www.linkedin.com/in/shuyangli">LinkedIn</a>, or get <a href="Shuyang-Li-Resume.pdf" onclick="sendResumeClick()">my r&eacute;sum&eacute;</a>.</p>
 		</div>
 
-		<div class="col-sm-10">
-			<h1 id="where-i-find-inspiration">where i find inspiration</h1>
+		<div class="col-md-2 col-md-offset-1 col-title">
+			<h2 id="where-i-find-inspiration">where i find inspiration</h2>
+		</div>
+		<div class="col-md-6 col-content">
 			<p>I listen to podcasts, because having free time is scary. My favorites ones are <a href="http://longform.org/podcast">Longform Podcast</a>, <a href="http://99percentinvisible.org">99% Invisible</a>, and <a href="http://www.imore.com/debug">Debug</a>; I also listen to <a href="http://atp.fm">Accidental Tech Podcast</a> and <a href="http://daringfireball.net/thetalkshow/">The Talk Show</a>.</p>
 			<p>I read <a href="https://news.ycombinator.com">Hacker News</a>, <a href="https://news.layervault.com">Designer News</a>, <a href="http://www.underconsideration.com/brandnew/">Brand New</a>, and <a href="http://www.trendlist.org">Trend List</a>.</p>
 			<p>There are much more intriguing writings and ideas on the internet than I could possibly find out, and if you find something interesting, I'd appreciate if you could <a onclick="scrollToSayHiForm()">share with me</a>!</p>
 			<div id="recFormContainer"></div>
 		</div>
-
-		<div class="col-sm-10">
-			<h1 id="how-i-spend-free-time">how i spend free time</h1>
+		
+		<div class="col-md-2 col-md-offset-1 col-title">
+			<h2 id="how-i-spend-free-time">how i spend free time</h2>
+		</div>
+		<div class="col-md-6 col-content">
 			<p>I learn stuff on <a href="https://www.coursera.org">Coursera</a>; I play <a href="http://en.wikipedia.org/wiki/Go_(game)">the game of Go</a> and I need an opponent.</p>
 			<p>I also enjoy books, music, modern art, design, and board games.</p>
 		</div>
 
-		<div class="col-sm-10">
-			<h1 id="talk-to-me">say hi, or share stuff with me</h1>
+		<div class="col-md-2 col-md-offset-1 col-title">
+			<h2 id="talk-to-me">say hi, or share stuff with me</h2>
+		</div>
+		<div class="col-md-6 col-content">
 			<form class="sl-form" action="http://forms.brace.io/shuyang.li.95@gmail.com" method="POST">
 				<input type="text" name="name" placeholder="your name"><br />
 				<input type="email" name="_replyto" placeholder="your email"></label><br />
@@ -91,23 +98,14 @@
 	</div>
 
 	<footer class="container-fluid">
-		<div class="col-sm-10">
-			<p>written by shuyang li on a mac; all rights reserved</p>
-			<p>last updated: september 18, 2014; r&eacute;sum&eacute; last updated: september 4, 2014</p>
-			<p>cover photo from <a href="https://www.flickr.com/photos/edith_soto/">flickr</a>, used under <a href="https://creativecommons.org/licenses/by-sa/2.0/">cc by-sa 2.0 license</a></p>
+		<div class="col-md-8 col-md-offset-2">
+			<p>written by shuyang on a mac; all rights reserved</p>
+			<p>last updated: october 21, 2014; r&eacute;sum&eacute; last updated: september 4, 2014</p>
 			<br />
 			<p><a href="/blog">a world without dragons is boring</a></p>
 		</div>
 	</footer>
 
-	<!-- <footer>
-		<div class="social-icons">
-			<a href="https://twitter.com/shuyangl" class="btn btn-social-icon btn-twitter btn-xs"><i class="fa fa-twitter"></i></a>
-			<a href="https://www.linkedin.com/in/shuyangli" class="btn btn-social-icon btn-linkedin btn-xs"><i class="fa fa-linkedin"></i></a>
-			<a href="https://github.com/shuyangli" class="btn btn-social-icon btn-github btn-xs"><i class="fa fa-github"></i></a>
-			<a href="https://www.behance.net/shuyangli" class="btn btn-social-icon btn-behance btn-xs"><i class="fa fa-behance"></i></a>
-		</div>
-	</footer> -->
 </body>
 
 </html>
