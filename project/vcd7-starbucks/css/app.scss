@@ -106,6 +106,134 @@ body {
 	margin: auto;
 
 	@include bg-linear-gradient(rgba(152, 152, 152, 0.3), rgba(25, 25, 25, 0.3));
+
+	.modal-title {
+		height: $grid-size-full;
+		margin: 0 $grid-size-half;
+	}
+
+	#modal-drink {
+		width: $grid-size-half * 23;
+		height: $grid-size-half * 15;
+
+		background:
+			url(../img/bg-pattern.png) 0 0 repeat,
+			// HACK!
+			linear-gradient(rgba(247, 251, 255, 0.6), rgba(247, 251, 255, 0.6)),
+			url(../img/bg-blurred.png) (-$grid-size-half*7) (-$grid-size-half) no-repeat;
+		background-blend-mode: multiply, normal, normal;
+
+		position: absolute;
+		left: $grid-size-half * 7;
+		top: $grid-size-half;
+	}
+
+	$subitem-button-width: $grid-size-half * 5;
+	$subitem-button-height: $grid-size-full;
+
+	.subitem-button {
+		position: absolute;
+		width: $subitem-button-width;
+		height: $subitem-button-height;
+		padding: 10px;
+
+		background-color: $bg-color-warm-white;
+
+		.subitem-button-title {
+			@include vertical-align;
+		}
+	}
+
+	#subitem-brewed-coffee {
+		top: $grid-size-full;
+		left: $grid-size-half;
+	}
+	#subitem-brewed-tea {
+		top: $grid-size-full + $subitem-button-height;
+		left: $grid-size-half;
+	}
+	#subitem-capp {
+		top: $grid-size-full + $subitem-button-height * 2;
+		left: $grid-size-half;
+	}
+	#subitem-macc {
+		top: $grid-size-full + $subitem-button-height * 3;
+		left: $grid-size-half;
+	}
+	#subitem-latte {
+		top: $grid-size-full + $subitem-button-height * 4;
+		left: $grid-size-half;
+	}
+	#subitem-mocha {
+		top: $grid-size-full + $subitem-button-height * 5;
+		left: $grid-size-half;
+	}
+	#subitem-americano {
+		top: $grid-size-full;
+		left: $grid-size-half + $subitem-button-width;
+	}
+	#subitem-tea-latte {
+		top: $grid-size-full + $subitem-button-height;
+		left: $grid-size-half + $subitem-button-width;
+	}
+	#subitem-capp-flav {
+		top: $grid-size-full + $subitem-button-height * 2;
+		left: $grid-size-half + $subitem-button-width;
+	}
+	#subitem-macc-flav {
+		top: $grid-size-full + $subitem-button-height * 3;
+		left: $grid-size-half + $subitem-button-width;
+	}
+	#subitem-latte-flav {
+		top: $grid-size-full + $subitem-button-height * 4;
+		left: $grid-size-half + $subitem-button-width;
+	}
+	#subitem-mocha-flav {
+		top: $grid-size-full + $subitem-button-height * 5;
+		left: $grid-size-half + $subitem-button-width;
+	}
+
+	#subitem-frap {
+		top: $grid-size-full;
+		left: $grid-size-full + $subitem-button-width * 2;
+	}
+	#subitem-iced-tea {
+		top: $grid-size-full + $subitem-button-height;
+		left: $grid-size-full + $subitem-button-width * 2;
+	}
+	#subitem-refresher {
+		top: $grid-size-full + $subitem-button-height * 2;
+		left: $grid-size-full + $subitem-button-width * 2;
+	}
+	#subitem-frap-esp {
+		top: $grid-size-full;
+		left: $grid-size-full + $subitem-button-width * 3;
+	}
+	#subitem-iced-tea-lemonade {
+		top: $grid-size-full + $subitem-button-height;
+		left: $grid-size-full + $subitem-button-width * 3;
+	}
+	#subitem-smoothie {
+		top: $grid-size-full + $subitem-button-height * 2;
+		left: $grid-size-full + $subitem-button-width * 3;
+	}
+
+	#subitem-apple-juice {
+		top: $grid-size-half * 3 + $subitem-button-height * 3;
+		left: $grid-size-full + $subitem-button-width * 2;
+	}
+	#subitem-choc {
+		top: $grid-size-half * 3 + $subitem-button-height * 4;
+		left: $grid-size-full + $subitem-button-width * 2;
+	}
+	#subitem-eggnog {
+		top: $grid-size-half * 3 + $subitem-button-height * 3;
+		left: $grid-size-full + $subitem-button-width * 3;
+	}
+	#subitem-choc-flav {
+		top: $grid-size-half * 3 + $subitem-button-height * 4;
+		left: $grid-size-full + $subitem-button-width * 3;
+	}
 }
 
 #app-container {
@@ -206,7 +334,7 @@ body {
 			height: $grid-size-full * 2 - 10px * 2;
 
 			// Desaturate the image
-			filter: saturate(80%);
+			filter: saturate(60%);
 			-webkit-filter: saturate(60%);
 		}
 

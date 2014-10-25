@@ -6,7 +6,6 @@ var sessionDummy = {
 // User signed in
 var baristaName = "John Appleseed";
 
-
 // Display time
 function displayInfobox() {
 	var months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
@@ -32,6 +31,12 @@ function displayInfobox() {
 
 	// Change barista name
 	$(".js-preferred-name")[0].innerHTML = baristaName;
+}
+
+// Reset modal status
+function resetModal() {
+	$("#modal-overlay").children().hide();
+	$("#modal-overlay").hide();
 }
 
 // ================
