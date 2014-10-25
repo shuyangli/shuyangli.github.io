@@ -4,7 +4,7 @@ var cachedMouseX = 0, cachedMouseY = 0;
 // Resize landing div so that it's always the size of the window
 function resizeLandingContent() {
 	var e = $(window).height();
-	$('#landing').css("height", e + "px")
+	$('#landing').css("height", e + "px");
 }
 
 // Redraw canvas contents
@@ -14,7 +14,7 @@ function draw(mouseX, mouseY) {
 
 	// Resize canvas so that it's as large as the landing area
 	canvas.width = $("#landing").width();
-	canvas.height = $("#landing").height();;
+	canvas.height = $("#landing").height();
 	var diagonalDist = Math.sqrt(Math.pow(canvas.width, 2) + Math.pow(canvas.height, 2));
 
 	// Size of box
@@ -42,13 +42,13 @@ function draw(mouseX, mouseY) {
 				Math.ceil(centerColor[0] - (centerColor[0] - edgeColor[0]) * dist / diagonalDist),
 				Math.ceil(centerColor[1] - (centerColor[1] - edgeColor[1]) * dist / diagonalDist),
 				Math.ceil(centerColor[2] - (centerColor[2] - edgeColor[2]) * dist / diagonalDist)
-			]
+			];
 
-			var currentColorString = "rgb(" + currentColor[0] + "," + currentColor[1] + "," + currentColor[2] + ")"
+			var currentColorString = "rgb(" + currentColor[0] + "," + currentColor[1] + "," + currentColor[2] + ")";
 
 			// Draw box
-			ctx.fillStyle = currentColorString
-			ctx.strokeStyle = currentColorString
+			ctx.fillStyle = currentColorString;
+			ctx.strokeStyle = currentColorString;
 			ctx.fillRect(i * boxSize - boxXOffset, j * boxSize, boxSize, boxSize);
 		}
 	}
@@ -77,7 +77,7 @@ $(document).ready(function() {
 		// On window resize, resize landing contents, and then redraw canvas contents
 		resizeLandingContent();
 		draw(cachedMouseX, cachedMouseY);
-	})
+	});
 
 	$("#landing").mousemove(function (e) {
 		// On mouse move over landing area, redraw canvas contents
