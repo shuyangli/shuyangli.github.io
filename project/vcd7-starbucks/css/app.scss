@@ -9,6 +9,7 @@ $grid-size-half: $grid-size-full / 2;
 
 // Background color specification
 $bg-color-cool-white: rgb(247, 251, 255);
+$bg-color-warm-white: rgb(249, 250, 247);
 $bg-color-light: rgba(235, 238, 242, 0.6);
 $bg-color-dark: rgba(210, 213, 217, 0.6);
 
@@ -22,8 +23,16 @@ $bg-color-dark: rgba(210, 213, 217, 0.6);
 }
 
 @mixin bg-linear-gradient($color-top, $color-bottom) {
-	background-image: linear-gradient(90deg, $color-top, $color-bottom);
+	background-image: linear-gradient(180deg, $color-top, $color-bottom);
 	background-blend-mode: normal;
+}
+
+@mixin vertical-align {
+	position: relative;
+	top: 50%;
+	-webkit-transform: translateY(-50%);
+	-ms-transform: translateY(-50%);
+	transform: translateY(-50%);
 }
 
 // ========================
@@ -41,6 +50,9 @@ body {
 	margin: 0;
 	padding: 0;
 
+	// Increase letter spacing
+	letter-spacing: 0.5px;
+
 	// Disable selection
 	-webkit-user-select: none;
 	-moz-user-select: none;
@@ -53,6 +65,8 @@ body {
 	display: block;
 	width: 100%;
 	height: $grid-size-full;
+
+	position: absolute;
 
 	// Center text
 	line-height: $grid-size-full - 20px;
@@ -72,6 +86,9 @@ body {
 	display: inline-block;
 	width: 100%;
 }
+.vertical-align-text {
+	@include vertical-align;
+}
 
 #app-container {
 	width: $screen-width;
@@ -85,7 +102,7 @@ body {
 	height: 100%;
 
 	// Fix for inline-block gutter
-	margin-right: -4px;
+	margin-right: -4.5px;
 }
 
 #order-bar {
@@ -98,12 +115,16 @@ body {
 		// Trick to vertically center text
 		height: $grid-size-half;
 		line-height: $grid-size-half - 20px;
-
 		position: absolute;
 		top: 0;
 
 		color: rgb(255, 255, 255);
+	}
+	.clear-button-active {
 		@include bg-linear-gradient(rgb(217, 112, 108), rgb(207, 107, 103));
+	}
+	.clear-button-inactive {
+		@include bg-linear-gradient(rgb(217, 217, 217), rgb(207, 207, 207));
 	}
 
 	#tax-display {
@@ -120,15 +141,114 @@ body {
 
 		position: absolute;
 		bottom: 0;
-
+	}
+	.charge-button-active {
 		color: rgb(255, 255, 255);
 		@include bg-linear-gradient(rgb(82, 191, 82), rgb(71, 164, 71));
+	}
+	.charge-button-inactive {
+		color: rgb(255, 255, 255);
+		@include bg-linear-gradient(rgb(191, 191, 191), rgb(155, 155, 155));
 	}
 }
 
 #main-selection {
 	width: $screen-width - $grid-size-full * 6 - $grid-size-half;
 	@include bg-textured-color($bg-color-light);
+
+	$item-button-width: $grid-size-full * 2;
+	$item-button-height: $grid-size-full * 2 + $grid-size-half;
+
+	.item-button {
+		position: absolute;
+		width: $item-button-width;
+		height: $item-button-height;
+
+		padding: 10px;
+
+		background-color: $bg-color-cool-white;
+
+		img {
+			width: 100%;
+			height: $grid-size-full * 2 - 10px * 2;
+		}
+
+		.item-button-label {
+			position: relative;
+			width: 100%;
+			top: 8px;
+			bottom: 0;
+		}
+	}
+
+	.special-button {
+		position: absolute;
+		width: $item-button-width;
+		height: $grid-size-full + $grid-size-half;
+
+		padding: 10px;
+		background-color: $bg-color-warm-white;
+	}
+
+	// Laying out specific buttons
+	#espresso-button {
+		top: $grid-size-half;
+		left: $grid-size-half;
+	}
+	#short-button {
+		top: $grid-size-half;
+		left: $grid-size-half + $item-button-width;
+	}
+	#tall-button {
+		top: $grid-size-half + $item-button-height;
+		left: $grid-size-half;
+	}
+	#grande-button {
+		top: $grid-size-half + $item-button-height;
+		left: $grid-size-half + $item-button-width;
+	}
+	#venti-button {
+		top: $grid-size-half + $item-button-height * 2;
+		left: $grid-size-half;
+	}
+	#trenta-button {
+		top: $grid-size-half + $item-button-height * 2;
+		left: $grid-size-half + $item-button-width;
+	}
+	#bottled-button {
+		top: $grid-size-half * 2 + $item-button-height * 3;
+		left: $grid-size-half;
+	}
+
+	#mug-button {
+		top: $grid-size-half;
+		left: $grid-size-half * 2 + $item-button-width * 2;
+	}
+	#food-button {
+		top: $grid-size-half;
+		left: $grid-size-half * 2 + $item-button-width * 3;
+	}
+	#snacks-button {
+		top: $grid-size-half + $item-button-height;
+		left: $grid-size-half * 2 + $item-button-width * 2;
+	}
+	#whole-bean-button {
+		top: $grid-size-half + $item-button-height;
+		left: $grid-size-half * 2 + $item-button-width * 3;
+	}
+	#custom-button {
+		top: $grid-size-half + $item-button-height * 2;
+		left: $grid-size-half * 2 + $item-button-width * 2;
+	}
+
+	#starbucks-card-button {
+		bottom: $grid-size-full;
+		right: $grid-size-half + $item-button-width;
+	}
+	#promo-code-button {
+		bottom: $grid-size-full;
+		right: $grid-size-half;
+	}
 }
 
 #control-bar {
@@ -141,10 +261,6 @@ body {
 
 		position: absolute;
 		top: 0;
-	}
-
-	.bar-button {
-		position: absolute;
 	}
 
 	#bulk-button {
