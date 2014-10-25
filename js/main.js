@@ -89,8 +89,9 @@ $(document).ready(function() {
 
 	$("#landing").bind('touchmove', function (e) {
 		// On touch move over landing area, redraw canvas contents
-		cachedMouseX = e.pageX;
-		cachedMouseY = e.pageY;
+		var touch = e.originalEvent.touches[0] || e.originalEvent.changedTouches[0];
+		cachedMouseX = touch.pageX;
+		cachedMouseY = touch.pageY;
 		draw(cachedMouseX, cachedMouseY);
 	});
 
