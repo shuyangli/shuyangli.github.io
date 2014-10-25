@@ -1,45 +1,121 @@
-<!doctype html>
+<!DOCTYPE html>
 
 <html lang="en">
 
 <head>
 	<meta charset="utf-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-	<title>Starbucks Register Interface Redesign | Shuyang Li</title>
+	<title>Register Redesign | Starbucks × Shuyang</title>
 	<link rel="stylesheet" href="css/foundation.css" />
 	<link rel="stylesheet" href="css/app.css" />
+
+	<!-- jQuery -->
+	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+	<script src="js/app.js"></script>
 	<script src="js/vendor/modernizr.js"></script>
 </head>
 
 <body>
 	<!-- Overlay for modal controls -->
-	<!-- <div id="modal-overlay"></div> -->
+	<div id="modal-overlay"></div>
 
 	<div class="row" id="app-container">
 		<!-- Order bar containing current order, clear button, and checkout button -->
-		<div id="order-bar">
-			<div class="bar-button" id="clear-button">Clear</div>
-			<div class="bar-button" id="order-button">Order</div>
+		<div class="shade-right" id="order-bar">
+			<div class="bar-button shade-bottom js-clear-button-inactive" id="clear-button">Clear Order</div>
+
+			<div id="order-list">
+				<div class="js-no-item-prompt vertical-align-text" id="no-item-prompt">No Item Selected</div>
+			</div>
+
+			<div class="bar-button full-justify shade-bottom" id="tax-display">Tax <span id="js-tax-dollar-amount-display">$0.00</span></div>
+			<div class="bar-button shade-bottom js-charge-button-inactive" id="charge-button">
+			<!-- Disabled state: charge-prompt = "Choose an Item" -->
+			<!-- Active state: charge-prompt = "Charge", 
+				charge-dollar-amount-display = "$4.32" -->
+				<span id="js-charge-prompt">Choose an Item</span>
+				<span id="js-charge-dollar-amount-display"></span>
+			</div>
 		</div>
 
 		<!-- Main area containing iten selection, gift card button, and promo code button -->
 		<div id="main-selection">
-			
+
+			<div class="item-button shade-bottom shade-right" id="espresso-button">
+				<img class="js-2x-img" src="img/btn-espresso.png" />
+				<div class="item-button-label">Espresso</div>
+			</div>
+			<div class="item-button shade-bottom shade-right" id="short-button">
+				<img class="js-2x-img" src="img/btn-short.png" />
+				<div class="item-button-label">Short</div>
+			</div>
+			<div class="item-button shade-bottom shade-right" id="tall-button">
+				<img class="js-2x-img" src="img/btn-tall.png" />
+				<div class="item-button-label">Tall</div>
+			</div>
+			<div class="item-button shade-bottom shade-right" id="grande-button">
+				<img class="js-2x-img" src="img/btn-grande.png" />
+				<div class="item-button-label">Grande</div>
+			</div>
+			<div class="item-button shade-bottom shade-right" id="venti-button">
+				<img class="js-2x-img" src="img/btn-venti.png" />
+				<div class="item-button-label">Venti</div>
+			</div>
+			<div class="item-button shade-bottom shade-right" id="trenta-button">
+				<img class="js-2x-img" src="img/btn-trenta.png" />
+				<div class="item-button-label">Trenta</div>
+			</div>
+			<div class="item-button shade-bottom shade-right" id="bottled-button">
+				<img class="js-2x-img" src="img/btn-bottled.png" />
+				<div class="item-button-label">Bottled</div>
+			</div>
+
+			<div class="item-button shade-bottom shade-right" id="mug-button">
+				<img class="js-2x-img" src="img/btn-mug.png" />
+				<div class="item-button-label">Coffee Mugs</div>
+			</div>
+			<div class="item-button shade-bottom shade-right" id="food-button">
+				<img class="js-2x-img" src="img/btn-food.png" />
+				<div class="item-button-label">Food &amp; Pastry</div>
+			</div>
+			<div class="item-button shade-bottom shade-right" id="snack-button">
+				<img class="js-2x-img" src="img/btn-snack.png" />
+				<div class="item-button-label">Snacks</div>
+			</div>
+			<div class="item-button shade-bottom shade-right" id="whole-bean-button">
+				<img class="js-2x-img" src="img/btn-whole-bean.png" />
+				<div class="item-button-label">Whole Bean</div>
+			</div>
+			<div class="item-button shade-bottom shade-right" id="custom-button">
+				<img class="js-2x-img" src="img/btn-custom.png" />
+				<div class="item-button-label">Custom</div>
+			</div>
+		
+			<div class="special-button shade-bottom shade-right" id="starbucks-card-button">
+				<div class="vertical-align-text">Starbucks Card</div>
+			</div>
+			<div class="special-button shade-bottom shade-right" id="promo-code-button">
+				<div class="vertical-align-text">Apply Promo Code</div>
+			</div>
 		</div>
 
 		<!-- Control bar containing datetime, random control buttons, and logout button -->
-		<div id="control-bar">
-			<div class="bar-button">Bulk Order</div>
-			<div class="bar-button">Open Cash Drawer</div>
-			<div class="bar-button">Reprint Receipt</div>
-			<div class="bar-button">Manager Control</div>
-			<div class="bar-button" id="signout-button">Sign Out</div>
+		<div class="shade-left" id="control-bar">
+			<div id="info-box">
+				<span class="js-date">October 8</span><br /><span class="js-time">9:41 AM</span><br /><br />Good <span class="js-time-desc">morning</span>,<br />
+				<span class="js-preferred-name">John Appleseed</span>!
+			</div>
+			<div class="bar-button shade-bottom" id="bulk-button">Bulk Order</div>
+			<div class="bar-button shade-bottom" id="drawer-button">Open Cash Drawer</div>
+			<div class="bar-button shade-bottom" id="reprint-button">Reprint Receipt</div>
+			<div class="bar-button shade-bottom" id="manager-button">Manager Control</div>
+			<div class="bar-button shade-bottom" id="signout-button">Sign Out</div>
 		</div>
 	</div>
 
 
 	<script src="js/vendor/jquery.js"></script>
 	<script src="js/foundation.min.js"></script>
-	<script>// $(document).foundation();</script>
+	<script>$(document).foundation();</script>
 </body>
 </html>
