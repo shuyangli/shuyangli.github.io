@@ -66,13 +66,12 @@ body {
 	width: 100%;
 	height: $grid-size-full;
 
+	padding: 10px;
 	position: absolute;
 
 	// Center text
 	line-height: $grid-size-full - 20px;
 	text-align: center;
-
-	padding: 10px;
 
 	background-color: $bg-color-cool-white;
 }
