@@ -1,15 +1,35 @@
+// Dummy session object
+var sessionDummy = {
+	purchasedItems : []
+};
+
+// User signed in
+var baristaName = "John Appleseed";
+
 
 // Display time
-function displayDatetime() {
+function displayInfobox() {
 	var months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
-
 	var currentDatetime = new Date();
+
+	// Display month + date
+	$(".js-date")[0].innerHTML = months[currentDatetime.getMonth()] + " " + currentDatetime.getDate();
+
+	// Set "Good morning/afternoon/evening"
 	var hour = currentDatetime.getHours();
+	$(".js-time-desc")[0].innerHTML =
+		hour >= 6 && hour < 12 ? "morning" :
+		hour >= 12 && hour < 18 ? "afternoon" :
+		"evening";
+
+	// Display actual hour:minute
 	var hourSuffix = hour - 12 < 0 ? "AM" : "PM";
 	hour = hour % 12 == 0 ? 12 : hour % 12;
 
-	$(".js-date")[0].innerHTML = months[currentDatetime.getMonth()] + " " + currentDatetime.getDate();
 	$(".js-time")[0].innerHTML = hour + ":" + currentDatetime.getMinutes() + " " + hourSuffix;
+
+	// Change barista name
+	$(".js-preferred-name")[0].innerHTML = baristaName;
 }
 
 // ================
@@ -32,8 +52,8 @@ $(document).ready(function () {
 		}
 	}
 
-	// Display time, and schedule time refresh
-	displayDatetime();
-	setInterval(displayDatetime, 10000);
+	// Display infobox contents, and schedule infobox refresh
+	displayInfobox();
+	setInterval(displayInfobox, 10000);
 
 });
