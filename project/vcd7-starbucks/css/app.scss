@@ -13,6 +13,10 @@ $bg-color-warm-white: rgb(249, 250, 247);
 $bg-color-light: rgba(235, 238, 242, 0.6);
 $bg-color-dark: rgba(210, 213, 217, 0.6);
 
+// Z-indexes
+$z-idx-app: 100;
+$z-idx-modal: 200;
+
 // Mixins
 @mixin bg-textured-color($color) {
 	// Background color, with pattern overlay
@@ -49,6 +53,9 @@ body {
 	font-family: $font-stack;
 	margin: 0;
 	padding: 0;
+
+	height: 100%;
+	width: 100%;
 
 	// Increase letter spacing
 	letter-spacing: 0.5px;
@@ -89,10 +96,26 @@ body {
 	@include vertical-align;
 }
 
+#modal-overlay {
+	width: $screen-width;
+	max-width: $screen-width;
+	height: $screen-height;
+	z-index: $z-idx-modal;
+
+	position: absolute;
+	margin: auto;
+
+	@include bg-linear-gradient(rgba(152, 152, 152, 0.3), rgba(25, 25, 25, 0.3));
+}
+
 #app-container {
 	width: $screen-width;
 	max-width: $screen-width;
 	height: $screen-height;
+	z-index: $z-idx-app;
+
+	position: absolute;
+	margin: auto;
 }
 
 #order-bar, #main-selection, #control-bar {
@@ -272,6 +295,7 @@ body {
 	#info-box {
 		height: $grid-size-full * 3;
 		padding: $grid-size-half / 2 * 1.5;
+		color: rgb(64, 64, 64);
 
 		position: absolute;
 		top: 0;

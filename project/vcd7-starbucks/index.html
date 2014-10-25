@@ -7,10 +7,9 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
 	<meta name="apple-mobile-web-app-capable" content="yes" />
 	<title>Register Redesign | Starbucks × Shuyang</title>
-	<link rel="stylesheet" href="css/foundation.css" />
+	
 	<link rel="stylesheet" href="css/app.css" />
 
-	<!-- jQuery -->
 	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
 	<script src="js/app.js"></script>
 	<script src="js/vendor/modernizr.js"></script>
@@ -18,9 +17,11 @@
 
 <body>
 	<!-- Overlay for modal controls -->
-	<div id="modal-overlay"></div>
+	<div id="modal-overlay">
+		
+	</div>
 
-	<div class="row" id="app-container">
+	<div id="app-container">
 		<!-- Order bar containing current order, clear button, and checkout button -->
 		<div class="shade-right" id="order-bar">
 			<div class="bar-button shade-bottom js-clear-button-inactive" id="clear-button">Clear Order</div>
@@ -113,10 +114,5 @@
 			<div class="bar-button shade-bottom" id="signout-button">Sign Out</div>
 		</div>
 	</div>
-
-
-	<script src="js/vendor/jquery.js"></script>
-	<script src="js/foundation.min.js"></script>
-	<script>$(document).foundation();</script>
 </body>
 </html>

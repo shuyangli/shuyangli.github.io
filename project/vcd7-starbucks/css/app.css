@@ -7,6 +7,8 @@ body {
   font-family: "Avenir Next", "Helvetica Neue", Helvetica, Arial, sans-serif;
   margin: 0;
   padding: 0;
+  height: 100%;
+  width: 100%;
   letter-spacing: 0.5px;
   -webkit-user-select: none;
   -moz-user-select: none;
@@ -38,10 +40,23 @@ body {
   -ms-transform: translateY(-50%);
   transform: translateY(-50%); }
 
+#modal-overlay {
+  width: 1024px;
+  max-width: 1024px;
+  height: 768px;
+  z-index: 200;
+  position: absolute;
+  margin: auto;
+  background-image: linear-gradient(180deg, rgba(152, 152, 152, 0.3), rgba(25, 25, 25, 0.3));
+  background-blend-mode: normal; }
+
 #app-container {
   width: 1024px;
   max-width: 1024px;
-  height: 768px; }
+  height: 768px;
+  z-index: 100;
+  position: absolute;
+  margin: auto; }
 
 #order-bar, #main-selection, #control-bar {
   display: inline-block;
@@ -174,6 +189,7 @@ body {
   #control-bar #info-box {
     height: 192px;
     padding: 24px;
+    color: #404040;
     position: absolute;
     top: 0; }
   #control-bar #bulk-button {
