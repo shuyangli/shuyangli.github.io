@@ -18,15 +18,17 @@ function displayInfobox() {
 	// Set "Good morning/afternoon/evening"
 	var hour = currentDatetime.getHours();
 	$(".js-time-desc")[0].innerHTML =
-		hour >= 6 && hour < 12 ? "morning" :
-		hour >= 12 && hour < 18 ? "afternoon" :
+		(hour >= 6 && hour < 12) ? "morning" :
+		(hour >= 12 && hour < 18) ? "afternoon" :
 		"evening";
 
 	// Display actual hour:minute
 	var hourSuffix = hour - 12 < 0 ? "AM" : "PM";
-	hour = hour % 12 == 0 ? 12 : hour % 12;
+	hour = (hour % 12 == 0) ? 12 : hour % 12;
+	var minute = currentDatetime.getMinutes();
+	minute = (minute < 10) ? "0" + minute : "" + minute;
 
-	$(".js-time")[0].innerHTML = hour + ":" + currentDatetime.getMinutes() + " " + hourSuffix;
+	$(".js-time")[0].innerHTML = hour + ":" + minute + " " + hourSuffix;
 
 	// Change barista name
 	$(".js-preferred-name")[0].innerHTML = baristaName;
