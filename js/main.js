@@ -11,6 +11,7 @@ function resizeLandingContent() {
 function draw(mouseX, mouseY) {
 	var canvas = $("#landing-canvas")[0];
 	var ctx = canvas.getContext("2d");
+	var i, j;
 
 	// Resize canvas so that it's as large as the landing area
 	canvas.width = $("#landing").width();
@@ -30,8 +31,8 @@ function draw(mouseX, mouseY) {
 	var edgeColor = [36, 57, 73];
 
 	// Actual drawing
-	for (var i = 0; i < boxNumHorizontal; ++i) {
-		for (var j = 0; j < boxNumVertical; ++j) {
+	for (i = 0; i < boxNumHorizontal; ++i) {
+		for (j = 0; j < boxNumVertical; ++j) {
 
 			// Set color
 			var boxCenterX = i * boxSize - boxXOffset + boxSize / 2;
