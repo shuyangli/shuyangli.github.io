@@ -8,6 +8,7 @@
 	<title>Register Redesign | Starbucks × Shuyang</title>
 	<link rel="stylesheet" href="css/foundation.css" />
 	<link rel="stylesheet" href="css/app.css" />
+	<script src="js/app.js"></script>
 	<script src="js/vendor/modernizr.js"></script>
 </head>
 
@@ -18,19 +19,19 @@
 	<div class="row" id="app-container">
 		<!-- Order bar containing current order, clear button, and checkout button -->
 		<div class="shade-right" id="order-bar">
-			<div class="bar-button shade-bottom clear-button-inactive" id="clear-button">Clear Order</div>
+			<div class="bar-button shade-bottom js-clear-button-inactive" id="clear-button">Clear Order</div>
 
-			<div class="order-list">
-				
+			<div id="order-list">
+				<div class="vertical-align-text" id="js-no-item-prompt">No Item Selected</div>
 			</div>
 
-			<div class="bar-button full-justify shade-bottom" id="tax-display">Tax <span id="tax-dollar-amount-display">$0.00</span></div>
-			<div class="bar-button shade-bottom charge-button-inactive" id="charge-button">
+			<div class="bar-button full-justify shade-bottom" id="tax-display">Tax <span id="js-tax-dollar-amount-display">$0.00</span></div>
+			<div class="bar-button shade-bottom js-charge-button-inactive" id="charge-button">
 			<!-- Disabled state: charge-prompt = "Choose an Item" -->
 			<!-- Active state: charge-prompt = "Charge", 
 				charge-dollar-amount-display = "$4.32" -->
-				<span id="charge-prompt">Choose an Item</span>
-				<span id="charge-dollar-amount-display"></span>
+				<span id="js-charge-prompt">Choose an Item</span>
+				<span id="js-charge-dollar-amount-display"></span>
 			</div>
 		</div>
 
@@ -38,52 +39,52 @@
 		<div id="main-selection">
 
 			<div class="item-button shade-bottom shade-right" id="espresso-button">
-				<img src="img/btn-espresso.png" />
+				<img class="js-2x-img" src="img/btn-espresso.png" />
 				<div class="item-button-label">Espresso</div>
 			</div>
 			<div class="item-button shade-bottom shade-right" id="short-button">
-				<img src="img/btn-short.png" />
+				<img class="js-2x-img" src="img/btn-short.png" />
 				<div class="item-button-label">Short</div>
 			</div>
 			<div class="item-button shade-bottom shade-right" id="tall-button">
-				<img src="img/btn-tall.png" />
+				<img class="js-2x-img" src="img/btn-tall.png" />
 				<div class="item-button-label">Tall</div>
 			</div>
 			<div class="item-button shade-bottom shade-right" id="grande-button">
-				<img src="img/btn-grande.png" />
+				<img class="js-2x-img" src="img/btn-grande.png" />
 				<div class="item-button-label">Grande</div>
 			</div>
 			<div class="item-button shade-bottom shade-right" id="venti-button">
-				<img src="img/btn-venti.png" />
+				<img class="js-2x-img" src="img/btn-venti.png" />
 				<div class="item-button-label">Venti</div>
 			</div>
 			<div class="item-button shade-bottom shade-right" id="trenta-button">
-				<img src="img/btn-trenta.png" />
+				<img class="js-2x-img" src="img/btn-trenta.png" />
 				<div class="item-button-label">Trenta</div>
 			</div>
 			<div class="item-button shade-bottom shade-right" id="bottled-button">
-				<img src="img/btn-bottled.png" />
+				<img class="js-2x-img" src="img/btn-bottled.png" />
 				<div class="item-button-label">Bottled</div>
 			</div>
 
 			<div class="item-button shade-bottom shade-right" id="mug-button">
-				<img src="img/btn-mug.png" />
+				<img class="js-2x-img" src="img/btn-mug.png" />
 				<div class="item-button-label">Coffee Mugs</div>
 			</div>
 			<div class="item-button shade-bottom shade-right" id="food-button">
-				<img src="img/btn-food.png" />
+				<img class="js-2x-img" src="img/btn-food.png" />
 				<div class="item-button-label">Food &amp; Pastry</div>
 			</div>
 			<div class="item-button shade-bottom shade-right" id="snack-button">
-				<img src="img/btn-snack.png" />
+				<img class="js-2x-img" src="img/btn-snack.png" />
 				<div class="item-button-label">Snacks</div>
 			</div>
 			<div class="item-button shade-bottom shade-right" id="whole-bean-button">
-				<img src="img/btn-whole-bean.png" />
+				<img class="js-2x-img" src="img/btn-whole-bean.png" />
 				<div class="item-button-label">Whole Bean</div>
 			</div>
 			<div class="item-button shade-bottom shade-right" id="custom-button">
-				<img src="img/btn-custom.png" />
+				<img class="js-2x-img" src="img/btn-custom.png" />
 				<div class="item-button-label">Custom</div>
 			</div>
 		

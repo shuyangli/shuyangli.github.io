@@ -119,11 +119,22 @@ body {
 
 		color: rgb(255, 255, 255);
 	}
-	.clear-button-active {
+	.js-clear-button-active {
 		@include bg-linear-gradient(rgb(217, 112, 108), rgb(207, 107, 103));
 	}
-	.clear-button-inactive {
+	.js-clear-button-inactive {
 		@include bg-linear-gradient(rgb(217, 217, 217), rgb(207, 207, 207));
+	}
+
+	#order-list {
+		position: absolute;
+		top: $grid-size-half;
+		height: $screen-height - $grid-size-half * 6;
+		width: 100%;
+	}
+
+	#no-item-prompt {
+		text-align: center;
 	}
 
 	#tax-display {
@@ -141,11 +152,11 @@ body {
 		position: absolute;
 		bottom: 0;
 	}
-	.charge-button-active {
+	.js-charge-button-active {
 		color: rgb(255, 255, 255);
 		@include bg-linear-gradient(rgb(82, 191, 82), rgb(71, 164, 71));
 	}
-	.charge-button-inactive {
+	.js-charge-button-inactive {
 		color: rgb(255, 255, 255);
 		@include bg-linear-gradient(rgb(191, 191, 191), rgb(155, 155, 155));
 	}
@@ -170,6 +181,10 @@ body {
 		img {
 			width: 100%;
 			height: $grid-size-full * 2 - 10px * 2;
+
+			// Desaturate the image
+			filter: saturate(80%);
+			-webkit-filter: saturate(60%);
 		}
 
 		.item-button-label {
