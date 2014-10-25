@@ -87,6 +87,13 @@ $(document).ready(function() {
 		draw(cachedMouseX, cachedMouseY);
 	});
 
+	$("#landing").bind('touchmove', function (e) {
+		// On touch move over landing area, redraw canvas contents
+		cachedMouseX = e.pageX;
+		cachedMouseY = e.pageY;
+		draw(cachedMouseX, cachedMouseY);
+	});
+
 	// Set up laning element resize
 	resizeLandingContent();
 
