@@ -46,15 +46,22 @@ body {
   height: 768px;
   z-index: 200;
   position: absolute;
-  margin: auto;
-  background-image: linear-gradient(180deg, rgba(152, 152, 152, 0.3), rgba(25, 25, 25, 0.3));
-  background-blend-mode: normal; }
+  margin: auto; }
+  #modal-overlay #modal-overlay-background {
+    width: 1024px;
+    max-width: 1024px;
+    height: 768px;
+    z-index: 201;
+    position: absolute;
+    background-image: linear-gradient(180deg, rgba(152, 152, 152, 0.3), rgba(25, 25, 25, 0.3));
+    background-blend-mode: normal; }
   #modal-overlay .modal-title {
     height: 64px;
     margin: 0 32px; }
   #modal-overlay #modal-drink {
     width: 736px;
     height: 480px;
+    z-index: 210;
     background: url(../img/bg-pattern.png) 0 0 repeat, linear-gradient(rgba(247, 251, 255, 0.6), rgba(247, 251, 255, 0.6)), url(../img/bg-blurred.png) -224px -32px no-repeat;
     background-blend-mode: multiply, normal, normal;
     position: absolute;
