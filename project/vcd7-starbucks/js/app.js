@@ -16,7 +16,6 @@ var protoSession = {
 	}
 };
 
-
 /*
 	var newDrink = {
 		itemType : "drink",
@@ -45,6 +44,12 @@ var baristaName = "John Appleseed";
 
 // Tax rate
 var taxRate = 0.07;
+
+// Price
+var drinkPrice;
+$.getJSON("item-prices.json", function (data) {
+	drinkPrice = data;
+});
 
 /*
  * ======================

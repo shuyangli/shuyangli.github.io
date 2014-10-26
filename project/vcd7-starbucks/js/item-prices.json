@@ -1,0 +1,59 @@
+{
+	"drink" : {
+		"Espresso" : {
+
+		},
+
+		"Short" : {
+
+		},
+
+		"Tall" : {
+
+		},
+
+		"Grande" : {
+			"Brewed Coffee" : 2.10,
+			"Caffè Americano" : 1.00,
+			"Brewed Tea" : 2.10,
+			"Tea Latte" : 3.95,
+			"Cappuccino" : 3.45,
+			"Flavored Cappuccino" : 3.95,
+			"Caramel Macchiato" : 1.00,
+			"Flavored Macchiato" : 1.00,
+			"Caffè Latte" : 3.45,
+			"Flavored Latte" : 1.00,
+			"Caffè Mocha" : 1.00,
+			"Flavored Mocha" : 1.00,
+			"Frappuccino" : 1.00,
+			"Espresso Frappuccino" : 1.00,
+			"Shaken Iced Tea" : 1.00,
+			"Shaken Iced Tea Lemonade" : 1.00,
+			"Starbucks Refresher" : 1.00,
+			"Starbucks Smoothie" : 1.00,
+			"Apple Juice" : 1.00,
+			"Eggnog" : 1.00,
+			"Hot Chocolate" : 1.00,
+			"Flavored Hot Chocolate" : 1.00
+		},
+
+		"Venti" : {
+
+		},
+
+		"Trenta" : {
+
+		},
+
+		"Bottled" : {
+
+		}
+	},
+
+	"customization" : {
+	},
+
+	"item" : {
+
+	} 
+}
