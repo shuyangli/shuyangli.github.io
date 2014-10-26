@@ -7,6 +7,8 @@ body {
   font-family: "Avenir Next", "Helvetica Neue", Helvetica, Arial, sans-serif;
   margin: 0;
   padding: 0;
+  height: 100%;
+  width: 100%;
   letter-spacing: 0.5px;
   -webkit-user-select: none;
   -moz-user-select: none;
@@ -38,10 +40,119 @@ body {
   -ms-transform: translateY(-50%);
   transform: translateY(-50%); }
 
+#modal-overlay {
+  width: 1024px;
+  max-width: 1024px;
+  height: 768px;
+  z-index: 200;
+  position: absolute;
+  margin: auto; }
+  #modal-overlay #modal-overlay-background {
+    width: 1024px;
+    max-width: 1024px;
+    height: 768px;
+    z-index: 201;
+    position: absolute;
+    background-image: linear-gradient(180deg, rgba(152, 152, 152, 0.3), rgba(25, 25, 25, 0.3));
+    background-blend-mode: normal; }
+  #modal-overlay .modal-title {
+    height: 64px;
+    margin: 0 32px; }
+  #modal-overlay #modal-drink {
+    width: 736px;
+    height: 480px;
+    z-index: 210;
+    background: url(../img/bg-pattern.png) 0 0 repeat, linear-gradient(rgba(247, 251, 255, 0.6), rgba(247, 251, 255, 0.6)), url(../img/bg-blurred.png) -224px -32px no-repeat;
+    background-blend-mode: multiply, normal, normal;
+    position: absolute;
+    left: 224px;
+    top: 32px; }
+  #modal-overlay .subitem-button {
+    position: absolute;
+    width: 160px;
+    height: 64px;
+    padding: 10px;
+    background-color: #f9faf7; }
+    #modal-overlay .subitem-button .subitem-button-title {
+      position: relative;
+      top: 50%;
+      -webkit-transform: translateY(-50%);
+      -ms-transform: translateY(-50%);
+      transform: translateY(-50%); }
+  #modal-overlay #subitem-brewed-coffee {
+    top: 64px;
+    left: 32px; }
+  #modal-overlay #subitem-brewed-tea {
+    top: 128px;
+    left: 32px; }
+  #modal-overlay #subitem-capp {
+    top: 192px;
+    left: 32px; }
+  #modal-overlay #subitem-macc {
+    top: 256px;
+    left: 32px; }
+  #modal-overlay #subitem-latte {
+    top: 320px;
+    left: 32px; }
+  #modal-overlay #subitem-mocha {
+    top: 384px;
+    left: 32px; }
+  #modal-overlay #subitem-americano {
+    top: 64px;
+    left: 192px; }
+  #modal-overlay #subitem-tea-latte {
+    top: 128px;
+    left: 192px; }
+  #modal-overlay #subitem-capp-flav {
+    top: 192px;
+    left: 192px; }
+  #modal-overlay #subitem-macc-flav {
+    top: 256px;
+    left: 192px; }
+  #modal-overlay #subitem-latte-flav {
+    top: 320px;
+    left: 192px; }
+  #modal-overlay #subitem-mocha-flav {
+    top: 384px;
+    left: 192px; }
+  #modal-overlay #subitem-frap {
+    top: 64px;
+    left: 384px; }
+  #modal-overlay #subitem-iced-tea {
+    top: 128px;
+    left: 384px; }
+  #modal-overlay #subitem-refresher {
+    top: 192px;
+    left: 384px; }
+  #modal-overlay #subitem-frap-esp {
+    top: 64px;
+    left: 544px; }
+  #modal-overlay #subitem-iced-tea-lemonade {
+    top: 128px;
+    left: 544px; }
+  #modal-overlay #subitem-smoothie {
+    top: 192px;
+    left: 544px; }
+  #modal-overlay #subitem-apple-juice {
+    top: 288px;
+    left: 384px; }
+  #modal-overlay #subitem-choc {
+    top: 352px;
+    left: 384px; }
+  #modal-overlay #subitem-eggnog {
+    top: 288px;
+    left: 544px; }
+  #modal-overlay #subitem-choc-flav {
+    top: 352px;
+    left: 544px; }
+
 #app-container {
   width: 1024px;
   max-width: 1024px;
-  height: 768px; }
+  height: 768px;
+  z-index: 100;
+  position: absolute;
+  margin: auto; }
 
 #order-bar, #main-selection, #control-bar {
   display: inline-block;
@@ -109,7 +220,7 @@ body {
     #main-selection .item-button img {
       width: 100%;
       height: 108px;
-      filter: saturate(80%);
+      filter: saturate(60%);
       -webkit-filter: saturate(60%); }
     #main-selection .item-button .item-button-label {
       position: relative;
@@ -174,6 +285,7 @@ body {
   #control-bar #info-box {
     height: 192px;
     padding: 24px;
+    color: #404040;
     position: absolute;
     top: 0; }
   #control-bar #bulk-button {
