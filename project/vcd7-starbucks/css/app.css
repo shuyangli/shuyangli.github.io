@@ -194,6 +194,7 @@ body {
         position: absolute;
         top: 8px;
         left: 8px;
+        max-width: 207px;
         float: left; }
       #order-bar #order-list .js-item-cell .js-item-price {
         position: absolute;
@@ -207,6 +208,7 @@ body {
       margin-left: 32px;
       background-color: #f7fbff; }
       #order-bar #order-list .js-customization-cell .js-item-name {
+        max-width: 175px;
         float: left; }
       #order-bar #order-list .js-customization-cell .js-item-price {
         float: right; }

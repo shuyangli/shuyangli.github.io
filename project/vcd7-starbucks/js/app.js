@@ -54,16 +54,38 @@ var taxRate = 0.07;
 
 // Manual callback function for changes fired on purchased items
 function purchasedItemsChanged() {
-	var newPrice = 0.0;
 
+	// If there's no item, we reset everything
+	if (currentSession.purchasedItems.length == 0) {
+		clearCurrentSession();
+		return;
+	}
+
+	// There's item; we hide the no item prompt
+	$("#no-item-prompt").hide();
+
+	// We first clean up the order list
+	removeAllItemsFromOrderList();
+
+	// Then loop through the list of purchased items
+	var newPrice = 0.0;
 	for (var i = 0; i < currentSession.purchasedItems.length; ++i) {
-		// Loop through list of purchased Items, and calculate new total
-		newPrice += lookupPrice(currentSession.purchasedItems[i]);
+
+		// Calculate new total and display order list
+		var currentItemPrice = lookupPrice(currentSession.purchasedItems[i]);
+		var currentItemName = currentSession.purchasedItems[i].itemSize + " " + currentSession.purchasedItems[i].itemName;
+
+		newPrice += currentItemPrice;
+		addItemIntoOrderList(currentItemName, currentItemPrice);
 
 		if (currentSession.purchasedItems[i].itemType == "drink") {
 			// If it's a drink, we also loop through its customizations
 			for (var j = 0; j < currentSession.purchasedItems[i].itemCustomization.length; ++j) {
-				newPrice += lookupPrice(currentSession.purchasedItems[i].itemCustomization[j]);
+				var currentCustomizationPrice = lookupPrice(currentSession.purchasedItems[i].itemCustomization[j]);
+				var currentCustomizationName = currentSession.purchasedItems[i].itemCustomization[j].itemName;
+				
+				newPrice += currentCustomizationPrice;
+				addCustomizationIntoOrderList(currentCustomizationName, currentCustomizationPrice);
 			}
 		}
 	}
@@ -94,6 +116,7 @@ function lookupPrice(item) {
 function clearCurrentSession() {
 	currentSession = jQuery.extend(true, {}, protoSession);
 	resetOrderBarStatus();
+	resetOrderList();
 }
 
 
@@ -163,6 +186,33 @@ function resetOrderBarStatus() {
 
 	// Change tax amount
 	displayTax(0.0);
+}
+
+// Remove all items in order list
+function removeAllItemsFromOrderList() {
+	$(".js-item-cell, .js-customization-cell").remove();
+}
+
+// Reset order list
+function resetOrderList() {
+	removeAllItemsFromOrderList();
+	$("#no-item-prompt").show();
+}
+
+// Insert into order list
+function addItemIntoOrderList(itemName, itemPrice) {
+	$("#order-list").append(" \
+		<div class=\"js-item-cell shade-bottom\"> \
+			<div class=\"js-item-name\">" + itemName + "</div> \
+			<div class=\"js-item-price\">$" + itemPrice.toFixed(2) + "</div> \
+		</div>");
+}
+function addCustomizationIntoOrderList(itemName, itemPrice) {
+	$("#order-list").append(" \
+		<div class=\"js-customization-cell shade-bottom\"> \
+			<div class=\"js-item-name vertical-align-text\">" + itemName + "</div> \
+			<div class=\"js-item-price vertical-align-text\">$" + itemPrice.toFixed(2) + "</div> \
+		</div>");
 }
 
 // Display actual charge price

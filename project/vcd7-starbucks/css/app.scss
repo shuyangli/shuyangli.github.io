@@ -295,7 +295,6 @@ body {
 
 		.js-item-cell {
 			position: relative;
-
 			width: $grid-size-half * 7 - 1px;
 			height: $grid-size-full;
 			background-color: $bg-color-cool-white;
@@ -304,6 +303,7 @@ body {
 				position: absolute;
 				top: 8px;
 				left: 8px;
+				max-width: $grid-size-half * 7 - 17px;
 				float: left;
 			}
 			.js-item-price {
@@ -321,6 +321,7 @@ body {
 			background-color: $bg-color-cool-white;
 
 			.js-item-name {
+				max-width: $grid-size-half * 6 - 17px;
 				float: left;
 			}
 			.js-item-price {
