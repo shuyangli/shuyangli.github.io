@@ -264,6 +264,7 @@ body {
       #order-bar #order-list .js-customization-cell .js-item-price {
         float: right; }
   #order-bar #no-item-prompt {
+    color: #404040;
     text-align: center; }
   #order-bar #tax-display {
     height: 32px;
