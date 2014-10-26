@@ -246,7 +246,7 @@ function resetOrderList() {
 // Insert into order list
 function addItemIntoOrderList(itemName, itemPrice) {
 	$("#order-list").append(" \
-		<div class=\"js-item-cell shade-bottom\"> \
+		<div value=\"drink\" class=\"js-item-cell shade-bottom\"> \
 			<div class=\"js-item-name\">" + itemName + "</div> \
 			<div class=\"js-item-price\">$" + itemPrice.toFixed(2) + "</div> \
 		</div>");
