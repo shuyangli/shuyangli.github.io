@@ -4,14 +4,31 @@
  * ===================
  */
 
-var dummySession = {
+var protoSession = {
 	currentDrinkSize : "",
 	purchasedItems : [],
+	netPrice : 0.0,
+	taxPrice : 0.0,
+	totalPrice : 0.0,
 	addItem : function (item) {
 		this.purchasedItems.push(item);
 		purchasedItemsChanged();
 	}
 };
+
+
+/*
+	var newDrink = {
+		itemType : "drink",
+		itemSize : currentSession.currentDrinkSize,
+		itemName : drinkName,
+		itemCustomization : [],
+		addCustomization : function (item) {
+			this.itemCustomization.push(item);
+			purchasedItemsChanged();
+		}
+	};
+*/
 
 /*
  * =======================
@@ -19,9 +36,9 @@ var dummySession = {
  * =======================
  */ 
 
-// Current session
+// Current session & last session
 var currentSession = {};
-jQuery.extend(currentSession, dummySession);
+var lastSession = {};
 
 // User signed in
 var baristaName = "John Appleseed";
@@ -42,13 +59,20 @@ function purchasedItemsChanged() {
 	for (var i = 0; i < currentSession.purchasedItems.length; ++i) {
 		// Loop through list of purchased Items, and calculate new total
 		newPrice += lookupPrice(currentSession.purchasedItems[i]);
+
+		if (currentSession.purchasedItems[i].itemType == "drink") {
+			// If it's a drink, we also loop through its customizations
+			for (var j = 0; j < currentSession.purchasedItems[i].itemCustomization.length; ++j) {
+				newPrice += lookupPrice(currentSession.purchasedItems[i].itemCustomization[j]);
+			}
+		}
 	}
 
-	var newTax = newPrice * taxRate;
-	var newTotal = newPrice + newTax;
+	currentSession.netPrice = newPrice;
+	currentSession.taxPrice = currentSession.netPrice * taxRate;
+	currentSession.totalPrice = currentSession.netPrice + currentSession.taxPrice;
 
-	displayTax(newTax);
-	displayTotal(newTotal);
+	displayChargePrice();
 }
 
 function lookupPrice(item) {
@@ -65,6 +89,11 @@ function lookupPrice(item) {
 
 	// DRAGON: Fake implementation
 	return 1.00;
+}
+
+function clearCurrentSession() {
+	currentSession = jQuery.extend(true, {}, protoSession);
+	resetOrderBarStatus();
 }
 
 
@@ -101,6 +130,7 @@ function displayInfobox() {
 	$(".js-preferred-name")[0].innerHTML = baristaName;
 }
 
+// Display tax or total
 function displayTax(decimalVal) {
 	var taxAmount = "$" + decimalVal.toFixed(2);
 	$("#js-tax-dollar-amount-display")[0].innerHTML = taxAmount;
@@ -119,7 +149,8 @@ function displayTotal(decimalVal) {
 	$("#js-charge-dollar-amount-display")[0].innerHTML = totalAmount;
 }
 
-function displayChooseItem() {
+// Reset order button states
+function resetOrderBarStatus() {
 	// Change charge button appearance
 	$("#charge-button").removeClass("js-charge-button-active").addClass("js-charge-button-inactive");
 
@@ -129,6 +160,15 @@ function displayChooseItem() {
 	// Change dollar amount
 	$("#js-charge-prompt")[0].innerHTML = "Choose an Item";
 	$("#js-charge-dollar-amount-display")[0].innerHTML = "";
+
+	// Change tax amount
+	displayTax(0.0);
+}
+
+// Display actual charge price
+function displayChargePrice() {
+	displayTax(currentSession.taxPrice);
+	displayTotal(currentSession.totalPrice);
 }
 
 // Setup modal bindings
@@ -179,6 +219,8 @@ function setupModal() {
 
 		}
 	});
+
+	resetModal();
 }
 
 // Reset modal status
@@ -209,12 +251,19 @@ $(document).ready(function () {
 		});
 	}
 
-	// Reset modal status
+	// Setup modal status
 	setupModal();
-	resetModal();
 
 	// Display infobox contents, and schedule infobox refresh
 	displayInfobox();
 	setInterval(displayInfobox, 10000);
 
+	// Setup new session
+	clearCurrentSession();
+
+	// Reset order bar button status
+	resetOrderBarStatus();
+
+	// Bind clear button click
+	$("#clear-button").on('click', clearCurrentSession);
 });
