@@ -33,10 +33,16 @@ function displayInfobox() {
 	$(".js-preferred-name")[0].innerHTML = baristaName;
 }
 
+// Setup modal bindings
+function setupModal() {
+	$("#modal-overlay-background").on('click', resetModal);
+}
+
 // Reset modal status
 function resetModal() {
 	$("#modal-overlay").children().hide();
 	$("#modal-overlay").hide();
+	$("modal-overlay-background").show();
 }
 
 // ================
@@ -56,6 +62,10 @@ $(document).ready(function () {
 			image.src = imageName;
 		});
 	}
+
+	// Reset modal status
+	setupModal();
+	resetModal();
 
 	// Display infobox contents, and schedule infobox refresh
 	displayInfobox();
