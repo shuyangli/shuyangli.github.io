@@ -290,6 +290,43 @@ body {
 		top: $grid-size-half;
 		height: $screen-height - $grid-size-half * 6;
 		width: 100%;
+
+		overflow: scroll;
+
+		.js-item-cell {
+			position: relative;
+
+			width: $grid-size-half * 7;
+			height: $grid-size-full;
+			background-color: $bg-color-cool-white;
+
+			.js-item-name {
+				position: absolute;
+				top: 8px;
+				left: 8px;
+				float: left;
+			}
+			.js-item-price {
+				position: absolute;
+				bottom: 8px;
+				right: 8px;
+				float: right;
+			}
+		}
+		.js-customization-cell {
+			width: $grid-size-half * 6;
+			height: $grid-size-half;
+			padding: 0 8px;
+			margin-left: $grid-size-half;
+			background-color: $bg-color-cool-white;
+
+			.js-item-name {
+				float: left;
+			}
+			.js-item-price {
+				float: right;
+			}
+		}
 	}
 
 	#no-item-prompt {
@@ -349,7 +386,7 @@ body {
 		.item-button-label {
 			position: relative;
 			width: 100%;
-			top: 8px;
+			top: 4px;
 			bottom: 0;
 		}
 	}
