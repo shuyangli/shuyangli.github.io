@@ -16,7 +16,6 @@ var protoSession = {
 	}
 };
 
-
 /*
 	var newDrink = {
 		itemType : "drink",
@@ -27,6 +26,19 @@ var protoSession = {
 			this.itemCustomization.push(item);
 			purchasedItemsChanged();
 		}
+	};
+	var newCustomization = {
+		itemType : "customization",
+		itemName : customizationName,
+	};
+	var newItem = {
+		itemType : "item",
+		itemName : itemName,
+	};
+	var newCusomPrice = {
+		itemType : "customPrice",
+		itemName : "Custom Price"
+		customItemPrice : itemPrice
 	};
 */
 
@@ -45,6 +57,12 @@ var baristaName = "John Appleseed";
 
 // Tax rate
 var taxRate = 0.07;
+
+// Price
+var itemPriceData = {};
+$.getJSON("js/item-prices.json", function (data) {
+	itemPriceData = data;
+});
 
 /*
  * ======================
@@ -73,7 +91,14 @@ function purchasedItemsChanged() {
 
 		// Calculate new total and display order list
 		var currentItemPrice = lookupPrice(currentSession.purchasedItems[i]);
-		var currentItemName = currentSession.purchasedItems[i].itemSize + " " + currentSession.purchasedItems[i].itemName;
+		var currentItemName = "";
+
+		// Determine item name
+		if (currentSession.purchasedItems[i].itemType == "drink") {
+			currentItemName = currentSession.purchasedItems[i].itemSize + " " + currentSession.purchasedItems[i].itemName;
+		} else {
+			currentItemName = currentSession.purchasedItems[i].itemName;
+		}
 
 		newPrice += currentItemPrice;
 		addItemIntoOrderList(currentItemName, currentItemPrice);
@@ -99,18 +124,37 @@ function purchasedItemsChanged() {
 
 function lookupPrice(item) {
 
+	// Look up price in loaded JSON object
 	if (item.itemType == "drink") {
+
+		if (itemPriceData[item.itemType][item.itemSize].hasOwnProperty(item.itemName)) {
+			return itemPriceData[item.itemType][item.itemSize][item.itemName];
+		} else {
+			return 0.33;
+		}
 
 	} else if (item.itemType == "customization") {
 
+		if (itemPriceData[item.itemType].hasOwnProperty(item.itemName)) {
+			return itemPriceData[item.itemType][item.itemName];
+		} else {
+			return 0.33;
+		}
+
 	} else if (item.itemType == "item") {
 
-	} else if (item.itemType == "customPrice") {
+		if (itemPriceData[item.itemType].hasOwnProperty(item.itemName)) {
+			return itemPriceData[item.itemType][item.itemName];
+		} else {
+			return 0.33;
+		}
 
+	} else if (item.itemType == "customPrice") {
+		return item.customItemPrice;
 	}
 
 	// DRAGON: Fake implementation
-	return 1.00;
+	return 0.33;
 }
 
 function clearCurrentSession() {
@@ -202,7 +246,7 @@ function resetOrderList() {
 // Insert into order list
 function addItemIntoOrderList(itemName, itemPrice) {
 	$("#order-list").append(" \
-		<div class=\"js-item-cell shade-bottom\"> \
+		<div value=\"drink\" class=\"js-item-cell shade-bottom\"> \
 			<div class=\"js-item-name\">" + itemName + "</div> \
 			<div class=\"js-item-price\">$" + itemPrice.toFixed(2) + "</div> \
 		</div>");
@@ -225,20 +269,10 @@ function displayChargePrice() {
 function setupModal() {
 
 	// Close all dialogs when hit background
-	$("#modal-overlay-background").on('click', function (e) {
-
-		// Remove 300ms tap delay
-		// e.stopPagination();
-		// e.preventDefault();
-		resetModal();
-	});
+	$("#modal-overlay-background").on('click', resetModal);
 
 	// Open drink dialog
-	$("#short-button, #tall-button, #grande-button, #venti-button").on('click', function (e) {
-
-		// Remove 300ms tap delay
-		// e.stopPagination();
-		// e.preventDefault();
+	$("#short-button, #tall-button, #grande-button, #venti-button").on('click', function () {
 
 		$("#modal-overlay").show();
 		$("#modal-drink").show();
@@ -250,13 +284,27 @@ function setupModal() {
 		// Change session selected drink size
 		currentSession.currentDrinkSize = size;
 	});
+	$("#trenta-button").on('click', function () {
+
+		$("#modal-overlay").show();
+		$("#modal-drink-trenta").show();
+
+		// Change session selected drink size
+		var size = "Trenta"
+		currentSession.currentDrinkSize = size;
+	});
+	$("#espresso-button").on('click', function () {
+
+		$("#modal-overlay").show();
+		$("#modal-drink-esp").show();
+
+		// Change session selected drink size
+		var size = "Espresso"
+		currentSession.currentDrinkSize = size;
+	});
 
 	// Add drink to list of drinks
-	$(".subitem-button").on('click', function (e) {
-
-		// Remove 300ms tap delay
-		// e.stopPagination();
-		// e.preventDefault();
+	$(".subitem-button").on('click', function () {
 
 		if ($(this).attr("value") == "drink") {
 			
@@ -335,11 +383,5 @@ $(document).ready(function () {
 	resetOrderBarStatus();
 
 	// Bind clear button click
-	$("#clear-button").on('click', function (e) {
-		// Remove 300ms tap delay
-		// e.stopPagination();
-		// e.preventDefault();
-
-		clearCurrentSession();
-	});
+	$("#clear-button").on('click', clearCurrentSession);
 });

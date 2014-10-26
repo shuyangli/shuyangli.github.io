@@ -1,0 +1,135 @@
+{
+	"drink" : {
+		"Espresso" : {
+			"Solo" : 1.00,
+			"Doppio" : 1.00,
+			"Con Panna" : 1.00,
+			"Macchiato" : 1.00,
+			"Starbucks Double Shot" : 1.00
+		},
+
+		"Short" : {
+			"Brewed Coffee" : 1.00,
+			"Caffè Americano" : 1.00,
+			"Brewed Tea" : 1.00,
+			"Tea Latte" : 1.00,
+			"Cappuccino" : 1.00,
+			"Flavored Cappuccino" : 1.00,
+			"Caramel Macchiato" : 1.00,
+			"Flavored Macchiato" : 1.00,
+			"Caffè Latte" : 1.00,
+			"Flavored Latte" : 1.00,
+			"Caffè Mocha" : 1.00,
+			"Flavored Mocha" : 1.00,
+			"Frappuccino" : 1.00,
+			"Espresso Frappuccino" : 1.00,
+			"Shaken Iced Tea" : 1.00,
+			"Shaken Iced Tea Lemonade" : 1.00,
+			"Starbucks Refresher" : 1.00,
+			"Starbucks Smoothie" : 1.00,
+			"Apple Juice" : 1.00,
+			"Eggnog" : 1.00,
+			"Hot Chocolate" : 1.00,
+			"Flavored Hot Chocolate" : 1.00
+		},
+
+		"Tall" : {
+			"Brewed Coffee" : 1.00,
+			"Caffè Americano" : 1.00,
+			"Brewed Tea" : 1.00,
+			"Tea Latte" : 1.00,
+			"Cappuccino" : 1.00,
+			"Flavored Cappuccino" : 1.00,
+			"Caramel Macchiato" : 1.00,
+			"Flavored Macchiato" : 1.00,
+			"Caffè Latte" : 1.00,
+			"Flavored Latte" : 1.00,
+			"Caffè Mocha" : 1.00,
+			"Flavored Mocha" : 1.00,
+			"Frappuccino" : 1.00,
+			"Espresso Frappuccino" : 1.00,
+			"Shaken Iced Tea" : 1.00,
+			"Shaken Iced Tea Lemonade" : 1.00,
+			"Starbucks Refresher" : 1.00,
+			"Starbucks Smoothie" : 1.00,
+			"Apple Juice" : 1.00,
+			"Eggnog" : 1.00,
+			"Hot Chocolate" : 1.00,
+			"Flavored Hot Chocolate" : 1.00
+		},
+
+		"Grande" : {
+			"Brewed Coffee" : 1.00,
+			"Caffè Americano" : 1.00,
+			"Brewed Tea" : 1.00,
+			"Tea Latte" : 1.00,
+			"Cappuccino" : 1.00,
+			"Flavored Cappuccino" : 1.00,
+			"Caramel Macchiato" : 1.00,
+			"Flavored Macchiato" : 1.00,
+			"Caffè Latte" : 1.00,
+			"Flavored Latte" : 1.00,
+			"Caffè Mocha" : 1.00,
+			"Flavored Mocha" : 1.00,
+			"Frappuccino" : 1.00,
+			"Espresso Frappuccino" : 1.00,
+			"Shaken Iced Tea" : 1.00,
+			"Shaken Iced Tea Lemonade" : 1.00,
+			"Starbucks Refresher" : 1.00,
+			"Starbucks Smoothie" : 1.00,
+			"Apple Juice" : 1.00,
+			"Eggnog" : 1.00,
+			"Hot Chocolate" : 1.00,
+			"Flavored Hot Chocolate" : 1.00
+		},
+
+		"Venti" : {
+			"Brewed Coffee" : 1.00,
+			"Caffè Americano" : 1.00,
+			"Brewed Tea" : 1.00,
+			"Tea Latte" : 1.00,
+			"Cappuccino" : 1.00,
+			"Flavored Cappuccino" : 1.00,
+			"Caramel Macchiato" : 1.00,
+			"Flavored Macchiato" : 1.00,
+			"Caffè Latte" : 1.00,
+			"Flavored Latte" : 1.00,
+			"Caffè Mocha" : 1.00,
+			"Flavored Mocha" : 1.00,
+			"Frappuccino" : 1.00,
+			"Espresso Frappuccino" : 1.00,
+			"Shaken Iced Tea" : 1.00,
+			"Shaken Iced Tea Lemonade" : 1.00,
+			"Starbucks Refresher" : 1.00,
+			"Starbucks Smoothie" : 1.00,
+			"Apple Juice" : 1.00,
+			"Eggnog" : 1.00,
+			"Hot Chocolate" : 1.00,
+			"Flavored Hot Chocolate" : 1.00
+		},
+
+		"Trenta" : {
+			"Iced Coffee" : 1.00,
+			"Frappuccino" : 1.00,
+			"Espresso Frappuccino" : 1.00,
+			"Shaken Iced Tea" : 1.00,
+			"Shaken Iced Tea Lemonade" : 1.00,
+			"Starbucks Refresher" : 1.00
+		},
+
+		"Bottled" : {
+
+		}
+	},
+
+	"customization" : {
+		"Add Syrup" : 0.50,
+		"Add Espresso" : 0.50,
+		"Sub Soy Milk" : 0.50,
+		"Add Tea Bag" : 0.50
+	},
+
+	"item" : {
+
+	} 
+}
