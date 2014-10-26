@@ -27,6 +27,19 @@ var protoSession = {
 			purchasedItemsChanged();
 		}
 	};
+	var newCustomization = {
+		itemType : "customization",
+		itemName : customizationName,
+	};
+	var newItem = {
+		itemType : "item",
+		itemName : itemName,
+	};
+	var newCusomPrice = {
+		itemType : "customPrice",
+		itemName : "Custom Price"
+		customItemPrice : itemPrice
+	};
 */
 
 /*
@@ -46,9 +59,9 @@ var baristaName = "John Appleseed";
 var taxRate = 0.07;
 
 // Price
-var drinkPrice;
-$.getJSON("item-prices.json", function (data) {
-	drinkPrice = data;
+var itemPriceData = {};
+$.getJSON("js/item-prices.json", function (data) {
+	itemPriceData = data;
 });
 
 /*
@@ -78,7 +91,14 @@ function purchasedItemsChanged() {
 
 		// Calculate new total and display order list
 		var currentItemPrice = lookupPrice(currentSession.purchasedItems[i]);
-		var currentItemName = currentSession.purchasedItems[i].itemSize + " " + currentSession.purchasedItems[i].itemName;
+		var currentItemName = "";
+
+		// Determine item name
+		if (currentSession.purchasedItems[i].itemType == "drink") {
+			currentItemName = currentSession.purchasedItems[i].itemSize + " " + currentSession.purchasedItems[i].itemName;
+		} else {
+			currentItemName = currentSession.purchasedItems[i].itemName;
+		}
 
 		newPrice += currentItemPrice;
 		addItemIntoOrderList(currentItemName, currentItemPrice);
@@ -104,18 +124,37 @@ function purchasedItemsChanged() {
 
 function lookupPrice(item) {
 
+	// Look up price in loaded JSON object
 	if (item.itemType == "drink") {
+
+		if (itemPriceData[item.itemType][item.itemSize].hasOwnProperty(item.itemName)) {
+			return itemPriceData[item.itemType][item.itemSize][item.itemName];
+		} else {
+			return 0.33;
+		}
 
 	} else if (item.itemType == "customization") {
 
+		if (itemPriceData[item.itemType].hasOwnProperty(item.itemName)) {
+			return itemPriceData[item.itemType][item.itemName];
+		} else {
+			return 0.33;
+		}
+
 	} else if (item.itemType == "item") {
 
-	} else if (item.itemType == "customPrice") {
+		if (itemPriceData[item.itemType].hasOwnProperty(item.itemName)) {
+			return itemPriceData[item.itemType][item.itemName];
+		} else {
+			return 0.33;
+		}
 
+	} else if (item.itemType == "customPrice") {
+		return item.customItemPrice;
 	}
 
 	// DRAGON: Fake implementation
-	return 1.00;
+	return 0.33;
 }
 
 function clearCurrentSession() {
@@ -243,6 +282,15 @@ function setupModal() {
 		$(".js-modal-drink-size")[0].innerHTML = size;
 
 		// Change session selected drink size
+		currentSession.currentDrinkSize = size;
+	});
+	$("#trenta-button").on('click', function () {
+
+		$("#modal-overlay").show();
+		$("#modal-drink-trenta").show();
+
+		// Change session selected drink size
+		var size = "Trenta"
 		currentSession.currentDrinkSize = size;
 	});
 
