@@ -183,7 +183,35 @@ body {
     position: absolute;
     top: 32px;
     height: 576px;
-    width: 100%; }
+    width: 100%;
+    overflow: scroll; }
+    #order-bar #order-list .js-item-cell {
+      position: relative;
+      width: 223px;
+      height: 64px;
+      background-color: #f7fbff; }
+      #order-bar #order-list .js-item-cell .js-item-name {
+        position: absolute;
+        top: 8px;
+        left: 8px;
+        max-width: 207px;
+        float: left; }
+      #order-bar #order-list .js-item-cell .js-item-price {
+        position: absolute;
+        bottom: 8px;
+        right: 8px;
+        float: right; }
+    #order-bar #order-list .js-customization-cell {
+      width: 191px;
+      height: 32px;
+      padding: 0 8px;
+      margin-left: 32px;
+      background-color: #f7fbff; }
+      #order-bar #order-list .js-customization-cell .js-item-name {
+        max-width: 175px;
+        float: left; }
+      #order-bar #order-list .js-customization-cell .js-item-price {
+        float: right; }
   #order-bar #no-item-prompt {
     text-align: center; }
   #order-bar #tax-display {
@@ -225,7 +253,7 @@ body {
     #main-selection .item-button .item-button-label {
       position: relative;
       width: 100%;
-      top: 8px;
+      top: 4px;
       bottom: 0; }
   #main-selection .special-button {
     position: absolute;

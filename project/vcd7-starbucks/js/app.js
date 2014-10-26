@@ -1,10 +1,130 @@
-// Dummy session object
-var sessionDummy = {
-	purchasedItems : []
+/*
+ * ===================
+ *  Object Prototypes
+ * ===================
+ */
+
+var protoSession = {
+	currentDrinkSize : "",
+	purchasedItems : [],
+	netPrice : 0.0,
+	taxPrice : 0.0,
+	totalPrice : 0.0,
+	addItem : function (item) {
+		this.purchasedItems.push(item);
+		purchasedItemsChanged();
+	}
 };
+
+
+/*
+	var newDrink = {
+		itemType : "drink",
+		itemSize : currentSession.currentDrinkSize,
+		itemName : drinkName,
+		itemCustomization : [],
+		addCustomization : function (item) {
+			this.itemCustomization.push(item);
+			purchasedItemsChanged();
+		}
+	};
+*/
+
+/*
+ * =======================
+ *  Variable Declarations
+ * =======================
+ */ 
+
+// Current session & last session
+var currentSession = {};
+var lastSession = {};
 
 // User signed in
 var baristaName = "John Appleseed";
+
+// Tax rate
+var taxRate = 0.07;
+
+/*
+ * ======================
+ *  Model Helper Methods
+ * ======================
+ */
+
+// Manual callback function for changes fired on purchased items
+function purchasedItemsChanged() {
+
+	// If there's no item, we reset everything
+	if (currentSession.purchasedItems.length == 0) {
+		clearCurrentSession();
+		return;
+	}
+
+	// There's item; we hide the no item prompt
+	$("#no-item-prompt").hide();
+
+	// We first clean up the order list
+	removeAllItemsFromOrderList();
+
+	// Then loop through the list of purchased items
+	var newPrice = 0.0;
+	for (var i = 0; i < currentSession.purchasedItems.length; ++i) {
+
+		// Calculate new total and display order list
+		var currentItemPrice = lookupPrice(currentSession.purchasedItems[i]);
+		var currentItemName = currentSession.purchasedItems[i].itemSize + " " + currentSession.purchasedItems[i].itemName;
+
+		newPrice += currentItemPrice;
+		addItemIntoOrderList(currentItemName, currentItemPrice);
+
+		if (currentSession.purchasedItems[i].itemType == "drink") {
+			// If it's a drink, we also loop through its customizations
+			for (var j = 0; j < currentSession.purchasedItems[i].itemCustomization.length; ++j) {
+				var currentCustomizationPrice = lookupPrice(currentSession.purchasedItems[i].itemCustomization[j]);
+				var currentCustomizationName = currentSession.purchasedItems[i].itemCustomization[j].itemName;
+				
+				newPrice += currentCustomizationPrice;
+				addCustomizationIntoOrderList(currentCustomizationName, currentCustomizationPrice);
+			}
+		}
+	}
+
+	currentSession.netPrice = newPrice;
+	currentSession.taxPrice = currentSession.netPrice * taxRate;
+	currentSession.totalPrice = currentSession.netPrice + currentSession.taxPrice;
+
+	displayChargePrice();
+}
+
+function lookupPrice(item) {
+
+	if (item.itemType == "drink") {
+
+	} else if (item.itemType == "customization") {
+
+	} else if (item.itemType == "item") {
+
+	} else if (item.itemType == "customPrice") {
+
+	}
+
+	// DRAGON: Fake implementation
+	return 1.00;
+}
+
+function clearCurrentSession() {
+	currentSession = jQuery.extend(true, {}, protoSession);
+	resetOrderBarStatus();
+	resetOrderList();
+}
+
+
+/*
+ * ===================
+ *  UI Helper Methods
+ * ===================
+ */
 
 // Display time
 function displayInfobox() {
@@ -33,21 +153,139 @@ function displayInfobox() {
 	$(".js-preferred-name")[0].innerHTML = baristaName;
 }
 
+// Display tax or total
+function displayTax(decimalVal) {
+	var taxAmount = "$" + decimalVal.toFixed(2);
+	$("#js-tax-dollar-amount-display")[0].innerHTML = taxAmount;
+}
+
+function displayTotal(decimalVal) {
+	// Change charge button appearahce
+	$("#charge-button").removeClass("js-charge-button-inactive").addClass("js-charge-button-active");
+
+	// Change clear button appearance
+	$("#clear-button").removeClass("js-clear-button-inactive").addClass("js-clear-button-active");
+
+	// Change dollar amount
+	var totalAmount = "$" + decimalVal.toFixed(2);
+	$("#js-charge-prompt")[0].innerHTML = "Charge";
+	$("#js-charge-dollar-amount-display")[0].innerHTML = totalAmount;
+}
+
+// Reset order button states
+function resetOrderBarStatus() {
+	// Change charge button appearance
+	$("#charge-button").removeClass("js-charge-button-active").addClass("js-charge-button-inactive");
+
+	// Change clear button appearance
+	$("#clear-button").removeClass("js-clear-button-active").addClass("js-clear-button-inactive");
+
+	// Change dollar amount
+	$("#js-charge-prompt")[0].innerHTML = "Choose an Item";
+	$("#js-charge-dollar-amount-display")[0].innerHTML = "";
+
+	// Change tax amount
+	displayTax(0.0);
+}
+
+// Remove all items in order list
+function removeAllItemsFromOrderList() {
+	$(".js-item-cell, .js-customization-cell").remove();
+}
+
+// Reset order list
+function resetOrderList() {
+	removeAllItemsFromOrderList();
+	$("#no-item-prompt").show();
+}
+
+// Insert into order list
+function addItemIntoOrderList(itemName, itemPrice) {
+	$("#order-list").append(" \
+		<div class=\"js-item-cell shade-bottom\"> \
+			<div class=\"js-item-name\">" + itemName + "</div> \
+			<div class=\"js-item-price\">$" + itemPrice.toFixed(2) + "</div> \
+		</div>");
+}
+function addCustomizationIntoOrderList(itemName, itemPrice) {
+	$("#order-list").append(" \
+		<div class=\"js-customization-cell shade-bottom\"> \
+			<div class=\"js-item-name vertical-align-text\">" + itemName + "</div> \
+			<div class=\"js-item-price vertical-align-text\">$" + itemPrice.toFixed(2) + "</div> \
+		</div>");
+}
+
+// Display actual charge price
+function displayChargePrice() {
+	displayTax(currentSession.taxPrice);
+	displayTotal(currentSession.totalPrice);
+}
+
 // Setup modal bindings
 function setupModal() {
+
+	// Close all dialogs when hit background
 	$("#modal-overlay-background").on('click', resetModal);
+
+	// Open drink dialog
+	$("#short-button, #tall-button, #grande-button, #venti-button").on('click', function () {
+		$("#modal-overlay").show();
+		$("#modal-drink").show();
+
+		// Change drink modal title
+		var size = $(this).find(".item-button-label")[0].innerHTML;
+		$(".js-modal-drink-size")[0].innerHTML = size;
+
+		// Change session selected drink size
+		currentSession.currentDrinkSize = size;
+	});
+
+	// Add drink to list of drinks
+	$(".subitem-button").on('click', function() {
+
+		if ($(this).attr("value") == "drink") {
+			
+			// If we're adding a drink, construct the drink with size and name
+			var drinkName = $(this).find(".subitem-button-title")[0].innerHTML;
+			var newDrink = {
+				itemType : "drink",
+				itemSize : currentSession.currentDrinkSize,
+				itemName : drinkName,
+				itemCustomization : [],
+				addCustomization : function (item) {
+					this.itemCustomization.push(item);
+					purchasedItemsChanged();
+				}
+			};
+
+			// And add into current session
+			currentSession.addItem(newDrink);
+
+		} else if ($(this).attr("value") == "customization") {
+
+		} else if ($(this).attr("value") == "item") {
+
+		} else if ($(this).attr("value") == "customPrice") {
+
+		}
+	});
+
+	resetModal();
 }
 
 // Reset modal status
 function resetModal() {
 	$("#modal-overlay").children().hide();
 	$("#modal-overlay").hide();
-	$("modal-overlay-background").show();
+	$("#modal-overlay-background").show();
 }
 
-// ================
-//  Document Ready
-// ================
+/*
+ * =======================
+ *  jQuery Document Ready
+ * =======================
+ */
+
 $(document).ready(function () {
 
 	// Replace all @2x images
@@ -63,12 +301,19 @@ $(document).ready(function () {
 		});
 	}
 
-	// Reset modal status
+	// Setup modal status
 	setupModal();
-	resetModal();
 
 	// Display infobox contents, and schedule infobox refresh
 	displayInfobox();
 	setInterval(displayInfobox, 10000);
 
+	// Setup new session
+	clearCurrentSession();
+
+	// Reset order bar button status
+	resetOrderBarStatus();
+
+	// Bind clear button click
+	$("#clear-button").on('click', clearCurrentSession);
 });
