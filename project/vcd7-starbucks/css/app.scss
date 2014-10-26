@@ -296,7 +296,7 @@ body {
 		.js-item-cell {
 			position: relative;
 
-			width: $grid-size-half * 7;
+			width: $grid-size-half * 7 - 1px;
 			height: $grid-size-full;
 			background-color: $bg-color-cool-white;
 
@@ -314,7 +314,7 @@ body {
 			}
 		}
 		.js-customization-cell {
-			width: $grid-size-half * 6;
+			width: $grid-size-half * 6 - 1px;
 			height: $grid-size-half;
 			padding: 0 8px;
 			margin-left: $grid-size-half;
