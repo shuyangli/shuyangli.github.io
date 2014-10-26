@@ -225,10 +225,21 @@ function displayChargePrice() {
 function setupModal() {
 
 	// Close all dialogs when hit background
-	$("#modal-overlay-background").on('click', resetModal);
+	$("#modal-overlay-background").on('click', function (e) {
+
+		// Remove 300ms tap delay
+		// e.stopPagination();
+		// e.preventDefault();
+		resetModal();
+	});
 
 	// Open drink dialog
-	$("#short-button, #tall-button, #grande-button, #venti-button").on('click', function () {
+	$("#short-button, #tall-button, #grande-button, #venti-button").on('click', function (e) {
+
+		// Remove 300ms tap delay
+		// e.stopPagination();
+		// e.preventDefault();
+
 		$("#modal-overlay").show();
 		$("#modal-drink").show();
 
@@ -241,7 +252,11 @@ function setupModal() {
 	});
 
 	// Add drink to list of drinks
-	$(".subitem-button").on('click', function() {
+	$(".subitem-button").on('click', function (e) {
+
+		// Remove 300ms tap delay
+		// e.stopPagination();
+		// e.preventDefault();
 
 		if ($(this).attr("value") == "drink") {
 			
@@ -288,6 +303,11 @@ function resetModal() {
 
 $(document).ready(function () {
 
+	// Attach fast click
+	$(function() {
+    	FastClick.attach(document.body);
+	});
+
 	// Replace all @2x images
 	if (window.devicePixelRatio == 2) {
 		$("img.js-2x-img").each(function (index, image) {
@@ -315,5 +335,11 @@ $(document).ready(function () {
 	resetOrderBarStatus();
 
 	// Bind clear button click
-	$("#clear-button").on('click', clearCurrentSession);
+	$("#clear-button").on('click', function (e) {
+		// Remove 300ms tap delay
+		// e.stopPagination();
+		// e.preventDefault();
+
+		clearCurrentSession();
+	});
 });
