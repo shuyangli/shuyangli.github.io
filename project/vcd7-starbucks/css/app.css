@@ -67,6 +67,30 @@ body {
     position: absolute;
     left: 224px;
     top: 32px; }
+  #modal-overlay #modal-drink-esp {
+    width: 384px;
+    height: 288px;
+    z-index: 210;
+    background: url(../img/bg-pattern.png) 0 0 repeat, linear-gradient(rgba(247, 251, 255, 0.6), rgba(247, 251, 255, 0.6)), url(../img/bg-blurred.png) -224px -32px no-repeat;
+    background-blend-mode: multiply, normal, normal;
+    position: absolute;
+    left: 224px;
+    top: 32px; }
+    #modal-overlay #modal-drink-esp #subitem-solo-esp {
+      top: 64px;
+      left: 32px; }
+    #modal-overlay #modal-drink-esp #subitem-doppio-esp {
+      top: 64px;
+      left: 192px; }
+    #modal-overlay #modal-drink-esp #subitem-con-panna-esp {
+      top: 128px;
+      left: 32px; }
+    #modal-overlay #modal-drink-esp #subitem-macchiato-esp {
+      top: 128px;
+      left: 192px; }
+    #modal-overlay #modal-drink-esp #subitem-double-shot-esp {
+      top: 192px;
+      left: 32px; }
   #modal-overlay #modal-drink-trenta {
     width: 384px;
     height: 288px;

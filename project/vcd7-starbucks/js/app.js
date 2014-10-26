@@ -293,6 +293,15 @@ function setupModal() {
 		var size = "Trenta"
 		currentSession.currentDrinkSize = size;
 	});
+	$("#espresso-button").on('click', function () {
+
+		$("#modal-overlay").show();
+		$("#modal-drink-esp").show();
+
+		// Change session selected drink size
+		var size = "Espresso"
+		currentSession.currentDrinkSize = size;
+	});
 
 	// Add drink to list of drinks
 	$(".subitem-button").on('click', function () {

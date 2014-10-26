@@ -136,6 +136,47 @@ body {
 		top: $grid-size-half;
 	}
 
+	#modal-drink-esp {
+		width: $grid-size-half * 12;
+		height: $grid-size-half * 9;
+		z-index: $z-idx-modal + 10;
+
+		background:
+			url(../img/bg-pattern.png) 0 0 repeat,
+			// HACK!
+			linear-gradient(rgba(247, 251, 255, 0.6), rgba(247, 251, 255, 0.6)),
+			url(../img/bg-blurred.png) (-$grid-size-half*7) (-$grid-size-half) no-repeat;
+		background-blend-mode: multiply, normal, normal;
+
+		position: absolute;
+		left: $grid-size-half * 7;
+		top: $grid-size-half;
+
+		$subitem-button-width: $grid-size-half * 5;
+		$subitem-button-height: $grid-size-full;
+		
+		#subitem-solo-esp {
+			top: $grid-size-full;
+			left: $grid-size-half;
+		}
+		#subitem-doppio-esp {
+			top: $grid-size-full;
+			left: $grid-size-half + $subitem-button-width;
+		}
+		#subitem-con-panna-esp {
+			top: $grid-size-full + $subitem-button-height;
+			left: $grid-size-half;
+		}
+		#subitem-macchiato-esp {
+			top: $grid-size-full + $subitem-button-height;
+			left: $grid-size-half + $subitem-button-width;
+		}
+		#subitem-double-shot-esp {
+			top: $grid-size-full + $subitem-button-height * 2;
+			left: $grid-size-half;
+		}
+	}
+
 	#modal-drink-trenta {
 		width: $grid-size-half * 12;
 		height: $grid-size-half * 9;

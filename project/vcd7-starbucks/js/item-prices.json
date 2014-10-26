@@ -1,7 +1,11 @@
 {
 	"drink" : {
 		"Espresso" : {
-
+			"Solo" : 1.00,
+			"Doppio" : 1.00,
+			"Con Panna" : 1.00,
+			"Macchiato" : 1.00,
+			"Starbucks Double Shot" : 1.00
 		},
 
 		"Short" : {
