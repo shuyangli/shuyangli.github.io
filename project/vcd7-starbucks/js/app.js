@@ -225,20 +225,10 @@ function displayChargePrice() {
 function setupModal() {
 
 	// Close all dialogs when hit background
-	$("#modal-overlay-background").on('click', function (e) {
-
-		// Remove 300ms tap delay
-		// e.stopPagination();
-		// e.preventDefault();
-		resetModal();
-	});
+	$("#modal-overlay-background").on('click', resetModal);
 
 	// Open drink dialog
-	$("#short-button, #tall-button, #grande-button, #venti-button").on('click', function (e) {
-
-		// Remove 300ms tap delay
-		// e.stopPagination();
-		// e.preventDefault();
+	$("#short-button, #tall-button, #grande-button, #venti-button").on('click', function () {
 
 		$("#modal-overlay").show();
 		$("#modal-drink").show();
@@ -252,11 +242,7 @@ function setupModal() {
 	});
 
 	// Add drink to list of drinks
-	$(".subitem-button").on('click', function (e) {
-
-		// Remove 300ms tap delay
-		// e.stopPagination();
-		// e.preventDefault();
+	$(".subitem-button").on('click', function () {
 
 		if ($(this).attr("value") == "drink") {
 			
@@ -335,11 +321,5 @@ $(document).ready(function () {
 	resetOrderBarStatus();
 
 	// Bind clear button click
-	$("#clear-button").on('click', function (e) {
-		// Remove 300ms tap delay
-		// e.stopPagination();
-		// e.preventDefault();
-
-		clearCurrentSession();
-	});
+	$("#clear-button").on('click', clearCurrentSession);
 });
