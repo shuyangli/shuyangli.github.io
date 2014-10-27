@@ -10,6 +10,7 @@ body {
   height: 100%;
   width: 100%;
   letter-spacing: 0.5px;
+  cursor: default;
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
