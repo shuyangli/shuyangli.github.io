@@ -103,7 +103,9 @@ body {
 	z-index: $z-idx-modal;
 
 	position: absolute;
-	margin: auto;
+	margin: 0 auto;
+	left: 0;
+	right: 0;
 
 	#modal-overlay-background {
 		width: $screen-width;
@@ -310,6 +312,68 @@ body {
 		}
 	}
 
+	#modal-customization-drink {
+		width: $grid-size-half * 12;
+		height: $grid-size-half * 10;
+		z-index: $z-idx-modal + 10;
+
+		background:
+			url(../img/bg-pattern.png) 0 0 repeat,
+			// HACK!
+			linear-gradient(rgba(247, 251, 255, 0.6), rgba(247, 251, 255, 0.6)),
+			url(../img/bg-blurred.png) (-$grid-size-half * 11) (-$grid-size-half * 10) no-repeat;
+		background-blend-mode: multiply, normal, normal;
+
+		position: absolute;
+		left: $grid-size-half * 11;
+		top: $grid-size-half * 10;
+		
+		#customization-syrup {
+			top: $grid-size-full;
+			left: $grid-size-half;
+		}
+		#customization-esp {
+			top: $grid-size-full;
+			left: $grid-size-half + $subitem-button-width;
+		}
+		#customization-soy {
+			top: $grid-size-full + $subitem-button-height;
+			left: $grid-size-half;
+		}
+		#customization-tea-bag {
+			top: $grid-size-full + $subitem-button-height;
+			left: $grid-size-half + $subitem-button-width;
+		}
+		#drink-delete {
+			top: $grid-size-half * 3 + $subitem-button-height * 2;
+			left: $grid-size-half;
+			color: rgb(216, 83, 79);
+		}
+	}
+
+	#modal-delete-customization {
+		width: $grid-size-half * 7;
+		height: $grid-size-half * 5;
+		z-index: $z-idx-modal + 10;
+
+		background:
+			url(../img/bg-pattern.png) 0 0 repeat,
+			// HACK!
+			linear-gradient(rgba(247, 251, 255, 0.6), rgba(247, 251, 255, 0.6)),
+			url(../img/bg-blurred.png) (-$grid-size-half * 11) (-$grid-size-half * 10) no-repeat;
+		background-blend-mode: multiply, normal, normal;
+
+		position: absolute;
+		left: $grid-size-half * 11;
+		top: $grid-size-half * 10;
+		
+		#customization-delete {
+			top: $grid-size-full;
+			left: $grid-size-half;
+			color: rgb(216, 83, 79);
+		}
+	}
+
 	.subitem-button {
 		position: absolute;
 		width: $subitem-button-width;
@@ -331,7 +395,9 @@ body {
 	z-index: $z-idx-app;
 
 	position: absolute;
-	margin: auto;
+	margin: 0 auto;
+	left: 0;
+	right: 0;
 }
 
 #order-bar, #main-selection, #control-bar {
@@ -411,6 +477,7 @@ body {
 	}
 
 	#no-item-prompt {
+		color: rgb(64, 64, 64);
 		text-align: center;
 	}
 

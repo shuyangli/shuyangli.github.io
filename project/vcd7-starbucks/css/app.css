@@ -46,7 +46,9 @@ body {
   height: 768px;
   z-index: 200;
   position: absolute;
-  margin: auto; }
+  margin: 0 auto;
+  left: 0;
+  right: 0; }
   #modal-overlay #modal-overlay-background {
     width: 1024px;
     max-width: 1024px;
@@ -184,6 +186,44 @@ body {
     #modal-overlay #modal-drink-trenta #subitem-refresher-trenta {
       top: 192px;
       left: 192px; }
+  #modal-overlay #modal-customization-drink {
+    width: 384px;
+    height: 320px;
+    z-index: 210;
+    background: url(../img/bg-pattern.png) 0 0 repeat, linear-gradient(rgba(247, 251, 255, 0.6), rgba(247, 251, 255, 0.6)), url(../img/bg-blurred.png) -352px -320px no-repeat;
+    background-blend-mode: multiply, normal, normal;
+    position: absolute;
+    left: 352px;
+    top: 320px; }
+    #modal-overlay #modal-customization-drink #customization-syrup {
+      top: 64px;
+      left: 32px; }
+    #modal-overlay #modal-customization-drink #customization-esp {
+      top: 64px;
+      left: 192px; }
+    #modal-overlay #modal-customization-drink #customization-soy {
+      top: 128px;
+      left: 32px; }
+    #modal-overlay #modal-customization-drink #customization-tea-bag {
+      top: 128px;
+      left: 192px; }
+    #modal-overlay #modal-customization-drink #drink-delete {
+      top: 224px;
+      left: 32px;
+      color: #d8534f; }
+  #modal-overlay #modal-delete-customization {
+    width: 224px;
+    height: 160px;
+    z-index: 210;
+    background: url(../img/bg-pattern.png) 0 0 repeat, linear-gradient(rgba(247, 251, 255, 0.6), rgba(247, 251, 255, 0.6)), url(../img/bg-blurred.png) -352px -320px no-repeat;
+    background-blend-mode: multiply, normal, normal;
+    position: absolute;
+    left: 352px;
+    top: 320px; }
+    #modal-overlay #modal-delete-customization #customization-delete {
+      top: 64px;
+      left: 32px;
+      color: #d8534f; }
   #modal-overlay .subitem-button {
     position: absolute;
     width: 160px;
@@ -203,7 +243,9 @@ body {
   height: 768px;
   z-index: 100;
   position: absolute;
-  margin: auto; }
+  margin: 0 auto;
+  left: 0;
+  right: 0; }
 
 #order-bar, #main-selection, #control-bar {
   display: inline-block;
@@ -264,6 +306,7 @@ body {
       #order-bar #order-list .js-customization-cell .js-item-price {
         float: right; }
   #order-bar #no-item-prompt {
+    color: #404040;
     text-align: center; }
   #order-bar #tax-display {
     height: 32px;

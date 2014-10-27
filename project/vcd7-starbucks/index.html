@@ -14,13 +14,49 @@
 	<script type="text/javascript" src="js/vendor/jquery.js"></script>
 	<script type='application/javascript' src="js/vendor/fastclick.js"></script>
 	<script type='application/javascript' src="js/app.js"></script>
-	<script type='application/javascript' src="js/vendor/modernizr.js"></script>
 </head>
 
 <body>
 	<!-- Overlay for modal controls -->
 	<div id="modal-overlay">
 		<div id="modal-overlay-background"></div>
+
+		<div id="modal-customization-drink">
+			<div class="modal-title">
+				<div class="vertical-align-text">Customize
+					<span id="modal-customization-drink-name"></span>
+				</div>
+			</div>
+
+			<div value="customization" class="subitem-button shade-bottom shade-right" id="customization-syrup">
+				<div class="subitem-button-title">Add Syrup</div>
+			</div>
+			<div value="customization" class="subitem-button shade-bottom shade-right" id="customization-esp">
+				<div class="subitem-button-title">Add Espresso</div>
+			</div>
+			<div value="customization" class="subitem-button shade-bottom shade-right" id="customization-soy">
+				<div class="subitem-button-title">Sub Soy Milk</div>
+			</div>
+			<div value="customization" class="subitem-button shade-bottom shade-right" id="customization-tea-bag">
+				<div class="subitem-button-title">Add Tea Bag</div>
+			</div>
+			<div value="deleteItem" class="subitem-button shade-bottom shade-right" id="drink-delete">
+				<div class="subitem-button-title">Delete</div>
+			</div>
+		</div>
+
+		<div id="modal-delete-customization">
+			<div class="modal-title">
+				<div class="vertical-align-text">Delete
+					<span id="modal-customization-name"></span>
+				</div>
+			</div>
+
+			<div value="deleteCustomization" class="subitem-button shade-bottom shade-right" id="customization-delete">
+				<div class="subitem-button-title">Delete</div>
+			</div>
+		</div>
+
 		<div id="modal-drink-esp">
 			<div class="modal-title">
 				<div class="vertical-align-text">Espresso Beverages</div>

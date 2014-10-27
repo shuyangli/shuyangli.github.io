@@ -13,6 +13,10 @@ var protoSession = {
 	addItem : function (item) {
 		this.purchasedItems.push(item);
 		purchasedItemsChanged();
+	},
+	removeItem : function (itemIndex) {
+		this.purchasedItems.splice(itemIndex, 1);
+		purchasedItemsChanged();
 	}
 };
 
@@ -25,19 +29,23 @@ var protoSession = {
 		addCustomization : function (item) {
 			this.itemCustomization.push(item);
 			purchasedItemsChanged();
+		},
+		removeCustomization : function (itemIndex) {
+			this.itemCustomization.splice(itemIndex, 1);
+			purchasedItemsChanged();
 		}
 	};
 	var newCustomization = {
 		itemType : "customization",
-		itemName : customizationName,
+		itemName : customizationName
 	};
 	var newItem = {
 		itemType : "item",
-		itemName : itemName,
+		itemName : itemName
 	};
 	var newCusomPrice = {
 		itemType : "customPrice",
-		itemName : "Custom Price"
+		itemName : "Custom Price",
 		customItemPrice : itemPrice
 	};
 */
@@ -64,11 +72,30 @@ $.getJSON("js/item-prices.json", function (data) {
 	itemPriceData = data;
 });
 
+// For modifying the list
+var currentItemIndex = 0;
+var currentCustomizationIndex = 0;
+
+// For cell size
+var itemCellSize = {
+	width : 223,
+	height : 64
+};
+var customizationCellSize = {
+	width : 191,
+	height : 32
+};
+
 /*
  * ======================
  *  Model Helper Methods
  * ======================
  */
+
+// Rolling my own toFixed method
+function myToFixed (number, precision) {
+    return (Math.round(number * 100) / 100).toFixed(precision);
+}
 
 // Manual callback function for changes fired on purchased items
 function purchasedItemsChanged() {
@@ -101,7 +128,7 @@ function purchasedItemsChanged() {
 		}
 
 		newPrice += currentItemPrice;
-		addItemIntoOrderList(currentItemName, currentItemPrice);
+		addItemIntoOrderList(currentItemName, currentItemPrice, i);
 
 		if (currentSession.purchasedItems[i].itemType == "drink") {
 			// If it's a drink, we also loop through its customizations
@@ -110,7 +137,7 @@ function purchasedItemsChanged() {
 				var currentCustomizationName = currentSession.purchasedItems[i].itemCustomization[j].itemName;
 				
 				newPrice += currentCustomizationPrice;
-				addCustomizationIntoOrderList(currentCustomizationName, currentCustomizationPrice);
+				addCustomizationIntoOrderList(currentCustomizationName, currentCustomizationPrice, i, j);
 			}
 		}
 	}
@@ -199,7 +226,7 @@ function displayInfobox() {
 
 // Display tax or total
 function displayTax(decimalVal) {
-	var taxAmount = "$" + decimalVal.toFixed(2);
+	var taxAmount = "$" + myToFixed(decimalVal, 2);
 	$("#js-tax-dollar-amount-display")[0].innerHTML = taxAmount;
 }
 
@@ -211,7 +238,7 @@ function displayTotal(decimalVal) {
 	$("#clear-button").removeClass("js-clear-button-inactive").addClass("js-clear-button-active");
 
 	// Change dollar amount
-	var totalAmount = "$" + decimalVal.toFixed(2);
+	var totalAmount = "$" + myToFixed(decimalVal, 2);
 	$("#js-charge-prompt")[0].innerHTML = "Charge";
 	$("#js-charge-dollar-amount-display")[0].innerHTML = totalAmount;
 }
@@ -244,18 +271,18 @@ function resetOrderList() {
 }
 
 // Insert into order list
-function addItemIntoOrderList(itemName, itemPrice) {
+function addItemIntoOrderList(itemName, itemPrice, itemIndex) {
 	$("#order-list").append(" \
-		<div value=\"drink\" class=\"js-item-cell shade-bottom\"> \
+		<div value=\"drink\" itemIndex=\"" + itemIndex + "\" class=\"js-item-cell shade-bottom\"> \
 			<div class=\"js-item-name\">" + itemName + "</div> \
-			<div class=\"js-item-price\">$" + itemPrice.toFixed(2) + "</div> \
+			<div class=\"js-item-price\">$" + myToFixed(itemPrice, 2) + "</div> \
 		</div>");
 }
-function addCustomizationIntoOrderList(itemName, itemPrice) {
+function addCustomizationIntoOrderList(itemName, itemPrice, itemIndex, customizationIndex) {
 	$("#order-list").append(" \
-		<div class=\"js-customization-cell shade-bottom\"> \
+		<div value=\"customization\" itemIndex=\"" + itemIndex + "\" customizationIndex=\"" + customizationIndex + "\" class=\"js-customization-cell shade-bottom\"> \
 			<div class=\"js-item-name vertical-align-text\">" + itemName + "</div> \
-			<div class=\"js-item-price vertical-align-text\">$" + itemPrice.toFixed(2) + "</div> \
+			<div class=\"js-item-price vertical-align-text\">$" + myToFixed(itemPrice, 2) + "</div> \
 		</div>");
 }
 
@@ -303,7 +330,7 @@ function setupModal() {
 		currentSession.currentDrinkSize = size;
 	});
 
-	// Add drink to list of drinks
+	// Main function to dispatch on item change
 	$(".subitem-button").on('click', function () {
 
 		if ($(this).attr("value") == "drink") {
@@ -318,19 +345,92 @@ function setupModal() {
 				addCustomization : function (item) {
 					this.itemCustomization.push(item);
 					purchasedItemsChanged();
+				},
+				removeCustomization : function (itemIndex) {
+					this.itemCustomization.splice(itemIndex, 1);
+					purchasedItemsChanged();
 				}
 			};
 
 			// And add into current session
 			currentSession.addItem(newDrink);
+			resetModal();
 
 		} else if ($(this).attr("value") == "customization") {
 
+			// If we're adding a customization, construct the customization
+			var customizationName = $(this).find(".subitem-button-title")[0].innerHTML;
+			var newCustomization = {
+				itemType : "customization",
+				itemName : customizationName
+			};
+
+			// Then add this customziation to the corresponding drink
+			currentSession.purchasedItems[currentItemIndex].addCustomization(newCustomization);
+
+			// Don't reset modal
+			// resetModal();
+
 		} else if ($(this).attr("value") == "item") {
+
+			resetModal();
 
 		} else if ($(this).attr("value") == "customPrice") {
 
+			resetModal();
+
+		} else if ($(this).attr("value") == "deleteItem") {
+
+			currentSession.removeItem(currentItemIndex);
+			resetModal();
+
+		} else if ($(this).attr("value") == "deleteCustomization") {
+			currentSession.purchasedItems[currentItemIndex].removeCustomization(currentCustomizationIndex);
+			resetModal();
 		}
+	});
+
+	// Add customization to drinks
+	$(document).on('click', ".js-item-cell", function () {
+		currentItemIndex = parseInt( $(this).attr("itemIndex") );
+
+		if ($(this).attr("value") == "drink") {
+
+			// Move #modal-customization-drink to the correct position, and move its background
+			var originalPosition = $(this).offset();
+			var newLeft = itemCellSize.width;
+			var newTop = originalPosition.top >= 448 ? 448 : originalPosition.top;
+			$("#modal-customization-drink").css({
+				"left" : newLeft,
+				"top" : newTop,
+				"background" : "url(img/bg-pattern.png) 0 0 repeat, linear-gradient(rgba(247, 251, 255, 0.6), rgba(247, 251, 255, 0.6)), url(img/bg-blurred.png) -" + newLeft + "px -" + newTop + "px no-repeat"
+			});
+
+			// Show drink customization
+			$("#modal-overlay").show();
+			$("#modal-customization-drink").show();
+		}
+	});
+
+	// Remove customization
+	$(document).on('click', ".js-customization-cell", function() {
+		currentItemIndex = parseInt( $(this).attr("itemIndex") );
+		currentCustomizationIndex = parseInt( $(this).attr("customizationIndex") );
+
+		// Move #modal-delete-customization to the correct position, and move its background
+		var originalPosition = $(this).offset();
+		var newLeft = itemCellSize.width;
+		var newTop = originalPosition.top >= 864 ? 864 : originalPosition.top;
+		$("#modal-delete-customization").css({
+			"left" : newLeft,
+			"top" : newTop,
+			"background" : "url(img/bg-pattern.png) 0 0 repeat, linear-gradient(rgba(247, 251, 255, 0.6), rgba(247, 251, 255, 0.6)), url(img/bg-blurred.png) -" + newLeft + "px -" + newTop + "px no-repeat"
+		});
+
+		// Show drink customization
+		$("#modal-overlay").show();
+		$("#modal-delete-customization").show();
+
 	});
 
 	resetModal();
