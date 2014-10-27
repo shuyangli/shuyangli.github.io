@@ -46,7 +46,9 @@ body {
   height: 768px;
   z-index: 200;
   position: absolute;
-  margin: auto; }
+  margin: 0 auto;
+  left: 0;
+  right: 0; }
   #modal-overlay #modal-overlay-background {
     width: 1024px;
     max-width: 1024px;
@@ -203,7 +205,9 @@ body {
   height: 768px;
   z-index: 100;
   position: absolute;
-  margin: auto; }
+  margin: 0 auto;
+  left: 0;
+  right: 0; }
 
 #order-bar, #main-selection, #control-bar {
   display: inline-block;

@@ -103,7 +103,9 @@ body {
 	z-index: $z-idx-modal;
 
 	position: absolute;
-	margin: auto;
+	margin: 0 auto;
+	left: 0;
+	right: 0;
 
 	#modal-overlay-background {
 		width: $screen-width;
@@ -331,7 +333,9 @@ body {
 	z-index: $z-idx-app;
 
 	position: absolute;
-	margin: auto;
+	margin: 0 auto;
+	left: 0;
+	right: 0;
 }
 
 #order-bar, #main-selection, #control-bar {
