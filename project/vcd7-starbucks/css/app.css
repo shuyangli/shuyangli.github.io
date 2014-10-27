@@ -225,6 +225,62 @@ body {
       top: 64px;
       left: 32px;
       color: #d8534f; }
+  #modal-overlay #modal-payment-selection {
+    width: 384px;
+    height: 352px;
+    z-index: 210;
+    background: url(../img/bg-pattern.png) 0 0 repeat, linear-gradient(rgba(247, 251, 255, 0.6), rgba(247, 251, 255, 0.6)), url(../img/bg-blurred.png) 0 -416px no-repeat;
+    background-blend-mode: multiply, normal, normal;
+    position: absolute;
+    left: 0;
+    bottom: 0; }
+    #modal-overlay #modal-payment-selection #payment-ndid-gift {
+      top: 64px;
+      left: 32px; }
+    #modal-overlay #modal-payment-selection #payment-credit-debit {
+      top: 128px;
+      left: 32px; }
+    #modal-overlay #modal-payment-selection #payment-starbucks-card {
+      top: 192px;
+      left: 32px; }
+    #modal-overlay #modal-payment-selection #payment-applepay {
+      top: 256px;
+      left: 32px; }
+    #modal-overlay #modal-payment-selection #payment-cash-1 {
+      top: 64px;
+      left: 192px; }
+    #modal-overlay #modal-payment-selection #payment-cash-2 {
+      top: 128px;
+      left: 192px; }
+    #modal-overlay #modal-payment-selection #payment-custom-cash {
+      top: 192px;
+      left: 192px; }
+    #modal-overlay #modal-payment-selection #payment-other {
+      top: 256px;
+      left: 192px; }
+  #modal-overlay #modal-payment-wait {
+    width: 384px;
+    height: 352px;
+    z-index: 210;
+    background: url(../img/bg-pattern.png) 0 0 repeat, linear-gradient(rgba(247, 251, 255, 0.6), rgba(247, 251, 255, 0.6)), url(../img/bg-blurred.png) 0 -416px no-repeat;
+    background-blend-mode: multiply, normal, normal;
+    position: absolute;
+    left: 0;
+    bottom: 0; }
+    #modal-overlay #modal-payment-wait #payment-prompt {
+      position: absolute;
+      width: 320px;
+      height: 160px;
+      padding: 10px;
+      background-color: #f7fbff;
+      top: 64px;
+      left: 32px; }
+    #modal-overlay #modal-payment-wait #payment-wait-back-button {
+      top: 256px;
+      left: 32px; }
+    #modal-overlay #modal-payment-wait #payment-wait-done-button {
+      top: 256px;
+      left: 192px; }
   #modal-overlay .subitem-button {
     position: absolute;
     width: 160px;
@@ -232,6 +288,18 @@ body {
     padding: 10px;
     background-color: #f9faf7; }
     #modal-overlay .subitem-button .subitem-button-title {
+      position: relative;
+      top: 50%;
+      -webkit-transform: translateY(-50%);
+      -ms-transform: translateY(-50%);
+      transform: translateY(-50%); }
+  #modal-overlay .payment-button {
+    position: absolute;
+    width: 160px;
+    height: 64px;
+    padding: 10px;
+    background-color: #f9faf7; }
+    #modal-overlay .payment-button .payment-button-title {
       position: relative;
       top: 50%;
       -webkit-transform: translateY(-50%);

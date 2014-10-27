@@ -196,6 +196,53 @@ function clearCurrentSession() {
 	resetOrderList();
 }
 
+function cashUnit(price) {
+	if (price < 5) {
+		return 1;
+	} else if (price <= 25) {
+		return 5;
+	} else if (price <= 40) {
+		return 10;
+	} else {
+		return 20;
+	}
+}
+function nextCashUnit(unit) {
+	if (unit == 1) {
+		return 5;
+	} else if (unit == 5) {
+		return 10;
+	} else if (unit == 10) {
+		return 20;
+	} else if (unit == 20) {
+		return 100;
+	} else {
+		return -1;
+	}
+}
+function cashAmountOne(price) {
+	var currentCashUnit = cashUnit(price);
+	return (Math.floor(price / currentCashUnit) + 1) * currentCashUnit;
+}
+function cashAmountTwo(price) {
+	var currentCashUnit = cashUnit(price);
+	var nextToCurrentCashUnit = nextCashUnit(currentCashUnit);
+
+	var tempAmount = (Math.floor(price / nextToCurrentCashUnit) + 1) * nextToCurrentCashUnit;
+
+	// This is terrible
+	if (tempAmount == cashAmountOne(price)) {
+		if (nextToCurrentCashUnit == 100) {
+			return tempAmount + 20;
+		} else {
+			nextToCurrentCashUnit = nextCashUnit(nextToCurrentCashUnit);
+			tempAmount = (Math.floor(price / nextToCurrentCashUnit) + 1) * nextToCurrentCashUnit;
+		}
+	}
+
+	return tempAmount;
+}
+
 /*
  * ===================
  *  UI Helper Methods
@@ -208,14 +255,14 @@ function displayInfobox() {
 	var currentDatetime = new Date();
 
 	// Display month + date
-	$(".js-date")[0].innerHTML = months[currentDatetime.getMonth()] + " " + currentDatetime.getDate();
+	$(".js-date").text(months[currentDatetime.getMonth()] + " " + currentDatetime.getDate());
 
 	// Set "Good morning/afternoon/evening"
 	var hour = currentDatetime.getHours();
-	$(".js-time-desc")[0].innerHTML =
+	$(".js-time-desc").text(
 		(hour >= 6 && hour < 12) ? "morning" :
 		(hour >= 12 && hour < 18) ? "afternoon" :
-		"evening";
+		"evening");
 
 	// Display actual hour:minute
 	var hourSuffix = hour - 12 < 0 ? "AM" : "PM";
@@ -223,16 +270,15 @@ function displayInfobox() {
 	var minute = currentDatetime.getMinutes();
 	minute = (minute < 10) ? "0" + minute : "" + minute;
 
-	$(".js-time")[0].innerHTML = hour + ":" + minute + " " + hourSuffix;
+	$(".js-time").text(hour + ":" + minute + " " + hourSuffix);
 
 	// Change barista name
-	$(".js-preferred-name")[0].innerHTML = baristaName;
+	$(".js-preferred-name").text(baristaName);
 }
 
 // Display tax or total
 function displayTax(decimalVal) {
-	var taxAmount = "$" + myToFixed(decimalVal, 2);
-	$("#js-tax-dollar-amount-display")[0].innerHTML = taxAmount;
+	$("#js-tax-dollar-amount-display").text("$" + myToFixed(decimalVal, 2));
 }
 
 function displayTotal(decimalVal) {
@@ -243,9 +289,8 @@ function displayTotal(decimalVal) {
 	$("#clear-button").removeClass("js-clear-button-inactive").addClass("js-clear-button-active");
 
 	// Change dollar amount
-	var totalAmount = "$" + myToFixed(decimalVal, 2);
-	$("#js-charge-prompt")[0].innerHTML = "Charge";
-	$("#js-charge-dollar-amount-display")[0].innerHTML = totalAmount;
+	$("#js-charge-prompt").text("Charge");
+	$("#js-charge-dollar-amount-display").text("$" + myToFixed(decimalVal, 2));
 }
 
 // Reset order button states
@@ -257,8 +302,8 @@ function resetOrderBarStatus() {
 	$("#clear-button").removeClass("js-clear-button-active").addClass("js-clear-button-inactive");
 
 	// Change dollar amount
-	$("#js-charge-prompt")[0].innerHTML = "Choose an Item";
-	$("#js-charge-dollar-amount-display")[0].innerHTML = "";
+	$("#js-charge-prompt").text("Choose an Item");
+	$("#js-charge-dollar-amount-display").text("");
 
 	// Change tax amount
 	displayTax(0.0);
@@ -297,6 +342,19 @@ function displayChargePrice() {
 	displayTotal(currentSession.totalPrice);
 }
 
+// Configure payment modal
+function configurePaymentModal() {
+	// Change title
+	$(".modal-payment-amount").text("$" + myToFixed(currentSession.totalPrice, 2));
+
+	// Change tax exempt amount
+	$("#payment-tax-exempt-amount").text("$" + myToFixed(currentSession.taxPrice, 2));
+
+	// Change cash amount
+	$("#payment-cash-1-amount").text("$" + myToFixed(cashAmountOne(currentSession.totalPrice), 2));
+	$("#payment-cash-2-amount").text("$" + myToFixed(cashAmountTwo(currentSession.totalPrice), 2));
+}
+
 // Setup modal bindings
 function setupModal() {
 
@@ -310,8 +368,8 @@ function setupModal() {
 		$("#modal-drink").show();
 
 		// Change drink modal title
-		var size = $(this).find(".item-button-label")[0].innerHTML;
-		$(".js-modal-drink-size")[0].innerHTML = size;
+		var size = $(this).find(".item-button-label").text();
+		$(".js-modal-drink-size").text(size);
 
 		// Change session selected drink size
 		currentSession.currentDrinkSize = size;
@@ -335,13 +393,99 @@ function setupModal() {
 		currentSession.currentDrinkSize = size;
 	});
 
+	// Open payment dialog
+	$("#charge-button").on('click', function () {
+
+		if (currentSession.purchasedItems.length > 0) {
+			$("#modal-overlay").show();
+			$("#modal-payment-selection").show();
+			configurePaymentModal();	
+		}
+	});
+
+	// For cards, open payment wait dialog
+	// ND ID needs special treatment: tax exempt
+	$("#payment-ndid-gift").on('click', function() {
+		$(".modal-payment-amount").text("$" + myToFixed(currentSession.netPrice, 2));
+		$("#payment-prompt").find(".payment-button-title").text("Swipe card on the reader...");
+		$("#modal-payment-wait-method").text("ND ID / Gift Card");
+		$("#payment-wait-done-button").hide();
+		$("#modal-payment-wait").show();
+		$("#modal-payment-selection").hide();
+	});
+	$("#payment-credit-debit, #payment-starbucks-card").on('click', function() {
+		$("#payment-prompt").find(".payment-button-title").text("Swipe card on the reader...");
+		$("#modal-payment-wait-method").text($(this).text());
+		$("#payment-wait-done-button").hide();
+		$("#modal-payment-wait").show();
+		$("#modal-payment-selection").hide();
+	});
+	$("#payment-applepay").on('click', function() {
+		$("#payment-prompt").find(".payment-button-title").text("Waiting for NFC payment...");
+		$("#modal-payment-wait-method").text($(this).text());
+		$("#payment-wait-done-button").hide();
+		$("#modal-payment-wait").show();
+		$("#modal-payment-selection").hide();
+	});
+
+	// For cash, do special setup
+	$("#payment-cash-1").on('click', function() {
+
+		var cashAmount = cashAmountOne(currentSession.totalPrice);
+		var changeAmount = cashAmount - currentSession.totalPrice;
+
+		$("#payment-prompt").find(".payment-button-title").text("Cash amount: $" + cashAmount + "\nChange amount: $" + changeAmount);
+		$("#modal-payment-wait-method").text("");
+		$("#payment-wait-done-button").show();
+		$("#modal-payment-wait").show();
+		$("#modal-payment-selection").hide();
+	});
+	$("#payment-cash-2").on('click', function() {
+
+		var cashAmount = cashAmountTwo(currentSession.totalPrice);
+		var changeAmount = cashAmount - currentSession.totalPrice;
+
+		$("#payment-prompt").find(".payment-button-title").text("Cash amount: $" + cashAmount + "\nChange amount: $" + changeAmount);
+		$("#modal-payment-wait-method").text("");
+		$("#payment-wait-done-button").show();
+		$("#modal-payment-wait").show();
+		$("#modal-payment-selection").hide();
+	});
+
+	$("#payment-custom-cash").on('click', function() {
+
+		// DRAGON: needs special setup for number pad!
+
+		var cashAmount = cashAmountTwo(currentSession.totalPrice);
+		var changeAmount = cashAmount - currentSession.totalPrice;
+
+		$("#payment-prompt").find(".payment-button-title").text("Cash amount: $" + myToFixed(cashAmount, 2) + "\nChange amount: $" + myToFixed(2, changeAmount));
+		$("#modal-payment-wait-method").text("");
+		$("#payment-wait-done-button").show();
+		$("#modal-payment-wait").show();
+		$("#modal-payment-selection").hide();
+	});
+
+	// Bind "back" button
+	$("#payment-wait-back-button").on('click', function () {
+		configurePaymentModal();
+		$("#modal-payment-selection").show();
+		$("#modal-payment-wait").hide();
+	});
+
+	// Bind "done" button
+	$("#payment-wait-done-button").on('click', function () {
+		clearCurrentSession();
+		$("#modal-overlay").hide();
+	});
+
 	// Main function to dispatch on item change
 	$(".subitem-button").on('click', function () {
 
 		if ($(this).attr("value") == "drink") {
 			
 			// If we're adding a drink, construct the drink with size and name
-			var drinkName = $(this).find(".subitem-button-title")[0].innerHTML;
+			var drinkName = $(this).find(".subitem-button-title").text();
 			var newDrink = $.extend(true, {}, protoDrink);
 			newDrink.itemSize = currentSession.currentDrinkSize;
 			newDrink.itemName = drinkName;
@@ -353,7 +497,7 @@ function setupModal() {
 		} else if ($(this).attr("value") == "customization") {
 
 			// If we're adding a customization, construct the customization
-			var customizationName = $(this).find(".subitem-button-title")[0].innerHTML;
+			var customizationName = $(this).find(".subitem-button-title").text();
 			var newCustomization = $.extend(true, {}, protoCustomization);
 			newCustomization.itemName = customizationName;
 
@@ -399,7 +543,7 @@ function setupModal() {
 			});
 
 			// Change #modal-customization-drink's title
-			$("#modal-customization-drink-name")[0].innerHTML = currentSession.purchasedItems[currentItemIndex].getItemDescription();
+			$("#modal-customization-drink-name").text(currentSession.purchasedItems[currentItemIndex].getItemDescription());
 
 			// Show drink customization
 			$("#modal-overlay").show();
@@ -423,7 +567,7 @@ function setupModal() {
 		});
 
 		// Change #modal-delete-customization's title
-		$("#modal-delete-customization-name")[0].innerHTML = currentSession.purchasedItems[currentItemIndex].itemCustomization[currentCustomizationIndex].getItemDescription();
+		$("#modal-delete-customization-name").text(currentSession.purchasedItems[currentItemIndex].itemCustomization[currentCustomizationIndex].getItemDescription());
 
 		// Show drink customization
 		$("#modal-overlay").show();
