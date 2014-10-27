@@ -93,7 +93,7 @@ var customizationCellSize = {
  */
 
 // Rolling my own toFixed method
-function myToFixed ( number, precision ) {
+function myToFixed (number, precision) {
     return (Math.round(number * 100) / 100).toFixed(precision);
 }
 
@@ -137,7 +137,7 @@ function purchasedItemsChanged() {
 				var currentCustomizationName = currentSession.purchasedItems[i].itemCustomization[j].itemName;
 				
 				newPrice += currentCustomizationPrice;
-				addCustomizationIntoOrderList(currentCustomizationName, currentCustomizationPrice, j);
+				addCustomizationIntoOrderList(currentCustomizationName, currentCustomizationPrice, i, j);
 			}
 		}
 	}
@@ -385,7 +385,7 @@ function setupModal() {
 			resetModal();
 
 		} else if ($(this).attr("value") == "deleteCustomization") {
-
+			currentSession.purchasedItems[currentItemIndex].removeCustomization(currentCustomizationIndex);
 			resetModal();
 		}
 	});
@@ -416,6 +416,20 @@ function setupModal() {
 	$(document).on('click', ".js-customization-cell", function() {
 		currentItemIndex = parseInt( $(this).attr("itemIndex") );
 		currentCustomizationIndex = parseInt( $(this).attr("customizationIndex") );
+
+		// Move #modal-delete-customization to the correct position, and move its background
+		var originalPosition = $(this).offset();
+		var newLeft = itemCellSize.width;
+		var newTop = originalPosition.top >= 448 ? 448 : originalPosition.top;
+		$("#modal-delete-customization").css({
+			"left" : newLeft,
+			"top" : newTop,
+			"background" : "url(img/bg-pattern.png) 0 0 repeat, linear-gradient(rgba(247, 251, 255, 0.6), rgba(247, 251, 255, 0.6)), url(img/bg-blurred.png) -" + newLeft + "px -" + newTop + "px no-repeat"
+		});
+
+		// Show drink customization
+		$("#modal-overlay").show();
+		$("#modal-delete-customization").show();
 
 	});
 

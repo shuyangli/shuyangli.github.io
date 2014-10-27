@@ -207,8 +207,21 @@ body {
     #modal-overlay #modal-customization-drink #customization-tea-bag {
       top: 128px;
       left: 192px; }
-    #modal-overlay #modal-customization-drink #customization-delete {
+    #modal-overlay #modal-customization-drink #drink-delete {
       top: 224px;
+      left: 32px;
+      color: #d8534f; }
+  #modal-overlay #modal-delete-customization {
+    width: 224px;
+    height: 160px;
+    z-index: 210;
+    background: url(../img/bg-pattern.png) 0 0 repeat, linear-gradient(rgba(247, 251, 255, 0.6), rgba(247, 251, 255, 0.6)), url(../img/bg-blurred.png) -352px -320px no-repeat;
+    background-blend-mode: multiply, normal, normal;
+    position: absolute;
+    left: 352px;
+    top: 320px; }
+    #modal-overlay #modal-delete-customization #customization-delete {
+      top: 64px;
       left: 32px;
       color: #d8534f; }
   #modal-overlay .subitem-button {
