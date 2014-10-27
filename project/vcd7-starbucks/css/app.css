@@ -186,6 +186,31 @@ body {
     #modal-overlay #modal-drink-trenta #subitem-refresher-trenta {
       top: 192px;
       left: 192px; }
+  #modal-overlay #modal-customization-drink {
+    width: 384px;
+    height: 320px;
+    z-index: 210;
+    background: url(../img/bg-pattern.png) 0 0 repeat, linear-gradient(rgba(247, 251, 255, 0.6), rgba(247, 251, 255, 0.6)), url(../img/bg-blurred.png) -352px -320px no-repeat;
+    background-blend-mode: multiply, normal, normal;
+    position: absolute;
+    left: 352px;
+    top: 320px; }
+    #modal-overlay #modal-customization-drink #customization-syrup {
+      top: 64px;
+      left: 32px; }
+    #modal-overlay #modal-customization-drink #customization-esp {
+      top: 64px;
+      left: 192px; }
+    #modal-overlay #modal-customization-drink #customization-soy {
+      top: 128px;
+      left: 32px; }
+    #modal-overlay #modal-customization-drink #customization-tea-bag {
+      top: 128px;
+      left: 192px; }
+    #modal-overlay #modal-customization-drink #customization-delete {
+      top: 224px;
+      left: 32px;
+      color: #d8534f; }
   #modal-overlay .subitem-button {
     position: absolute;
     width: 160px;
@@ -193,6 +218,18 @@ body {
     padding: 10px;
     background-color: #f9faf7; }
     #modal-overlay .subitem-button .subitem-button-title {
+      position: relative;
+      top: 50%;
+      -webkit-transform: translateY(-50%);
+      -ms-transform: translateY(-50%);
+      transform: translateY(-50%); }
+  #modal-overlay .customization-button {
+    position: absolute;
+    width: 160px;
+    height: 64px;
+    padding: 10px;
+    background-color: #f9faf7; }
+    #modal-overlay .customization-button .customization-button-title {
       position: relative;
       top: 50%;
       -webkit-transform: translateY(-50%);
