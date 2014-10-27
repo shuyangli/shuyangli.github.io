@@ -434,8 +434,8 @@ function setupModal() {
 		var cashAmount = cashAmountOne(currentSession.totalPrice);
 		var changeAmount = cashAmount - currentSession.totalPrice;
 
-		$("#payment-prompt").find(".payment-button-title").text("Cash amount: $" + cashAmount + "\nChange amount: $" + changeAmount);
-		$("#modal-payment-wait-method").text("");
+		$("#payment-prompt").find(".payment-button-title").html("Cash amount: $" + myToFixed(cashAmount, 2) + "<br />Change amount: $" + myToFixed(changeAmount, 2));
+		$("#modal-payment-wait-method").text($(this).text());
 		$("#payment-wait-done-button").show();
 		$("#modal-payment-wait").show();
 		$("#modal-payment-selection").hide();
@@ -445,8 +445,8 @@ function setupModal() {
 		var cashAmount = cashAmountTwo(currentSession.totalPrice);
 		var changeAmount = cashAmount - currentSession.totalPrice;
 
-		$("#payment-prompt").find(".payment-button-title").text("Cash amount: $" + cashAmount + "\nChange amount: $" + changeAmount);
-		$("#modal-payment-wait-method").text("");
+		$("#payment-prompt").find(".payment-button-title").html("Cash amount: $" + myToFixed(cashAmount, 2) + "<br />Change amount: $" + myToFixed(changeAmount, 2));
+		$("#modal-payment-wait-method").text($(this).text());
 		$("#payment-wait-done-button").show();
 		$("#modal-payment-wait").show();
 		$("#modal-payment-selection").hide();
@@ -459,7 +459,7 @@ function setupModal() {
 		var cashAmount = cashAmountTwo(currentSession.totalPrice);
 		var changeAmount = cashAmount - currentSession.totalPrice;
 
-		$("#payment-prompt").find(".payment-button-title").text("Cash amount: $" + myToFixed(cashAmount, 2) + "\nChange amount: $" + myToFixed(2, changeAmount));
+		$("#payment-prompt").find(".payment-button-title").text("");
 		$("#modal-payment-wait-method").text("");
 		$("#payment-wait-done-button").show();
 		$("#modal-payment-wait").show();
@@ -476,7 +476,7 @@ function setupModal() {
 	// Bind "done" button
 	$("#payment-wait-done-button").on('click', function () {
 		clearCurrentSession();
-		$("#modal-overlay").hide();
+		resetModal();
 	});
 
 	// Main function to dispatch on item change
