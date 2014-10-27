@@ -92,6 +92,11 @@ var customizationCellSize = {
  * ======================
  */
 
+// Rolling my own toFixed method
+function myToFixed ( number, precision ) {
+    return (Math.round(number * 100) / 100).toFixed(precision);
+}
+
 // Manual callback function for changes fired on purchased items
 function purchasedItemsChanged() {
 
@@ -221,7 +226,7 @@ function displayInfobox() {
 
 // Display tax or total
 function displayTax(decimalVal) {
-	var taxAmount = "$" + decimalVal.toFixed(2);
+	var taxAmount = "$" + myToFixed(decimalVal, 2);
 	$("#js-tax-dollar-amount-display")[0].innerHTML = taxAmount;
 }
 
@@ -233,7 +238,7 @@ function displayTotal(decimalVal) {
 	$("#clear-button").removeClass("js-clear-button-inactive").addClass("js-clear-button-active");
 
 	// Change dollar amount
-	var totalAmount = "$" + decimalVal.toFixed(2);
+	var totalAmount = "$" + myToFixed(decimalVal, 2);
 	$("#js-charge-prompt")[0].innerHTML = "Charge";
 	$("#js-charge-dollar-amount-display")[0].innerHTML = totalAmount;
 }
@@ -270,14 +275,14 @@ function addItemIntoOrderList(itemName, itemPrice, itemIndex) {
 	$("#order-list").append(" \
 		<div value=\"drink\" itemIndex=\"" + itemIndex + "\" class=\"js-item-cell shade-bottom\"> \
 			<div class=\"js-item-name\">" + itemName + "</div> \
-			<div class=\"js-item-price\">$" + itemPrice.toFixed(2) + "</div> \
+			<div class=\"js-item-price\">$" + myToFixed(itemPrice, 2) + "</div> \
 		</div>");
 }
 function addCustomizationIntoOrderList(itemName, itemPrice, itemIndex, customizationIndex) {
 	$("#order-list").append(" \
 		<div value=\"customization\" itemIndex=\"" + itemIndex + "\" customizationIndex=\"" + customizationIndex + "\" class=\"js-customization-cell shade-bottom\"> \
 			<div class=\"js-item-name vertical-align-text\">" + itemName + "</div> \
-			<div class=\"js-item-price vertical-align-text\">$" + itemPrice.toFixed(2) + "</div> \
+			<div class=\"js-item-price vertical-align-text\">$" + myToFixed(itemPrice, 2) + "</div> \
 		</div>");
 }
 
