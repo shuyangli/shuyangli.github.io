@@ -435,7 +435,7 @@ function setupModal() {
 		var changeAmount = cashAmount - currentSession.totalPrice;
 
 		$("#payment-prompt").find(".payment-button-title").html("Cash amount: $" + myToFixed(cashAmount, 2) + "<br />Change amount: $" + myToFixed(changeAmount, 2));
-		$("#modal-payment-wait-method").text($(this).text());
+		$("#modal-payment-wait-method").text("cash");
 		$("#payment-wait-done-button").show();
 		$("#modal-payment-wait").show();
 		$("#modal-payment-selection").hide();
@@ -446,7 +446,7 @@ function setupModal() {
 		var changeAmount = cashAmount - currentSession.totalPrice;
 
 		$("#payment-prompt").find(".payment-button-title").html("Cash amount: $" + myToFixed(cashAmount, 2) + "<br />Change amount: $" + myToFixed(changeAmount, 2));
-		$("#modal-payment-wait-method").text($(this).text());
+		$("#modal-payment-wait-method").text("cash");
 		$("#payment-wait-done-button").show();
 		$("#modal-payment-wait").show();
 		$("#modal-payment-selection").hide();
@@ -460,7 +460,7 @@ function setupModal() {
 		var changeAmount = cashAmount - currentSession.totalPrice;
 
 		$("#payment-prompt").find(".payment-button-title").text("");
-		$("#modal-payment-wait-method").text("");
+		$("#modal-payment-wait-method").text("cash");
 		$("#payment-wait-done-button").show();
 		$("#modal-payment-wait").show();
 		$("#modal-payment-selection").hide();
