@@ -363,19 +363,6 @@ body {
 			@include vertical-align;
 		}
 	}
-
-	.customization-button {
-		position: absolute;
-		width: $subitem-button-width;
-		height: $subitem-button-height;
-		padding: 10px;
-
-		background-color: $bg-color-warm-white;
-
-		.customization-button-title {
-			@include vertical-align;
-		}
-	}
 }
 
 #app-container {

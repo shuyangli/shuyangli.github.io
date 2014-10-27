@@ -223,18 +223,6 @@ body {
       -webkit-transform: translateY(-50%);
       -ms-transform: translateY(-50%);
       transform: translateY(-50%); }
-  #modal-overlay .customization-button {
-    position: absolute;
-    width: 160px;
-    height: 64px;
-    padding: 10px;
-    background-color: #f9faf7; }
-    #modal-overlay .customization-button .customization-button-title {
-      position: relative;
-      top: 50%;
-      -webkit-transform: translateY(-50%);
-      -ms-transform: translateY(-50%);
-      transform: translateY(-50%); }
 
 #app-container {
   width: 1024px;
