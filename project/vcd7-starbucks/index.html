@@ -20,6 +20,7 @@
 	<!-- Overlay for modal controls -->
 	<div id="modal-overlay">
 		<div id="modal-overlay-background"></div>
+		<div id="modal-overlay-blocking"></div>
 
 		<div id="modal-customization-drink">
 			<div class="modal-title">
@@ -48,7 +49,7 @@
 		<div id="modal-delete-customization">
 			<div class="modal-title">
 				<div class="vertical-align-text">Delete
-					<span id="modal-customization-name"></span>
+					<span id="modal-delete-customization-name"></span>
 				</div>
 			</div>
 
@@ -177,6 +178,60 @@
 			</div>
 			<div value="drink" class="subitem-button shade-bottom shade-right" id="subitem-refresher-trenta">
 				<div class="subitem-button-title">Starbucks Refresher</div>
+			</div>
+		</div>
+
+		<div id="modal-payment-selection">
+			<div class="modal-title">
+				<div class="vertical-align-text">Charge
+					<span class="modal-payment-amount"></span>
+				</div>
+			</div>
+
+			<div class="payment-button shade-bottom shade-right" id="payment-ndid-gift">
+				<div class="payment-button-title">ND ID / Gift Card (Exempt –<span id="payment-tax-exempt-amount"></span>)</div>
+			</div>
+			<div class="payment-button shade-bottom shade-right" id="payment-credit-debit">
+				<div class="payment-button-title">Credit / Debit</div>
+			</div>
+			<div class="payment-button shade-bottom shade-right" id="payment-starbucks-card">
+				<div class="payment-button-title">Starbucks Card</div>
+			</div>
+			<div class="payment-button shade-bottom shade-right" id="payment-applepay">
+				<div class="payment-button-title">Pay</div>
+			</div>
+			<div class="payment-button shade-bottom shade-right" id="payment-cash-1">
+				<div class="payment-button-title"><span id="payment-cash-1-amount"></span> Cash</div>
+			</div>
+			<div class="payment-button shade-bottom shade-right" id="payment-cash-2">
+				<div class="payment-button-title"><span id="payment-cash-2-amount"></span> Cash</div>
+			</div>
+			<div class="payment-button shade-bottom shade-right" id="payment-custom-cash">
+				<div class="payment-button-title">Custom Cash</div>
+			</div>
+			<!-- <div class="payment-button shade-bottom shade-right" id="payment-other">
+				<div class="payment-button-title">Other Payment</div>
+			</div> -->
+		</div>
+
+		<div id="modal-payment-wait">
+			<div class="modal-title">
+				<div class="vertical-align-text">Charge
+					<span class="modal-payment-amount"></span>
+					through
+					<span id="modal-payment-wait-method"></span>
+				</div>
+			</div>
+
+			<div class="shade-bottom" id="payment-prompt">
+				<div class="payment-button-title">Swipe card on the reader...</div>
+			</div>
+
+			<div class="payment-button shade-bottom shade-right" id="payment-wait-back-button">
+				<div class="payment-button-title">Back</div>
+			</div>
+			<div class="payment-button shade-bottom shade-right" id="payment-wait-done-button">
+				<div class="payment-button-title">Done</div>
 			</div>
 		</div>
 	</div>

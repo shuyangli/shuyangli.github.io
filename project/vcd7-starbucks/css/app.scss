@@ -60,6 +60,9 @@ body {
 	// Increase letter spacing
 	letter-spacing: 0.5px;
 
+	// Change cursor
+	cursor: default;
+
 	// Disable selection
 	-webkit-user-select: none;
 	-moz-user-select: none;
@@ -374,6 +377,93 @@ body {
 		}
 	}
 
+	#modal-payment-selection {
+		width: $grid-size-half * 12;
+		height: $grid-size-half * 11;
+		z-index: $z-idx-modal + 10;
+
+		background:
+			url(../img/bg-pattern.png) 0 0 repeat,
+			// HACK!
+			linear-gradient(rgba(247, 251, 255, 0.6), rgba(247, 251, 255, 0.6)),
+			url(../img/bg-blurred.png) 0 -416px no-repeat;
+		background-blend-mode: multiply, normal, normal;
+
+		position: absolute;
+		left: 0;
+		bottom: 0;
+
+		#payment-ndid-gift {
+			top: $grid-size-full;
+			left: $grid-size-half;
+		}
+		#payment-credit-debit {
+			top: $grid-size-full + $subitem-button-height;
+			left: $grid-size-half;
+		}
+		#payment-starbucks-card {
+			top: $grid-size-full + $subitem-button-height * 2;
+			left: $grid-size-half;
+		}
+		#payment-applepay {
+			top: $grid-size-full + $subitem-button-height * 3;
+			left: $grid-size-half;
+		}
+		#payment-cash-1 {
+			top: $grid-size-full;
+			left: $grid-size-half + $subitem-button-width;
+		}
+		#payment-cash-2 {
+			top: $grid-size-full + $subitem-button-height;
+			left: $grid-size-half + $subitem-button-width;
+		}
+		#payment-custom-cash {
+			top: $grid-size-full + $subitem-button-height * 2;
+			left: $grid-size-half + $subitem-button-width;
+		}
+		#payment-other {
+			top: $grid-size-full + $subitem-button-height * 3;
+			left: $grid-size-half + $subitem-button-width;
+		}
+	}
+
+	#modal-payment-wait {
+		width: $grid-size-half * 12;
+		height: $grid-size-half * 11;
+		z-index: $z-idx-modal + 10;
+
+		background:
+			url(../img/bg-pattern.png) 0 0 repeat,
+			// HACK!
+			linear-gradient(rgba(247, 251, 255, 0.6), rgba(247, 251, 255, 0.6)),
+			url(../img/bg-blurred.png) 0 -416px no-repeat;
+		background-blend-mode: multiply, normal, normal;
+
+		position: absolute;
+		left: 0;
+		bottom: 0;
+
+		#payment-prompt {
+			position: absolute;
+			width: $subitem-button-width * 2;
+			height: $subitem-button-height * 2 + $grid-size-half;
+			padding: 10px;
+
+			background-color: $bg-color-cool-white;
+
+			top: $grid-size-full;
+			left: $grid-size-half;
+		}
+		#payment-wait-back-button {
+			top: $grid-size-full + $subitem-button-height * 3;
+			left: $grid-size-half;
+		}
+		#payment-wait-done-button {
+			top: $grid-size-full + $subitem-button-height * 3;
+			left: $grid-size-half + $subitem-button-width;
+		}
+	}
+
 	.subitem-button {
 		position: absolute;
 		width: $subitem-button-width;
@@ -383,6 +473,19 @@ body {
 		background-color: $bg-color-warm-white;
 
 		.subitem-button-title {
+			@include vertical-align;
+		}
+	}
+
+	.payment-button {
+		position: absolute;
+		width: $subitem-button-width;
+		height: $subitem-button-height;
+		padding: 10px;
+
+		background-color: $bg-color-warm-white;
+
+		.payment-button-title {
 			@include vertical-align;
 		}
 	}
