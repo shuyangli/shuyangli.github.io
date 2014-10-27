@@ -420,7 +420,7 @@ function setupModal() {
 		// Move #modal-delete-customization to the correct position, and move its background
 		var originalPosition = $(this).offset();
 		var newLeft = itemCellSize.width;
-		var newTop = originalPosition.top >= 448 ? 448 : originalPosition.top;
+		var newTop = originalPosition.top >= 864 ? 864 : originalPosition.top;
 		$("#modal-delete-customization").css({
 			"left" : newLeft,
 			"top" : newTop,
