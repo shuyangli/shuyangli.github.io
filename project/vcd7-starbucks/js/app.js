@@ -20,33 +20,47 @@ var protoSession = {
 	}
 };
 
+var protoDrink = {
+	itemType : "drink",
+	itemSize : "",
+	itemName : "",
+	itemCustomization : [],
+	addCustomization : function (item) {
+		this.itemCustomization.push(item);
+		purchasedItemsChanged();
+	},
+	removeCustomization : function (itemIndex) {
+		this.itemCustomization.splice(itemIndex, 1);
+		purchasedItemsChanged();
+	},
+	getItemDescription : function () {
+		return this.itemSize + " " + this.itemName;
+	}
+};
+
+var protoCustomization = {
+	itemType : "customization",
+	itemName : "",
+	getItemDescription : function () {
+		return this.itemName;
+	}
+}
+
 /*
-	var newDrink = {
-		itemType : "drink",
-		itemSize : currentSession.currentDrinkSize,
-		itemName : drinkName,
-		itemCustomization : [],
-		addCustomization : function (item) {
-			this.itemCustomization.push(item);
-			purchasedItemsChanged();
-		},
-		removeCustomization : function (itemIndex) {
-			this.itemCustomization.splice(itemIndex, 1);
-			purchasedItemsChanged();
-		}
-	};
-	var newCustomization = {
-		itemType : "customization",
-		itemName : customizationName
-	};
 	var newItem = {
 		itemType : "item",
-		itemName : itemName
+		itemName : itemName,
+		getItemDescription : function () {
+			return this.itemName;
+		}
 	};
 	var newCusomPrice = {
 		itemType : "customPrice",
 		itemName : "Custom Price",
-		customItemPrice : itemPrice
+		customItemPrice : itemPrice,
+		getItemDescription : function () {
+			return this.itemName;
+		}
 	};
 */
 
@@ -118,14 +132,7 @@ function purchasedItemsChanged() {
 
 		// Calculate new total and display order list
 		var currentItemPrice = lookupPrice(currentSession.purchasedItems[i]);
-		var currentItemName = "";
-
-		// Determine item name
-		if (currentSession.purchasedItems[i].itemType == "drink") {
-			currentItemName = currentSession.purchasedItems[i].itemSize + " " + currentSession.purchasedItems[i].itemName;
-		} else {
-			currentItemName = currentSession.purchasedItems[i].itemName;
-		}
+		var currentItemName = currentSession.purchasedItems[i].getItemDescription();
 
 		newPrice += currentItemPrice;
 		addItemIntoOrderList(currentItemName, currentItemPrice, i);
@@ -134,7 +141,7 @@ function purchasedItemsChanged() {
 			// If it's a drink, we also loop through its customizations
 			for (var j = 0; j < currentSession.purchasedItems[i].itemCustomization.length; ++j) {
 				var currentCustomizationPrice = lookupPrice(currentSession.purchasedItems[i].itemCustomization[j]);
-				var currentCustomizationName = currentSession.purchasedItems[i].itemCustomization[j].itemName;
+				var currentCustomizationName = currentSession.purchasedItems[i].itemCustomization[j].getItemDescription();
 				
 				newPrice += currentCustomizationPrice;
 				addCustomizationIntoOrderList(currentCustomizationName, currentCustomizationPrice, i, j);
@@ -185,11 +192,10 @@ function lookupPrice(item) {
 }
 
 function clearCurrentSession() {
-	currentSession = jQuery.extend(true, {}, protoSession);
+	currentSession = $.extend(true, {}, protoSession);
 	resetOrderBarStatus();
 	resetOrderList();
 }
-
 
 /*
  * ===================
@@ -337,20 +343,9 @@ function setupModal() {
 			
 			// If we're adding a drink, construct the drink with size and name
 			var drinkName = $(this).find(".subitem-button-title")[0].innerHTML;
-			var newDrink = {
-				itemType : "drink",
-				itemSize : currentSession.currentDrinkSize,
-				itemName : drinkName,
-				itemCustomization : [],
-				addCustomization : function (item) {
-					this.itemCustomization.push(item);
-					purchasedItemsChanged();
-				},
-				removeCustomization : function (itemIndex) {
-					this.itemCustomization.splice(itemIndex, 1);
-					purchasedItemsChanged();
-				}
-			};
+			var newDrink = $.extend(true, {}, protoDrink);
+			newDrink.itemSize = currentSession.currentDrinkSize;
+			newDrink.itemName = drinkName;
 
 			// And add into current session
 			currentSession.addItem(newDrink);
@@ -360,10 +355,8 @@ function setupModal() {
 
 			// If we're adding a customization, construct the customization
 			var customizationName = $(this).find(".subitem-button-title")[0].innerHTML;
-			var newCustomization = {
-				itemType : "customization",
-				itemName : customizationName
-			};
+			var newCustomization = $.extend(true, {}, protoCustomization);
+			newCustomization.itemName = customizationName;
 
 			// Then add this customziation to the corresponding drink
 			currentSession.purchasedItems[currentItemIndex].addCustomization(newCustomization);
@@ -390,7 +383,7 @@ function setupModal() {
 		}
 	});
 
-	// Add customization to drinks
+	// Customize drinks
 	$(document).on('click', ".js-item-cell", function () {
 		currentItemIndex = parseInt( $(this).attr("itemIndex") );
 
@@ -405,6 +398,9 @@ function setupModal() {
 				"top" : newTop,
 				"background" : "url(img/bg-pattern.png) 0 0 repeat, linear-gradient(rgba(247, 251, 255, 0.6), rgba(247, 251, 255, 0.6)), url(img/bg-blurred.png) -" + newLeft + "px -" + newTop + "px no-repeat"
 			});
+
+			// Change #modal-customization-drink's title
+			$("#modal-customization-drink-name")[0].innerHTML = currentSession.purchasedItems[currentItemIndex].getItemDescription();
 
 			// Show drink customization
 			$("#modal-overlay").show();
@@ -427,10 +423,12 @@ function setupModal() {
 			"background" : "url(img/bg-pattern.png) 0 0 repeat, linear-gradient(rgba(247, 251, 255, 0.6), rgba(247, 251, 255, 0.6)), url(img/bg-blurred.png) -" + newLeft + "px -" + newTop + "px no-repeat"
 		});
 
+		// Change #modal-delete-customization's title
+		$("#modal-delete-customization-name")[0].innerHTML = currentSession.purchasedItems[currentItemIndex].itemCustomization[currentCustomizationIndex].getItemDescription();
+
 		// Show drink customization
 		$("#modal-overlay").show();
 		$("#modal-delete-customization").show();
-
 	});
 
 	resetModal();
