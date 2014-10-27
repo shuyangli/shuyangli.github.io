@@ -46,23 +46,22 @@ var protoCustomization = {
 	}
 }
 
-/*
-	var newItem = {
-		itemType : "item",
-		itemName : itemName,
-		getItemDescription : function () {
-			return this.itemName;
-		}
-	};
-	var newCusomPrice = {
-		itemType : "customPrice",
-		itemName : "Custom Price",
-		customItemPrice : itemPrice,
-		getItemDescription : function () {
-			return this.itemName;
-		}
-	};
-*/
+var protoItem = {
+	itemType : "item",
+	itemName : "",
+	getItemDescription : function () {
+		return this.itemName;
+	}
+}
+
+var protoCustomPrice = {
+	itemType : "customPrice",
+	itemName : "Custom Price",
+	customItemPrice : 0,
+	getItemDescription : function () {
+		return this.itemName;
+	}
+}
 
 /*
  * =======================
