@@ -394,7 +394,7 @@ function setupModal() {
 			// Move #modal-customization-drink to the correct position, and move its background
 			var originalPosition = $(this).offset();
 			var newLeft = itemCellSize.width;
-			var newTop = originalPosition.top;
+			var newTop = originalPosition.top >= 448 ? 448 : originalPosition.top;
 			$("#modal-customization-drink").css({
 				"left" : newLeft,
 				"top" : newTop,
