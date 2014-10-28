@@ -4,6 +4,8 @@
  * ===================
  */
 
+var dummyPrice = 0.33;
+
 var protoSession = {
 	currentDrinkSize : "",
 	purchasedItems : [],
@@ -35,6 +37,13 @@ var protoDrink = {
 	},
 	getItemDescription : function () {
 		return this.itemSize + " " + this.itemName;
+	},
+	getPrice : function () {
+		if (itemPriceData[this.itemType][this.itemSize].hasOwnProperty(this.itemName)) {
+			return itemPriceData[this.itemType][this.itemSize][this.itemName];
+		} else {
+			return dummyPrice;
+		}
 	}
 };
 
@@ -43,16 +52,30 @@ var protoCustomization = {
 	itemName : "",
 	getItemDescription : function () {
 		return this.itemName;
+	},
+	getPrice : function () {
+		if (itemPriceData[this.itemType].hasOwnProperty(this.itemName)) {
+			return itemPriceData[this.itemType][this.itemName];
+		} else {
+			return dummyPrice;
+		}
 	}
-}
+};
 
 var protoItem = {
 	itemType : "item",
 	itemName : "",
 	getItemDescription : function () {
 		return this.itemName;
+	},
+	getPrice : function () {
+		if (itemPriceData[this.itemType].hasOwnProperty(this.itemName)) {
+			return itemPriceData[this.itemType][this.itemName];
+		} else {
+			return dummyPrice;
+		}
 	}
-}
+};
 
 var protoCustomPrice = {
 	itemType : "customPrice",
@@ -60,14 +83,17 @@ var protoCustomPrice = {
 	customItemPrice : 0,
 	getItemDescription : function () {
 		return this.itemName;
+	},
+	getPrice : function () {
+		return this.customItemPrice;
 	}
-}
+};
 
 /*
  * =======================
  *  Variable Declarations
  * =======================
- */ 
+ */
 
 // Current session & last session
 var currentSession = {};
@@ -133,7 +159,7 @@ function purchasedItemsChanged() {
 	for (var i = 0; i < currentSession.purchasedItems.length; ++i) {
 
 		// Calculate new total and display order list
-		var currentItemPrice = lookupPrice(currentSession.purchasedItems[i]);
+		var currentItemPrice = currentSession.purchasedItems[i].getPrice();
 		var currentItemName = currentSession.purchasedItems[i].getItemDescription();
 
 		newPrice += currentItemPrice;
@@ -142,9 +168,9 @@ function purchasedItemsChanged() {
 		if (currentSession.purchasedItems[i].itemType == "drink") {
 			// If it's a drink, we also loop through its customizations
 			for (var j = 0; j < currentSession.purchasedItems[i].itemCustomization.length; ++j) {
-				var currentCustomizationPrice = lookupPrice(currentSession.purchasedItems[i].itemCustomization[j]);
+				var currentCustomizationPrice = currentSession.purchasedItems[i].itemCustomization[j].getPrice();
 				var currentCustomizationName = currentSession.purchasedItems[i].itemCustomization[j].getItemDescription();
-				
+
 				newPrice += currentCustomizationPrice;
 				addCustomizationIntoOrderList(currentCustomizationName, currentCustomizationPrice, i, j);
 			}
@@ -156,41 +182,6 @@ function purchasedItemsChanged() {
 	currentSession.totalPrice = currentSession.netPrice + currentSession.taxPrice;
 
 	displayChargePrice();
-}
-
-function lookupPrice(item) {
-
-	// Look up price in loaded JSON object
-	if (item.itemType == "drink") {
-
-		if (itemPriceData[item.itemType][item.itemSize].hasOwnProperty(item.itemName)) {
-			return itemPriceData[item.itemType][item.itemSize][item.itemName];
-		} else {
-			return 0.33;
-		}
-
-	} else if (item.itemType == "customization") {
-
-		if (itemPriceData[item.itemType].hasOwnProperty(item.itemName)) {
-			return itemPriceData[item.itemType][item.itemName];
-		} else {
-			return 0.33;
-		}
-
-	} else if (item.itemType == "item") {
-
-		if (itemPriceData[item.itemType].hasOwnProperty(item.itemName)) {
-			return itemPriceData[item.itemType][item.itemName];
-		} else {
-			return 0.33;
-		}
-
-	} else if (item.itemType == "customPrice") {
-		return item.customItemPrice;
-	}
-
-	// DRAGON: Fake implementation
-	return 0.33;
 }
 
 function clearCurrentSession() {
@@ -413,7 +404,7 @@ function setupModal() {
 		if (currentSession.purchasedItems.length > 0) {
 			$("#modal-overlay").show();
 			$("#modal-payment-selection").show();
-			configurePaymentModal();	
+			configurePaymentModal();
 		}
 	});
 
@@ -560,7 +551,7 @@ function setupModal() {
 	$(".subitem-button").on('click', function () {
 
 		if ($(this).attr("value") == "drink") {
-			
+
 			// If we're adding a drink, construct the drink with size and name
 			var drinkName = $(this).find(".subitem-button-title").text();
 			var newDrink = $.extend(true, {}, protoDrink);
