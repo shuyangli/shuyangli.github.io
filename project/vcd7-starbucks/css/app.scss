@@ -464,6 +464,105 @@ body {
 		}
 	}
 
+	#modal-payment-custom-cash {
+		width: $grid-size-half * 12;
+		height: $grid-size-half * 17;
+		z-index: $z-idx-modal + 10;
+
+		background:
+			url(../img/bg-pattern.png) 0 0 repeat,
+			// HACK!
+			linear-gradient(rgba(247, 251, 255, 0.6), rgba(247, 251, 255, 0.6)),
+			url(../img/bg-blurred.png) 0 -224px no-repeat;
+		background-blend-mode: multiply, normal, normal;
+
+		position: absolute;
+		left: 0;
+		bottom: 0;
+
+		#payment-prompt-custom-cash {
+			position: absolute;
+			width: $subitem-button-width * 2;
+			height: $subitem-button-height;
+			padding: 10px;
+
+			background-color: $bg-color-cool-white;
+
+			top: $grid-size-full;
+			left: $grid-size-half;
+		}
+
+		$numpad-button-width: $grid-size-half * 3 + $grid-size-half / 3;
+		$numpad-button-height: $grid-size-full;
+
+		.numpad-button {
+			position: absolute;
+			width: $numpad-button-width;
+			height: $numpad-button-height;
+			padding: 10px;
+
+			background-color: $bg-color-warm-white;
+		}
+
+		#custom-cash-button-1 {
+			top: $grid-size-half * 5;
+			left: $grid-size-half;
+		}
+		#custom-cash-button-2 {
+			top: $grid-size-half * 5;
+			left: $grid-size-half + $numpad-button-width;
+		}
+		#custom-cash-button-3 {
+			top: $grid-size-half * 5;
+			left: $grid-size-half + $numpad-button-width * 2;
+		}
+		#custom-cash-button-4 {
+			top: $grid-size-half * 5 + $numpad-button-height;
+			left: $grid-size-half;
+		}
+		#custom-cash-button-5 {
+			top: $grid-size-half * 5 + $numpad-button-height;
+			left: $grid-size-half + $numpad-button-width;
+		}
+		#custom-cash-button-6 {
+			top: $grid-size-half * 5 + $numpad-button-height;
+			left: $grid-size-half + $numpad-button-width * 2;
+		}
+		#custom-cash-button-7 {
+			top: $grid-size-half * 5 + $numpad-button-height * 2;
+			left: $grid-size-half;
+		}
+		#custom-cash-button-8 {
+			top: $grid-size-half * 5 + $numpad-button-height * 2;
+			left: $grid-size-half + $numpad-button-width;
+		}
+		#custom-cash-button-9 {
+			top: $grid-size-half * 5 + $numpad-button-height * 2;
+			left: $grid-size-half + $numpad-button-width * 2;
+		}
+		#custom-cash-button-backspace {
+			top: $grid-size-half * 5 + $numpad-button-height * 3;
+			left: $grid-size-half;
+		}
+		#custom-cash-button-0 {
+			top: $grid-size-half * 5 + $numpad-button-height * 3;
+			left: $grid-size-half + $numpad-button-width;
+		}
+		#custom-cash-button-00 {
+			top: $grid-size-half * 5 + $numpad-button-height * 3;
+			left: $grid-size-half + $numpad-button-width * 2;
+		}
+
+		#payment-custom-back-button {
+			bottom: $grid-size-half;
+			left: $grid-size-half;
+		}
+		#payment-custom-done-button {
+			bottom: $grid-size-half;
+			left: $grid-size-half + $subitem-button-width;
+		}
+	}
+
 	.subitem-button {
 		position: absolute;
 		width: $subitem-button-width;

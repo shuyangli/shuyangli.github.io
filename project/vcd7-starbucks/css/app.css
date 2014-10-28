@@ -281,6 +281,71 @@ body {
     #modal-overlay #modal-payment-wait #payment-wait-done-button {
       top: 256px;
       left: 192px; }
+  #modal-overlay #modal-payment-custom-cash {
+    width: 384px;
+    height: 544px;
+    z-index: 210;
+    background: url(../img/bg-pattern.png) 0 0 repeat, linear-gradient(rgba(247, 251, 255, 0.6), rgba(247, 251, 255, 0.6)), url(../img/bg-blurred.png) 0 -224px no-repeat;
+    background-blend-mode: multiply, normal, normal;
+    position: absolute;
+    left: 0;
+    bottom: 0; }
+    #modal-overlay #modal-payment-custom-cash #payment-prompt-custom-cash {
+      position: absolute;
+      width: 320px;
+      height: 64px;
+      padding: 10px;
+      background-color: #f7fbff;
+      top: 64px;
+      left: 32px; }
+    #modal-overlay #modal-payment-custom-cash .numpad-button {
+      position: absolute;
+      width: 106.66667px;
+      height: 64px;
+      padding: 10px;
+      background-color: #f9faf7; }
+    #modal-overlay #modal-payment-custom-cash #custom-cash-button-1 {
+      top: 160px;
+      left: 32px; }
+    #modal-overlay #modal-payment-custom-cash #custom-cash-button-2 {
+      top: 160px;
+      left: 138.66667px; }
+    #modal-overlay #modal-payment-custom-cash #custom-cash-button-3 {
+      top: 160px;
+      left: 245.33333px; }
+    #modal-overlay #modal-payment-custom-cash #custom-cash-button-4 {
+      top: 224px;
+      left: 32px; }
+    #modal-overlay #modal-payment-custom-cash #custom-cash-button-5 {
+      top: 224px;
+      left: 138.66667px; }
+    #modal-overlay #modal-payment-custom-cash #custom-cash-button-6 {
+      top: 224px;
+      left: 245.33333px; }
+    #modal-overlay #modal-payment-custom-cash #custom-cash-button-7 {
+      top: 288px;
+      left: 32px; }
+    #modal-overlay #modal-payment-custom-cash #custom-cash-button-8 {
+      top: 288px;
+      left: 138.66667px; }
+    #modal-overlay #modal-payment-custom-cash #custom-cash-button-9 {
+      top: 288px;
+      left: 245.33333px; }
+    #modal-overlay #modal-payment-custom-cash #custom-cash-button-backspace {
+      top: 352px;
+      left: 32px; }
+    #modal-overlay #modal-payment-custom-cash #custom-cash-button-0 {
+      top: 352px;
+      left: 138.66667px; }
+    #modal-overlay #modal-payment-custom-cash #custom-cash-button-00 {
+      top: 352px;
+      left: 245.33333px; }
+    #modal-overlay #modal-payment-custom-cash #payment-custom-back-button {
+      bottom: 32px;
+      left: 32px; }
+    #modal-overlay #modal-payment-custom-cash #payment-custom-done-button {
+      bottom: 32px;
+      left: 192px; }
   #modal-overlay .subitem-button {
     position: absolute;
     width: 160px;
