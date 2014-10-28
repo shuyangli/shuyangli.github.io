@@ -119,6 +119,14 @@ body {
 		@include bg-linear-gradient(rgba(152, 152, 152, 0.3), rgba(25, 25, 25, 0.3));
 	}
 
+	#modal-overlay-blocking {
+		width: $screen-width;
+		max-width: $screen-width;
+		height: $screen-height;
+		z-index: $z-idx-modal + 1;
+		position: absolute;
+	}
+
 	.modal-title {
 		height: $grid-size-full;
 		margin: 0 $grid-size-half;

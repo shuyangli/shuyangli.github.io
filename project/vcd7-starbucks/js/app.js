@@ -442,6 +442,27 @@ function setupModal() {
 		$("#modal-payment-selection").hide();
 	});
 
+	// Bind #payment-prompt to fake waiting
+	$("#payment-prompt").on('click', function() {
+		$("#modal-overlay-blocking").show();
+		$("#payment-prompt").find(".payment-button-title").text("Authorizing...")
+			.queue(function() {
+				$("#payment-wait-back-button").hide().delay(1500)
+				.queue(function() {
+					$("#payment-prompt").find(".payment-button-title").text("Authorization successful.");
+
+					// Copy over last session
+					lastSession = $.extend(true, {}, currentSession);
+
+					clearCurrentSession();
+					$("#modal-overlay-blocking").hide().delay(1500)
+					.queue(function() {
+						resetModal();
+					});
+				});
+			});
+	});
+
 	// For cash, do special setup
 	$("#payment-cash-1").on('click', function() {
 
@@ -510,6 +531,8 @@ function setupModal() {
 	// Bind "done" button
 	$("#payment-wait-done-button").on('click', function () {
 		customNumPadValue = "0";
+		// Copy over last session
+		lastSession = $.extend(true, {}, currentSession);
 		clearCurrentSession();
 		resetModal();
 	});
@@ -523,6 +546,9 @@ function setupModal() {
 		// Only dismiss if we have enough money paid
 		if (changeAmount >= 0) {
 			customNumPadValue = "0";
+
+			// Copy over last session
+			lastSession = $.extend(true, {}, currentSession);
 			clearCurrentSession();
 			resetModal();
 		}
