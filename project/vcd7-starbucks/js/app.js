@@ -423,6 +423,7 @@ function setupModal() {
 		$(".modal-payment-amount").text("$" + myToFixed(currentSession.netPrice, 2));
 		$("#payment-prompt").find(".payment-button-title").text("Swipe card on the reader...");
 		$("#modal-payment-wait-method").text("ND ID / Gift Card");
+		$("#payment-wait-back-button").show();
 		$("#payment-wait-done-button").hide();
 		$("#modal-payment-wait").show();
 		$("#modal-payment-selection").hide();
@@ -430,6 +431,7 @@ function setupModal() {
 	$("#payment-credit-debit, #payment-starbucks-card").on('click', function() {
 		$("#payment-prompt").find(".payment-button-title").text("Swipe card on the reader...");
 		$("#modal-payment-wait-method").text($(this).text());
+		$("#payment-wait-back-button").show();
 		$("#payment-wait-done-button").hide();
 		$("#modal-payment-wait").show();
 		$("#modal-payment-selection").hide();
@@ -437,6 +439,7 @@ function setupModal() {
 	$("#payment-applepay").on('click', function() {
 		$("#payment-prompt").find(".payment-button-title").text("Waiting for NFC payment...");
 		$("#modal-payment-wait-method").text($(this).text());
+		$("#payment-wait-back-button").show();
 		$("#payment-wait-done-button").hide();
 		$("#modal-payment-wait").show();
 		$("#modal-payment-selection").hide();
@@ -445,22 +448,21 @@ function setupModal() {
 	// Bind #payment-prompt to fake waiting
 	$("#payment-prompt").on('click', function() {
 		$("#modal-overlay-blocking").show();
-		$("#payment-prompt").find(".payment-button-title").text("Authorizing...")
-			.queue(function() {
-				$("#payment-wait-back-button").hide().delay(1500)
-				.queue(function() {
-					$("#payment-prompt").find(".payment-button-title").text("Authorization successful.");
+		$("#payment-prompt").find(".payment-button-title").text("Authorizing...").queue(function() {
+			$("#payment-wait-back-button").hide().delay(1500).queue(function() {
+				$("#payment-prompt").find(".payment-button-title").text("Authorization successful.");
 
-					// Copy over last session
-					lastSession = $.extend(true, {}, currentSession);
-
-					clearCurrentSession();
-					$("#modal-overlay-blocking").hide().delay(1500)
-					.queue(function() {
-						resetModal();
-					});
+				// Copy over last session
+				lastSession = $.extend(true, {}, currentSession);
+				clearCurrentSession();
+				$("#modal-overlay-blocking").hide().delay(1500).queue(function() {
+					resetModal();
+					$(this).dequeue();
 				});
+				$(this).dequeue();
 			});
+			$(this).dequeue();
+		});
 	});
 
 	// For cash, do special setup
