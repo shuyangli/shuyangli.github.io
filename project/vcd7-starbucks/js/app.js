@@ -99,6 +99,9 @@ var customizationCellSize = {
 	height : 32
 };
 
+// For custom number pads
+var customNumPadValue = "0";
+
 /*
  * ======================
  *  Model Helper Methods
@@ -355,6 +358,17 @@ function configurePaymentModal() {
 	$("#payment-cash-2-amount").text("$" + myToFixed(cashAmountTwo(currentSession.totalPrice), 2));
 }
 
+// Display custom amount of cash
+function displayCustomCashAmount() {
+
+	var cashAmount = parseInt(customNumPadValue);
+	cashAmount = cashAmount / 100.0;
+
+	var changeAmount = cashAmount - currentSession.totalPrice;
+	$("#payment-prompt-custom-cash-amount").text(myToFixed(cashAmount, 2));
+	$("#payment-prompt-custom-change-amount").text(myToFixed(changeAmount, 2));
+}
+
 // Setup modal bindings
 function setupModal() {
 
@@ -435,7 +449,7 @@ function setupModal() {
 		var changeAmount = cashAmount - currentSession.totalPrice;
 
 		$("#payment-prompt").find(".payment-button-title").html("Cash amount: $" + myToFixed(cashAmount, 2) + "<br />Change amount: $" + myToFixed(changeAmount, 2));
-		$("#modal-payment-wait-method").text($(this).text());
+		$("#modal-payment-wait-method").text("cash");
 		$("#payment-wait-done-button").show();
 		$("#modal-payment-wait").show();
 		$("#modal-payment-selection").hide();
@@ -446,24 +460,39 @@ function setupModal() {
 		var changeAmount = cashAmount - currentSession.totalPrice;
 
 		$("#payment-prompt").find(".payment-button-title").html("Cash amount: $" + myToFixed(cashAmount, 2) + "<br />Change amount: $" + myToFixed(changeAmount, 2));
-		$("#modal-payment-wait-method").text($(this).text());
+		$("#modal-payment-wait-method").text("cash");
 		$("#payment-wait-done-button").show();
 		$("#modal-payment-wait").show();
 		$("#modal-payment-selection").hide();
 	});
 
+	// For custom amount of cash, display the special number pad
 	$("#payment-custom-cash").on('click', function() {
 
-		// DRAGON: needs special setup for number pad!
-
-		var cashAmount = cashAmountTwo(currentSession.totalPrice);
-		var changeAmount = cashAmount - currentSession.totalPrice;
+		customNumPadValue = "0";
 
 		$("#payment-prompt").find(".payment-button-title").text("");
-		$("#modal-payment-wait-method").text("");
-		$("#payment-wait-done-button").show();
-		$("#modal-payment-wait").show();
+		displayCustomCashAmount();
+		$("#modal-payment-custom-cash").show();
 		$("#modal-payment-selection").hide();
+	});
+
+	// Bind the number keys for custom cash
+	$(".js-custom-cash-numpad-button").on('click', function () {
+		// Append value to customNumPadValue
+		customNumPadValue = customNumPadValue + $(this).text();
+		displayCustomCashAmount();
+	});
+
+	// Bind the backspace key for custom cash
+	$("#custom-cash-button-backspace").on('click', function () {
+		if (customNumPadValue.length >= 1) {
+			customNumPadValue = customNumPadValue.substr(0, customNumPadValue.length - 1);
+		}
+		if (customNumPadValue.length <= 0) {
+			customNumPadValue = "0";
+		}
+		displayCustomCashAmount();
 	});
 
 	// Bind "back" button
@@ -472,11 +501,31 @@ function setupModal() {
 		$("#modal-payment-selection").show();
 		$("#modal-payment-wait").hide();
 	});
+	$("#payment-custom-back-button").on('click', function () {
+		configurePaymentModal();
+		$("#modal-payment-selection").show();
+		$("#modal-payment-custom-cash").hide();
+	});
 
 	// Bind "done" button
 	$("#payment-wait-done-button").on('click', function () {
+		customNumPadValue = "0";
 		clearCurrentSession();
 		resetModal();
+	});
+	$("#payment-custom-done-button").on('click', function () {
+
+		// First calculate the current change amount
+		var cashAmount = parseInt(customNumPadValue);
+		cashAmount = cashAmount / 100.0;
+		var changeAmount = cashAmount - currentSession.totalPrice;
+
+		// Only dismiss if we have enough money paid
+		if (changeAmount >= 0) {
+			customNumPadValue = "0";
+			clearCurrentSession();
+			resetModal();
+		}
 	});
 
 	// Main function to dispatch on item change
@@ -551,7 +600,7 @@ function setupModal() {
 		}
 	});
 
-	// Remove customization
+	// Delete customization
 	$(document).on('click', ".js-customization-cell", function() {
 		currentItemIndex = parseInt( $(this).attr("itemIndex") );
 		currentCustomizationIndex = parseInt( $(this).attr("customizationIndex") );
