@@ -487,7 +487,7 @@ function setupModal() {
 	// Bind the backspace key for custom cash
 	$("#custom-cash-button-backspace").on('click', function () {
 		if (customNumPadValue.length >= 1) {
-			customNumPadValue = customNumPadValue.substr(0, customNumPadValue.length - 1);
+			customNumPadValue = customNumPadValue.slice(0, -1);
 		}
 		if (customNumPadValue.length <= 0) {
 			customNumPadValue = "0";
