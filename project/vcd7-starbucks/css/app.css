@@ -193,6 +193,69 @@ body {
     #modal-overlay #modal-drink-trenta #subitem-refresher-trenta {
       top: 192px;
       left: 192px; }
+  #modal-overlay #modal-custom-price {
+    width: 384px;
+    height: 512px;
+    z-index: 210;
+    background: url(../img/bg-pattern.png) 0 0 repeat, linear-gradient(rgba(247, 251, 255, 0.6), rgba(247, 251, 255, 0.6)), url(../img/bg-blurred.png) -512px -256px no-repeat;
+    background-blend-mode: multiply, normal, normal;
+    position: absolute;
+    left: 512px;
+    bottom: 0; }
+    #modal-overlay #modal-custom-price #item-prompt-custom-cash {
+      position: absolute;
+      width: 320px;
+      height: 64px;
+      padding: 10px;
+      float: right;
+      background-color: #f7fbff;
+      top: 64px;
+      left: 32px; }
+    #modal-overlay #modal-custom-price .numpad-button {
+      position: absolute;
+      width: 106.66667px;
+      height: 64px;
+      padding: 10px;
+      background-color: #f9faf7; }
+    #modal-overlay #modal-custom-price #custom-price-button-1 {
+      top: 128px;
+      left: 32px; }
+    #modal-overlay #modal-custom-price #custom-price-button-2 {
+      top: 128px;
+      left: 138.66667px; }
+    #modal-overlay #modal-custom-price #custom-price-button-3 {
+      top: 128px;
+      left: 245.33333px; }
+    #modal-overlay #modal-custom-price #custom-price-button-4 {
+      top: 192px;
+      left: 32px; }
+    #modal-overlay #modal-custom-price #custom-price-button-5 {
+      top: 192px;
+      left: 138.66667px; }
+    #modal-overlay #modal-custom-price #custom-price-button-6 {
+      top: 192px;
+      left: 245.33333px; }
+    #modal-overlay #modal-custom-price #custom-price-button-7 {
+      top: 256px;
+      left: 32px; }
+    #modal-overlay #modal-custom-price #custom-price-button-8 {
+      top: 256px;
+      left: 138.66667px; }
+    #modal-overlay #modal-custom-price #custom-price-button-9 {
+      top: 256px;
+      left: 245.33333px; }
+    #modal-overlay #modal-custom-price #custom-price-button-backspace {
+      top: 320px;
+      left: 32px; }
+    #modal-overlay #modal-custom-price #custom-price-button-0 {
+      top: 320px;
+      left: 138.66667px; }
+    #modal-overlay #modal-custom-price #custom-price-button-00 {
+      top: 320px;
+      left: 245.33333px; }
+    #modal-overlay #modal-custom-price #item-custom-done-button {
+      bottom: 32px;
+      left: 192px; }
   #modal-overlay #modal-customization-drink {
     width: 384px;
     height: 320px;

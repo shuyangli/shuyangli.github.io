@@ -258,7 +258,7 @@ body {
 		position: absolute;
 		left: $grid-size-half * 7;
 		top: $grid-size-half;
-		
+
 		#subitem-solo-esp {
 			top: $grid-size-full;
 			left: $grid-size-half;
@@ -296,7 +296,7 @@ body {
 		position: absolute;
 		left: $grid-size-half * 11;
 		top: $grid-size-half * 10;
-		
+
 		#subitem-frap-trenta {
 			top: $grid-size-full;
 			left: $grid-size-half;
@@ -323,6 +323,100 @@ body {
 		}
 	}
 
+	#modal-custom-price {
+		width: $grid-size-half * 12;
+		height: $grid-size-half * 16;
+		z-index: $z-idx-modal + 10;
+
+		background:
+			url(../img/bg-pattern.png) 0 0 repeat,
+			// HACK!
+			linear-gradient(rgba(247, 251, 255, 0.6), rgba(247, 251, 255, 0.6)),
+			url(../img/bg-blurred.png) -512px -256px no-repeat;
+		background-blend-mode: multiply, normal, normal;
+
+		position: absolute;
+		left: $grid-size-full * 8;
+		bottom: 0;
+
+		#item-prompt-custom-cash {
+			position: absolute;
+			width: $subitem-button-width * 2;
+			height: $subitem-button-height;
+			padding: 10px;
+
+			background-color: $bg-color-cool-white;
+
+			top: $grid-size-full;
+			left: $grid-size-half;
+		}
+
+		$numpad-button-width: $grid-size-half * 3 + $grid-size-half / 3;
+		$numpad-button-height: $grid-size-full;
+
+		.numpad-button {
+			position: absolute;
+			width: $numpad-button-width;
+			height: $numpad-button-height;
+			padding: 10px;
+
+			background-color: $bg-color-warm-white;
+		}
+
+		#custom-price-button-1 {
+			top: $grid-size-half * 4;
+			left: $grid-size-half;
+		}
+		#custom-price-button-2 {
+			top: $grid-size-half * 4;
+			left: $grid-size-half + $numpad-button-width;
+		}
+		#custom-price-button-3 {
+			top: $grid-size-half * 4;
+			left: $grid-size-half + $numpad-button-width * 2;
+		}
+		#custom-price-button-4 {
+			top: $grid-size-half * 4 + $numpad-button-height;
+			left: $grid-size-half;
+		}
+		#custom-price-button-5 {
+			top: $grid-size-half * 4 + $numpad-button-height;
+			left: $grid-size-half + $numpad-button-width;
+		}
+		#custom-price-button-6 {
+			top: $grid-size-half * 4 + $numpad-button-height;
+			left: $grid-size-half + $numpad-button-width * 2;
+		}
+		#custom-price-button-7 {
+			top: $grid-size-half * 4 + $numpad-button-height * 2;
+			left: $grid-size-half;
+		}
+		#custom-price-button-8 {
+			top: $grid-size-half * 4 + $numpad-button-height * 2;
+			left: $grid-size-half + $numpad-button-width;
+		}
+		#custom-price-button-9 {
+			top: $grid-size-half * 4 + $numpad-button-height * 2;
+			left: $grid-size-half + $numpad-button-width * 2;
+		}
+		#custom-price-button-backspace {
+			top: $grid-size-half * 4 + $numpad-button-height * 3;
+			left: $grid-size-half;
+		}
+		#custom-price-button-0 {
+			top: $grid-size-half * 4 + $numpad-button-height * 3;
+			left: $grid-size-half + $numpad-button-width;
+		}
+		#custom-price-button-00 {
+			top: $grid-size-half * 4 + $numpad-button-height * 3;
+			left: $grid-size-half + $numpad-button-width * 2;
+		}
+		#item-custom-done-button {
+			bottom: $grid-size-half;
+			left: $grid-size-half + $subitem-button-width;
+		}
+	}
+
 	#modal-customization-drink {
 		width: $grid-size-half * 12;
 		height: $grid-size-half * 10;
@@ -338,7 +432,7 @@ body {
 		position: absolute;
 		left: $grid-size-half * 11;
 		top: $grid-size-half * 10;
-		
+
 		#customization-syrup {
 			top: $grid-size-full;
 			left: $grid-size-half;
@@ -377,7 +471,7 @@ body {
 		position: absolute;
 		left: $grid-size-half * 11;
 		top: $grid-size-half * 10;
-		
+
 		#customization-delete {
 			top: $grid-size-full;
 			left: $grid-size-half;
