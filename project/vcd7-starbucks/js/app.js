@@ -315,7 +315,7 @@ function removeAllItemsFromOrderList() {
 // Reset order list
 function resetOrderList() {
 	removeAllItemsFromOrderList();
-	$("#no-item-prompt").show();
+	$("#no-item-prompt").fadeIn(200);
 }
 
 // Insert into order list
@@ -373,8 +373,8 @@ function setupModal() {
 	// Open drink dialog
 	$("#short-button, #tall-button, #grande-button, #venti-button").on('click', function () {
 
-		$("#modal-overlay").show();
-		$("#modal-drink").show();
+		$("#modal-overlay").fadeIn(200);
+		$("#modal-drink").fadeIn(200);
 
 		// Change drink modal title
 		var size = $(this).find(".item-button-label").text();
@@ -385,8 +385,8 @@ function setupModal() {
 	});
 	$("#trenta-button").on('click', function () {
 
-		$("#modal-overlay").show();
-		$("#modal-drink-trenta").show();
+		$("#modal-overlay").fadeIn(200);
+		$("#modal-drink-trenta").fadeIn(200);
 
 		// Change session selected drink size
 		var size = "Trenta"
@@ -394,8 +394,8 @@ function setupModal() {
 	});
 	$("#espresso-button").on('click', function () {
 
-		$("#modal-overlay").show();
-		$("#modal-drink-esp").show();
+		$("#modal-overlay").fadeIn(200);
+		$("#modal-drink-esp").fadeIn(200);
 
 		// Change session selected drink size
 		var size = "Espresso"
@@ -406,8 +406,8 @@ function setupModal() {
 	$("#charge-button").on('click', function () {
 
 		if (currentSession.purchasedItems.length > 0) {
-			$("#modal-overlay").show();
-			$("#modal-payment-selection").show();
+			$("#modal-overlay").fadeIn(200);
+			$("#modal-payment-selection").fadeIn(200);
 			configurePaymentModal();
 		}
 	});
@@ -420,37 +420,37 @@ function setupModal() {
 		$("#modal-payment-wait-method").text("ND ID / Gift Card");
 		$("#payment-wait-back-button").show();
 		$("#payment-wait-done-button").hide();
-		$("#modal-payment-wait").show();
-		$("#modal-payment-selection").hide();
+		$("#modal-payment-wait").fadeIn(200);
+		$("#modal-payment-selection").fadeOut(200);
 	});
 	$("#payment-credit-debit, #payment-starbucks-card").on('click', function() {
 		$("#payment-prompt").find(".payment-button-title").text("Swipe card on the reader...");
 		$("#modal-payment-wait-method").text($(this).text());
 		$("#payment-wait-back-button").show();
 		$("#payment-wait-done-button").hide();
-		$("#modal-payment-wait").show();
-		$("#modal-payment-selection").hide();
+		$("#modal-payment-wait").fadeIn(200);
+		$("#modal-payment-selection").fadeOut(200);
 	});
 	$("#payment-applepay").on('click', function() {
 		$("#payment-prompt").find(".payment-button-title").text("Waiting for NFC payment...");
 		$("#modal-payment-wait-method").text($(this).text());
 		$("#payment-wait-back-button").show();
 		$("#payment-wait-done-button").hide();
-		$("#modal-payment-wait").show();
-		$("#modal-payment-selection").hide();
+		$("#modal-payment-wait").fadeIn(200);
+		$("#modal-payment-selection").fadeOut(200);
 	});
 
 	// Bind #payment-prompt to fake waiting
 	$("#payment-prompt").on('click', function() {
 		$("#modal-overlay-blocking").show();
 		$("#payment-prompt").find(".payment-button-title").text("Authorizing...").queue(function() {
-			$("#payment-wait-back-button").hide().delay(1500).queue(function() {
+			$("#payment-wait-back-button").fadeOut(200).delay(1500).queue(function() {
 				$("#payment-prompt").find(".payment-button-title").text("Authorization successful.");
 
 				// Copy over last session
 				lastSession = $.extend(true, {}, currentSession);
 				clearCurrentSession();
-				$("#modal-overlay-blocking").hide().delay(1500).queue(function() {
+				$("#modal-overlay-blocking").fadeOut(200).delay(1500).queue(function() {
 					resetModal();
 					$(this).dequeue();
 				});
@@ -469,8 +469,8 @@ function setupModal() {
 		$("#payment-prompt").find(".payment-button-title").html("Cash amount: $" + myToFixed(cashAmount, 2) + "<br />Change amount: $" + myToFixed(changeAmount, 2));
 		$("#modal-payment-wait-method").text("cash");
 		$("#payment-wait-done-button").show();
-		$("#modal-payment-wait").show();
-		$("#modal-payment-selection").hide();
+		$("#modal-payment-wait").fadeIn(200);
+		$("#modal-payment-selection").fadeOut(200);
 	});
 	$("#payment-cash-2").on('click', function() {
 
@@ -480,8 +480,8 @@ function setupModal() {
 		$("#payment-prompt").find(".payment-button-title").html("Cash amount: $" + myToFixed(cashAmount, 2) + "<br />Change amount: $" + myToFixed(changeAmount, 2));
 		$("#modal-payment-wait-method").text("cash");
 		$("#payment-wait-done-button").show();
-		$("#modal-payment-wait").show();
-		$("#modal-payment-selection").hide();
+		$("#modal-payment-wait").fadeIn(200);
+		$("#modal-payment-selection").fadeOut(200);
 	});
 
 	// For custom amount of cash, display the special number pad
@@ -491,8 +491,8 @@ function setupModal() {
 
 		$("#payment-prompt").find(".payment-button-title").text("");
 		displayCustomCashAmount();
-		$("#modal-payment-custom-cash").show();
-		$("#modal-payment-selection").hide();
+		$("#modal-payment-custom-cash").fadeIn(200);
+		$("#modal-payment-selection").fadeOut(200);
 	});
 
 	// Bind the number keys for custom cash
@@ -516,13 +516,13 @@ function setupModal() {
 	// Bind "back" button
 	$("#payment-wait-back-button").on('click', function () {
 		configurePaymentModal();
-		$("#modal-payment-selection").show();
-		$("#modal-payment-wait").hide();
+		$("#modal-payment-selection").fadeIn(200);
+		$("#modal-payment-wait").fadeOut(200);
 	});
 	$("#payment-custom-back-button").on('click', function () {
 		configurePaymentModal();
-		$("#modal-payment-selection").show();
-		$("#modal-payment-custom-cash").hide();
+		$("#modal-payment-selection").fadeIn(200);
+		$("#modal-payment-custom-cash").fadeOut(200);
 	});
 
 	// Bind "done" button
@@ -618,8 +618,8 @@ function setupModal() {
 			$("#modal-customization-drink-name").text(currentSession.purchasedItems[currentItemIndex].getItemDescription());
 
 			// Show drink customization
-			$("#modal-overlay").show();
-			$("#modal-customization-drink").show();
+			$("#modal-overlay").fadeIn(200);
+			$("#modal-customization-drink").fadeIn(200);
 		}
 	});
 
@@ -642,8 +642,8 @@ function setupModal() {
 		$("#modal-delete-customization-name").text(currentSession.purchasedItems[currentItemIndex].itemCustomization[currentCustomizationIndex].getItemDescription());
 
 		// Show drink customization
-		$("#modal-overlay").show();
-		$("#modal-delete-customization").show();
+		$("#modal-overlay").fadeIn(200);
+		$("#modal-delete-customization").fadeIn(200);
 	});
 
 	resetModal();
@@ -652,7 +652,7 @@ function setupModal() {
 // Reset modal status
 function resetModal() {
 	$("#modal-overlay").children().hide();
-	$("#modal-overlay").hide();
+	$("#modal-overlay").fadeOut(200);
 	$("#modal-overlay-background").show();
 }
 
