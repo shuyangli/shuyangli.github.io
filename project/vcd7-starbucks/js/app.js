@@ -177,6 +177,10 @@ function purchasedItemsChanged() {
 		}
 	}
 
+	// Then scroll to the borrom of #order-list
+	$("#order-list").scroll();
+	$("#order-list").animate({scrollTop : $("#order-list").height()}, 600);
+
 	currentSession.netPrice = newPrice;
 	currentSession.taxPrice = currentSession.netPrice * taxRate;
 	currentSession.totalPrice = currentSession.netPrice + currentSession.taxPrice;
