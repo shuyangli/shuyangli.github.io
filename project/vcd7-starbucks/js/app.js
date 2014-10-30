@@ -89,6 +89,18 @@ var protoCustomPrice = {
 	}
 };
 
+var protoCardReload = {
+	itemType : "cardReload",
+	itemName : "Card Reload",
+	reloadAmount : 0,
+	getItemDescription : function () {
+		return this.itemName;
+	},
+	getPrice : function () {
+		return this.reloadAmount;
+	}
+};
+
 /*
  * =======================
  *  Variable Declarations
@@ -334,6 +346,14 @@ function addCustomizationIntoOrderList(itemName, itemPrice, itemIndex, customiza
 		</div>");
 }
 
+// Display custom price
+function displayCustomPriceAmount() {
+	var priceAmount = parseInt(customNumPadValue);
+	priceAmount = priceAmount / 100.0;
+
+	$("#item-prompt-custom-cash-amount").text(myToFixed(priceAmount, 2));
+}
+
 // Display actual charge price
 function displayChargePrice() {
 	displayTax(currentSession.taxPrice);
@@ -400,6 +420,61 @@ function setupModal() {
 		// Change session selected drink size
 		var size = "Espresso"
 		currentSession.currentDrinkSize = size;
+	});
+
+	// Open custom price item dialog
+	$("#custom-button").on('click', function () {
+
+		customNumPadValue = "0";
+		displayCustomPriceAmount();
+
+		$("#modal-overlay").fadeIn(200);
+		$("#modal-custom-price").fadeIn(200);
+	});
+	// Bind the number keys for custom price
+	$(".js-custom-price-numpad-button").on('click', function () {
+		// Append value to customNumPadValue
+		customNumPadValue = customNumPadValue + $(this).text();
+		displayCustomPriceAmount();
+	});
+	// Bind the backspace key for custom price
+	$("#custom-price-button-backspace").on('click', function () {
+		if (customNumPadValue.length >= 1) {
+			customNumPadValue = customNumPadValue.slice(0, -1);
+		}
+		if (customNumPadValue.length <= 0) {
+			customNumPadValue = "0";
+		}
+		displayCustomPriceAmount();
+	});
+
+	// Starbucks button
+	$("#starbucks-card-button").on('click', function () {
+		$("#starbucks-card-prompt").find(".vertical-align-text").text("Swipe card on the reader");
+		$("#starbucks-card-prompt").attr("value", "noswipe");
+		$("#starbucks-card-activate-button, #starbucks-card-reload-button, #starbucks-card-deactivate-button").hide();
+		$("#modal-overlay").fadeIn(200);
+		$("#modal-starbucks-card").fadeIn(200);
+	});
+	$("#starbucks-card-prompt").on('click', function () {
+		// If there's no card, fake a card
+		if ($("#starbucks-card-prompt").attr("value") == "noswipe") {
+			$("#starbucks-card-prompt").attr("value", "swipe");
+			$("#starbucks-card-prompt").find(".vertical-align-text").text("Authorizing...").delay(1500).queue(function() {
+
+				$("#starbucks-card-prompt").find(".vertical-align-text").html("Starbucks Gold Card<br />6000 1234 5678 9900<br />Registered to: Jane Doe<br /><br />Balance: $3.26");
+				$("#starbucks-card-activate-button, #starbucks-card-reload-button, #starbucks-card-deactivate-button").fadeIn(200);
+				$(this).dequeue();
+			});
+		}
+	});
+	$("#starbucks-card-reload-button").on('click', function () {
+		$("#modal-starbucks-card-reload").fadeIn(200);
+		$("#modal-starbucks-card").fadeOut(200);
+	});
+	$("#starbucks-card-reload-back-button").on('click', function () {
+		$("#modal-starbucks-card").fadeIn(200);
+		$("#modal-starbucks-card-reload").fadeOut(200);
 	});
 
 	// Open payment dialog
@@ -584,6 +659,22 @@ function setupModal() {
 			resetModal();
 
 		} else if ($(this).attr("value") == "customPrice") {
+
+			// Calculate item price
+			var priceAmount = parseInt(customNumPadValue);
+			priceAmount = priceAmount / 100.0;
+
+			var newItem = $.extend(true, {}, protoCustomPrice);
+			newItem.customItemPrice = priceAmount;
+			currentSession.addItem(newItem);
+
+			resetModal();
+
+		} else if ($(this).attr("value") == "cardReload") {
+
+			var newReload = $.extend(true, {}, protoCardReload);
+			newReload.reloadAmount = parseInt($(this).attr("reload-amount"));
+			currentSession.addItem(newReload);
 
 			resetModal();
 
