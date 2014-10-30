@@ -207,7 +207,6 @@ body {
       width: 320px;
       height: 64px;
       padding: 10px;
-      float: right;
       background-color: #f7fbff;
       top: 64px;
       left: 32px; }
@@ -256,6 +255,84 @@ body {
     #modal-overlay #modal-custom-price #item-custom-done-button {
       bottom: 32px;
       left: 192px; }
+  #modal-overlay #modal-starbucks-card {
+    width: 544px;
+    height: 320px;
+    z-index: 210;
+    background: url(../img/bg-pattern.png) 0 0 repeat, linear-gradient(rgba(247, 251, 255, 0.6), rgba(247, 251, 255, 0.6)), url(../img/bg-blurred.png) -480px -448px no-repeat;
+    background-blend-mode: multiply, normal, normal;
+    position: absolute;
+    right: 0;
+    bottom: 0; }
+    #modal-overlay #modal-starbucks-card #starbucks-card-prompt {
+      position: absolute;
+      width: 288px;
+      height: 224px;
+      padding: 10px;
+      background-color: #f7fbff;
+      top: 64px;
+      right: 32px; }
+    #modal-overlay #modal-starbucks-card #starbucks-card-activate-button {
+      top: 64px;
+      left: 32px; }
+    #modal-overlay #modal-starbucks-card #starbucks-card-reload-button {
+      top: 128px;
+      left: 32px; }
+    #modal-overlay #modal-starbucks-card #starbucks-card-deactivate-button {
+      top: 224px;
+      left: 32px;
+      color: #d8534f; }
+  #modal-overlay #modal-starbucks-card-reload {
+    width: 544px;
+    height: 320px;
+    z-index: 210;
+    background: url(../img/bg-pattern.png) 0 0 repeat, linear-gradient(rgba(247, 251, 255, 0.6), rgba(247, 251, 255, 0.6)), url(../img/bg-blurred.png) -480px -448px no-repeat;
+    background-blend-mode: multiply, normal, normal;
+    position: absolute;
+    right: 0;
+    bottom: 0; }
+    #modal-overlay #modal-starbucks-card-reload .subitem-button {
+      width: 120px; }
+    #modal-overlay #modal-starbucks-card-reload #starbucks-card-prompt {
+      position: absolute;
+      width: 288px;
+      height: 224px;
+      padding: 10px;
+      background-color: #f7fbff;
+      top: 64px;
+      right: 32px; }
+    #modal-overlay #modal-starbucks-card-reload #starbucks-card-reload-10-button {
+      top: 64px;
+      left: 32px; }
+    #modal-overlay #modal-starbucks-card-reload #starbucks-card-reload-15-button {
+      top: 64px;
+      left: 152px; }
+    #modal-overlay #modal-starbucks-card-reload #starbucks-card-reload-20-button {
+      top: 64px;
+      left: 272px; }
+    #modal-overlay #modal-starbucks-card-reload #starbucks-card-reload-25-button {
+      top: 64px;
+      left: 392px; }
+    #modal-overlay #modal-starbucks-card-reload #starbucks-card-reload-30-button {
+      top: 128px;
+      left: 32px; }
+    #modal-overlay #modal-starbucks-card-reload #starbucks-card-reload-40-button {
+      top: 128px;
+      left: 152px; }
+    #modal-overlay #modal-starbucks-card-reload #starbucks-card-reload-50-button {
+      top: 128px;
+      left: 272px; }
+    #modal-overlay #modal-starbucks-card-reload #starbucks-card-reload-100-button {
+      top: 128px;
+      left: 392px; }
+    #modal-overlay #modal-starbucks-card-reload #starbucks-card-reload-back-button {
+      top: 224px;
+      left: 32px;
+      position: absolute;
+      width: 160px;
+      height: 64px;
+      padding: 10px;
+      background-color: #f9faf7; }
   #modal-overlay #modal-customization-drink {
     width: 384px;
     height: 320px;

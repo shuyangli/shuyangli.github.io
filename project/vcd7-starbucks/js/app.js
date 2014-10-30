@@ -89,6 +89,18 @@ var protoCustomPrice = {
 	}
 };
 
+var protoCardReload = {
+	itemType : "cardReload",
+	itemName : "Card Reload",
+	reloadAmount : 0,
+	getItemDescription : function () {
+		return this.itemName;
+	},
+	getPrice : function () {
+		return this.reloadAmount;
+	}
+};
+
 /*
  * =======================
  *  Variable Declarations
@@ -435,9 +447,34 @@ function setupModal() {
 		}
 		displayCustomPriceAmount();
 	});
-	// Bind the done button for custom price
-	$("#item-custom-done-button").on('click', function () {
 
+	// Starbucks button
+	$("#starbucks-card-button").on('click', function () {
+		$("#starbucks-card-prompt").find(".vertical-align-text").text("Swipe card on the reader");
+		$("#starbucks-card-prompt").attr("value", "noswipe");
+		$("#starbucks-card-activate-button, #starbucks-card-reload-button, #starbucks-card-deactivate-button").hide();
+		$("#modal-overlay").fadeIn(200);
+		$("#modal-starbucks-card").fadeIn(200);
+	});
+	$("#starbucks-card-prompt").on('click', function () {
+		// If there's no card, fake a card
+		if ($("#starbucks-card-prompt").attr("value") == "noswipe") {
+			$("#starbucks-card-prompt").attr("value", "swipe");
+			$("#starbucks-card-prompt").find(".vertical-align-text").text("Authorizing...").delay(1500).queue(function() {
+
+				$("#starbucks-card-prompt").find(".vertical-align-text").html("Starbucks Gold Card<br />6000 1234 5678 9900<br />Registered to: Jane Doe<br /><br />Balance: $3.26");
+				$("#starbucks-card-activate-button, #starbucks-card-reload-button, #starbucks-card-deactivate-button").fadeIn(200);
+				$(this).dequeue();
+			});
+		}
+	});
+	$("#starbucks-card-reload-button").on('click', function () {
+		$("#modal-starbucks-card-reload").fadeIn(200);
+		$("#modal-starbucks-card").fadeOut(200);
+	});
+	$("#starbucks-card-reload-back-button").on('click', function () {
+		$("#modal-starbucks-card").fadeIn(200);
+		$("#modal-starbucks-card-reload").fadeOut(200);
 	});
 
 	// Open payment dialog
@@ -630,6 +667,14 @@ function setupModal() {
 			var newItem = $.extend(true, {}, protoCustomPrice);
 			newItem.customItemPrice = priceAmount;
 			currentSession.addItem(newItem);
+
+			resetModal();
+
+		} else if ($(this).attr("value") == "cardReload") {
+
+			var newReload = $.extend(true, {}, protoCardReload);
+			newReload.reloadAmount = parseInt($(this).attr("reload-amount"));
+			currentSession.addItem(newReload);
 
 			resetModal();
 

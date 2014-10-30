@@ -7,6 +7,9 @@ $screen-height: 768px;
 $grid-size-full: 64px;
 $grid-size-half: $grid-size-full / 2;
 
+// Color specification
+$color-red: rgb(216, 83, 79);
+
 // Background color specification
 $bg-color-cool-white: rgb(247, 251, 255);
 $bg-color-warm-white: rgb(249, 250, 247);
@@ -417,6 +420,124 @@ body {
 		}
 	}
 
+	#modal-starbucks-card {
+		width: $grid-size-half * 17;
+		height: $grid-size-half * 10;
+		z-index: $z-idx-modal + 10;
+
+		background:
+			url(../img/bg-pattern.png) 0 0 repeat,
+			// HACK!
+			linear-gradient(rgba(247, 251, 255, 0.6), rgba(247, 251, 255, 0.6)),
+			url(../img/bg-blurred.png) -480px -448px no-repeat;
+		background-blend-mode: multiply, normal, normal;
+
+		position: absolute;
+		right: 0;
+		bottom: 0;
+
+		#starbucks-card-prompt {
+			position: absolute;
+			width: $grid-size-half * 9;
+			height: $grid-size-half * 7;
+			padding: 10px;
+
+			background-color: $bg-color-cool-white;
+
+			top: $grid-size-full;
+			right: $grid-size-half;
+		}
+		#starbucks-card-activate-button {
+			top: $grid-size-half * 2;
+			left: $grid-size-half;
+		}
+		#starbucks-card-reload-button {
+			top: $grid-size-half * 2 + $subitem-button-height;
+			left: $grid-size-half;
+		}
+		#starbucks-card-deactivate-button {
+			top: $grid-size-half * 3 + $subitem-button-height * 2;
+			left: $grid-size-half;
+			color: $color-red;
+		}
+	}
+	#modal-starbucks-card-reload {
+		width: $grid-size-half * 17;
+		height: $grid-size-half * 10;
+		z-index: $z-idx-modal + 10;
+
+		background:
+			url(../img/bg-pattern.png) 0 0 repeat,
+			// HACK!
+			linear-gradient(rgba(247, 251, 255, 0.6), rgba(247, 251, 255, 0.6)),
+			url(../img/bg-blurred.png) -480px -448px no-repeat;
+		background-blend-mode: multiply, normal, normal;
+
+		position: absolute;
+		right: 0;
+		bottom: 0;
+
+		$reload-button-width: 120px;
+		.subitem-button {
+			width: $reload-button-width;
+		}
+
+		#starbucks-card-prompt {
+			position: absolute;
+			width: $grid-size-half * 9;
+			height: $grid-size-half * 7;
+			padding: 10px;
+
+			background-color: $bg-color-cool-white;
+
+			top: $grid-size-full;
+			right: $grid-size-half;
+		}
+		#starbucks-card-reload-10-button {
+			top: $grid-size-half * 2;
+			left: $grid-size-half;
+		}
+		#starbucks-card-reload-15-button {
+			top: $grid-size-half * 2;
+			left: $grid-size-half + $reload-button-width;
+		}
+		#starbucks-card-reload-20-button {
+			top: $grid-size-half * 2;
+			left: $grid-size-half + $reload-button-width * 2;
+		}
+		#starbucks-card-reload-25-button {
+			top: $grid-size-half * 2;
+			left: $grid-size-half + $reload-button-width * 3;
+		}
+		#starbucks-card-reload-30-button {
+			top: $grid-size-half * 2 + $subitem-button-height;
+			left: $grid-size-half;
+		}
+		#starbucks-card-reload-40-button {
+			top: $grid-size-half * 2 + $subitem-button-height;
+			left: $grid-size-half + $reload-button-width;
+		}
+		#starbucks-card-reload-50-button {
+			top: $grid-size-half * 2 + $subitem-button-height;
+			left: $grid-size-half + $reload-button-width * 2;
+		}
+		#starbucks-card-reload-100-button {
+			top: $grid-size-half * 2 + $subitem-button-height;
+			left: $grid-size-half + $reload-button-width * 3;
+		}
+		#starbucks-card-reload-back-button {
+			top: $grid-size-half * 3 + $subitem-button-height * 2;
+			left: $grid-size-half;
+
+			position: absolute;
+			width: $subitem-button-width;
+			height: $subitem-button-height;
+			padding: 10px;
+
+			background-color: $bg-color-warm-white;
+		}
+	}
+
 	#modal-customization-drink {
 		width: $grid-size-half * 12;
 		height: $grid-size-half * 10;
@@ -452,7 +573,7 @@ body {
 		#drink-delete {
 			top: $grid-size-half * 3 + $subitem-button-height * 2;
 			left: $grid-size-half;
-			color: rgb(216, 83, 79);
+			color: $color-red;
 		}
 	}
 
@@ -475,7 +596,7 @@ body {
 		#customization-delete {
 			top: $grid-size-full;
 			left: $grid-size-half;
-			color: rgb(216, 83, 79);
+			color: $color-red;
 		}
 	}
 
@@ -944,7 +1065,7 @@ body {
 
 	#signout-button {
 		bottom: 0;
-		color: rgb(216, 83, 79);
+		color: $color-red;
 	}
 }
 
