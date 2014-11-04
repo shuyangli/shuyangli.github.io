@@ -1,8 +1,16 @@
+---
+    # Meta Data
+    title: Hints for Lab 8
+    author:
+        - Shuyang Li
+---
+
+
 [<< Back](http://shuyang.li/project/ta/fundcomp/)
 
 # Hints for Lab 8
 
-This lab ([Crossword Anagram](https://www3.nd.edu/courses//cse/cse20211.01/www/lab8/)) is definitely the hardest lab. Working in pairs may work well for some of you, but it usually takes as much time as working alone, so definitely plan to spend a lot of time on this lab, **even if you're working in pairs!**
+This lab ([Crossword Anagram](https://www3.nd.edu/courses//cse/cse20211.01/www/lab8/)) is definitely the hardest lab so far. Working in pairs may work well for some of you, but it usually takes as much time as working alone, so definitely plan to spend a lot of time on this lab, **even if you're working in pairs!**
 
 Here are some hints for you to start approaching this lab:
 
@@ -56,3 +64,6 @@ int main(void) {
     + If you're using the Linux machines, `strfry` literally stir fries a string into random order.
     + [Ask Google](https://www.google.com/) if you don't know how to use them.
 - Again, **start early!**
+
+
+<script type="text/javascript" src="http://shuyang.li/js/tracking.js"></script>
