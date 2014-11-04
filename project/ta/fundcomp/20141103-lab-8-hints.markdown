@@ -1,0 +1,58 @@
+[<< Back](index.html)
+
+# Hints for Lab 8
+
+This lab ([Crossword Anagram](https://www3.nd.edu/courses//cse/cse20211.01/www/lab8/)) is definitely the hardest lab. Working in pairs may work well for some of you, but it usually takes as much time as working alone, so definitely plan to spend a lot of time on this lab, **even if you're working in pairs!**
+
+Here are some hints for you to start approaching this lab:
+
+- **Start early!**
+- Leverage the **power of functions** in this lab.
+    + Functions are your friends, because they can help you *break down this complex task into smaller problems*, so you can tackle them one at a time.
+    + If you can make sure that your solution to *each smaller problem* is correct (each of your functions behaves correctly), then your overall program will be correct.
+    + For example, I can divide up my task, and my main function may look something like this:
+
+``` c
+/*
+ * CAUTION
+ * This pseudocode will NOT compile
+ */
+int main(void) {
+
+    // These arrays will hold our board and user input words
+    char board[][], words[][], clues[][];
+    
+    // Initialize
+    initialize_board(board);
+    prompt_user_for_input(words);
+    
+    // Prepare to sort words
+    sort_words(words);
+
+    for_each(word in words) {
+        if (!place_words(board, word, clues)) {
+            // For each word, if I can't place it, quit altogether
+            break;
+        }
+    }
+    
+    // Print out results
+    print_solution_board(board);
+    print_puzzle_board(board);
+    print_clues(clues);
+
+    // Clean up if needed
+    // ...
+
+    return 0;
+}
+```
+
+- Read the *lab descriptions* carefully.
+    + The algorithm may seem difficult at first glance, but it's actually relatively straightforward.
+    + Key phrase: "place them on the board in a way that intersects with exactly one identical letter already on the board. All letters of a word must be separated from other words by at least one blank space, except where it intersects with another word."
+- There are many C stdlib functions that may be helpful.
+    + For example, `qsort` sorts an array of items with a comparison function of your choice.
+    + If you're using the Linux machines, `strfry` literally stir fries a string into random order.
+    + [Ask Google](https://www.google.com/) if you don't know how to use them.
+- Again, **start early!**
