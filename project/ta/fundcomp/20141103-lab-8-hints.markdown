@@ -1,4 +1,4 @@
-[<< Back](index.html)
+[<< Back](http://shuyang.li/project/ta/fundcomp/)
 
 # Hints for Lab 8
 
