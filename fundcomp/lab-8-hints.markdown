@@ -1,12 +1,11 @@
 ---
-    # Meta Data
     title: Hints for Lab 8
     author:
         - Shuyang Li
 ---
 
 
-[<< Back](http://shuyang.li/project/ta/fundcomp/)
+[<< Back](http://shuyang.li/fundcomp/)
 
 # Hints for Lab 8
 
@@ -15,7 +14,7 @@ This lab ([Crossword Anagram](https://www3.nd.edu/courses//cse/cse20211.01/www/l
 Here are some hints for you to start approaching this lab:
 
 - **Start early!**
-- Leverage the **power of functions** in this lab.
+- Leverage **functions** in this lab.
     + Functions are your friends, because they can help you *break down this complex task into smaller problems*, so you can tackle them one at a time.
     + If you can make sure that your solution to *each smaller problem* is correct (each of your functions behaves correctly), then your overall program will be correct.
     + For example, I can divide up my task, and my main function may look something like this:
@@ -64,6 +63,8 @@ int main(void) {
     + If you're using the Linux machines, `strfry` literally stir fries a string into random order.
     + [Ask Google](https://www.google.com/) if you don't know how to use them.
 - Again, **start early!**
+
+If you want to learn about anything specific, please send me an email to let me know!
 
 
 <script type="text/javascript" src="http://shuyang.li/js/tracking.js"></script>
