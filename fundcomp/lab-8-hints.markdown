@@ -63,18 +63,27 @@ int main(void) {
     + If you're using the Linux machines, `strfry` literally stir fries a string into random order.
     + [Ask Google](https://www.google.com/) if you don't know how to use them.
 - Again, **start early!**
-- *EDIT November 6:* it seems like some of you are comparing the words against previously placed words: that could work, but it's a lot harder than checking the word directly against the board. This would be a lot easier:
+
+
+**Edit November 6:** here are some caveats I observed when looking at your code:
+- Don't try to print your board one line at a time by using `printf("%s", board[i])`. The `%s` format string accepts a `NULL`-terminated string, while your board is simply a 2 by 2 character array with no `NULL` termination. Using `printf` may print out too much things, or in the worst case scenario give you a segfault.
+- It seems like some of you are comparing the words against previously placed words, or are looking for the same characters on the board as a starting point: that could work, but it's a lot harder than brute-forcing. Checking the word directly against the board would be a lot easier:
 ``` c
-int place_word(char word[], char board[BOARD_SIZE][BOARD_SIZE]) {
+/*
+ * This pseudocode will NOT compile
+ * This function tries to place one word on the board, and it returns
+ * either PLACE_SUCCESS or PLACE_FAILURE.
+ */
+int place_word(char word[], char board[][]) {
     int row, col;
 
     // Loop through the board and see if we can place the word
-    for (row = 0; row < BOARD_SIZE; row++) {
-        for (col = 0; col < BOARD_SIZE; col++) {
+    for (row in board) {
+        for (col in board) {
 
             if (can_place_word(word, board, row, col)) {
-                // If we can place the word on the board
-                // starting at this position, then we're good
+                // If we can place the word on the board at this position,
+                // then we're good
                 return PLACE_SUCCESS;
             }
             
@@ -82,7 +91,7 @@ int place_word(char word[], char board[BOARD_SIZE][BOARD_SIZE]) {
         }
     }
     
-    // If we can't place the character anywhere, then we've failed
+    // If we can't place the word anywhere, then we give up
     return PLACE_FAILURE;
 }
 ```
