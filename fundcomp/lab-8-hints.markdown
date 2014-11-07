@@ -63,6 +63,29 @@ int main(void) {
     + If you're using the Linux machines, `strfry` literally stir fries a string into random order.
     + [Ask Google](https://www.google.com/) if you don't know how to use them.
 - Again, **start early!**
+- *EDIT November 6:* it seems like some of you are comparing the words against previously placed words: that could work, but it's a lot harder than checking the word directly against the board. This would be a lot easier:
+``` c
+int place_word(char word[], char board[BOARD_SIZE][BOARD_SIZE]) {
+    int row, col;
+
+    // Loop through the board and see if we can place the word
+    for (row = 0; row < BOARD_SIZE; row++) {
+        for (col = 0; col < BOARD_SIZE; col++) {
+
+            if (can_place_word(word, board, row, col)) {
+                // If we can place the word on the board
+                // starting at this position, then we're good
+                return PLACE_SUCCESS;
+            }
+            
+            // Otherwise, we move on to check the next position
+        }
+    }
+    
+    // If we can't place the character anywhere, then we've failed
+    return PLACE_FAILURE;
+}
+```
 
 If you want to learn about anything specific, please send me an email to let me know!
 
