@@ -1,6 +1,5 @@
 body {
-	font-family: "Avenir Next", "Neue Haas Grotesk Text", "Helvetica Neue", Helvetica, Arial, sans-serif;
-	font-size: 14px;
+	font-family: "Avenir Next", "Helvetica Neue", Helvetica, Arial, sans-serif;
 	background-image: url("../images/bg-crossword.png");
 	background-repeat: repeat;
 }
@@ -10,20 +9,19 @@ a {
 }
 
 a:hover {
-	color: #3D4099;
-	cursor: pointer;
+	color: #008DFF;
 }
 
 #landing a {
 	color: #77BAF0;
 }
 
-#landing a:hover {
-	color: #8FA9BD;
+#landing .hidden {
+	display: none;
 }
 
 h1, h2, h3, h4, h5, h6 {
-	font-family: "Avenir Next", "Neue Haas Grotesk Display", "Helvetica Neue", Helvetica, Arial, sans-serif;
+	font-family: "Avenir Next", "Helvetica Neue", Helvetica, Arial, sans-serif;
 	font-style: normal;
 	font-weight: bold;
 	text-transform: lowercase;
@@ -83,7 +81,7 @@ pre {
 }
 
 #logo {
-	font-family: "Avenir Next", "Neue Haas Grotesk Text", "Helvetica Neue", Helvetica, Arial, sans-serif;
+	font-family: "Avenir Next", "Helvetica Neue", Helvetica, Arial, sans-serif;
 	font-style: normal;
 	text-transform: lowercase;
 	padding: 0 10px;
