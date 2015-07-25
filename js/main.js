@@ -9,6 +9,22 @@ function resizeLandingContent() {
 }
 
 // Mouse movement calculation
+function ditherMousePos(current, maxDither, minDither) {
+  return current + Math.random() * (maxDither - minDither) + minDither;
+}
+
+function ditherMouseTarget(target, minTarget, maxTarget) {
+  var ditheredPos = ditherMousePos(target, -50, 50)
+
+  if (ditheredPos < minTarget) {
+    return minTarget;
+  } else if (ditheredPos > maxTarget) {
+    return maxTarget;
+  }
+
+  return ditheredPos;
+}
+
 function calculateMousePos(current, target) {
   return current + (target - current) / 30;
 }
@@ -61,7 +77,6 @@ function draw(mouseX, mouseY) {
 
 // Scroll to form
 function scrollToSayHiForm() {
-
   // Scroll
   $('html, body').animate({
     scrollTop: $("#talk-to-me").offset().top
@@ -80,6 +95,13 @@ function animateMouseMove() {
   mouseX = calculateMousePos(mouseX, targetMouseX);
   mouseY = calculateMousePos(mouseY, targetMouseY);
   draw(mouseX, mouseY);
+
+  // Dither target; make sure the target is within canvas
+  var canvasWidth = $("#landing").width();
+  var canvasHeight = $("#landing").height();
+  targetMouseX = ditherMouseTarget(targetMouseX, canvasWidth * 0.1, canvasWidth * 0.9);
+  targetMouseY = ditherMouseTarget(targetMouseY, canvasHeight * 0.1, canvasHeight * 0.9);
+
   setTimeout(animateMouseMove, 20);
 }
 
@@ -95,13 +117,6 @@ $(document).ready(function() {
     // On mouse move over landing area, reset mouse target
     targetMouseX = e.pageX;
     targetMouseY = e.pageY;
-  });
-
-  $("#landing").bind('touchmove', function (e) {
-    // On touch move over landing area, reset mouse target
-    var touch = e.originalEvent.touches[0] || e.originalEvent.changedTouches[0];
-    targetMouseX = touch.pageX;
-    targetMouseY = touch.pageY;
   });
 
   // Set up laning element resize
