@@ -123,6 +123,12 @@ $(document).ready(function() {
     targetMouseY = e.pageY;
   });
 
+  // Set up quote block toggling
+  $("#quote-block-toggle").on("click", function() {
+    $("#quote-block").fadeToggle('400');
+  });
+  $("#quote-block").hide();
+
   // Set up laning element resize
   resizeLandingContent();
 
