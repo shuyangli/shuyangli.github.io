@@ -1,105 +1,116 @@
-// Cached mouse position for redrawing canvas on resize
-var cachedMouseX = 0, cachedMouseY = 0;
+// Cached mouse position for animation
+var targetMouseX = 0, targetMouseY = 0;
+var mouseX = 0, mouseY = 0;
 
 // Resize landing div so that it's always the size of the window
 function resizeLandingContent() {
-	var e = $(window).height();
-	$('#landing').css("height", e * 0.85 + "px");
+  var e = $(window).height();
+  $('#landing').css("height", e * 0.85 + "px");
+}
+
+// Mouse movement calculation
+function calculateMousePos(current, target) {
+  return current + (target - current) / 30;
 }
 
 // Redraw canvas contents
 function draw(mouseX, mouseY) {
-	var canvas = $("#landing-canvas")[0];
-	var ctx = canvas.getContext("2d");
-	var i, j;
+  var canvas = $("#landing-canvas")[0];
+  var ctx = canvas.getContext("2d");
+  var i, j;
 
-	// Resize canvas so that it's as large as the landing area
-	canvas.width = $("#landing").width();
-	canvas.height = $("#landing").height();
-	var diagonalDist = Math.sqrt(Math.pow(canvas.width, 2) + Math.pow(canvas.height, 2));
+  // Resize canvas so that it's as large as the landing area
+  canvas.width = $("#landing").width();
+  canvas.height = $("#landing").height();
+  var diagonalDist = Math.sqrt(Math.pow(canvas.width, 2) + Math.pow(canvas.height, 2));
 
-	// Size of box
-	var boxNumVertical = Math.floor(canvas.height / 64);
-	var boxSize = Math.ceil(canvas.height / boxNumVertical);
-	var boxNumHorizontal = Math.ceil(canvas.width / boxSize);
-	var boxXOffset = Math.ceil((boxNumHorizontal * boxSize - canvas.width) / 2);
+  // Size of box
+  var boxNumVertical = Math.floor(canvas.height / 64);
+  var boxSize = Math.ceil(canvas.height / boxNumVertical);
+  var boxNumHorizontal = Math.ceil(canvas.width / boxSize);
+  var boxXOffset = Math.ceil((boxNumHorizontal * boxSize - canvas.width) / 2);
 
-	// Color setting
-	// var centerColor = [0x51, 0x7f, 0xa4]; 	// 81, 127, 164
-	var centerColor = [81, 127, 164];
-	// var edgeColor = [0x24, 0x39, 0x49];		// 36, 57, 73
-	var edgeColor = [36, 57, 73];
+  // Color setting
+  var centerColor = [81, 127, 164];   // #517fa4
+  var edgeColor = [36, 57, 73];       // #243949
 
-	// Actual drawing
-	for (i = 0; i < boxNumHorizontal; ++i) {
-		for (j = 0; j < boxNumVertical; ++j) {
+  // Actual drawing
+  for (i = 0; i < boxNumHorizontal; ++i) {
+    for (j = 0; j < boxNumVertical; ++j) {
 
-			// Set color
-			var boxCenterX = i * boxSize - boxXOffset + boxSize / 2;
-			var boxCenterY = j * boxSize + boxSize / 2;
-			var dist = Math.sqrt(Math.pow(boxCenterX - mouseX, 2) + Math.pow(boxCenterY - mouseY, 2));
+      // Set color
+      var boxCenterX = i * boxSize - boxXOffset + boxSize / 2;
+      var boxCenterY = j * boxSize + boxSize / 2;
+      var dist = Math.sqrt(Math.pow(boxCenterX - mouseX, 2) + Math.pow(boxCenterY - mouseY, 2));
 
-			var currentColor = [
-				Math.ceil(centerColor[0] - (centerColor[0] - edgeColor[0]) * dist / diagonalDist),
-				Math.ceil(centerColor[1] - (centerColor[1] - edgeColor[1]) * dist / diagonalDist),
-				Math.ceil(centerColor[2] - (centerColor[2] - edgeColor[2]) * dist / diagonalDist)
-			];
+      var currentColor = [
+        Math.ceil(centerColor[0] - (centerColor[0] - edgeColor[0]) * dist / diagonalDist),
+        Math.ceil(centerColor[1] - (centerColor[1] - edgeColor[1]) * dist / diagonalDist),
+        Math.ceil(centerColor[2] - (centerColor[2] - edgeColor[2]) * dist / diagonalDist)
+      ];
 
-			var currentColorString = "rgb(" + currentColor[0] + "," + currentColor[1] + "," + currentColor[2] + ")";
+      var currentColorString = "rgb(" + currentColor[0] + "," + currentColor[1] + "," + currentColor[2] + ")";
 
-			// Draw box
-			ctx.fillStyle = currentColorString;
-			ctx.strokeStyle = currentColorString;
-			ctx.fillRect(i * boxSize - boxXOffset, j * boxSize, boxSize, boxSize);
-		}
-	}
+      // Draw box
+      ctx.fillStyle = currentColorString;
+      ctx.strokeStyle = currentColorString;
+      ctx.fillRect(i * boxSize - boxXOffset, j * boxSize, boxSize, boxSize);
+    }
+  }
 }
 
 // Scroll to form
-function scrollToSayHiForm () {
+function scrollToSayHiForm() {
 
-	// Scroll
-	$('html, body').animate({
-		scrollTop: $("#talk-to-me").offset().top
-	}, 1000, "swing");
+  // Scroll
+  $('html, body').animate({
+    scrollTop: $("#talk-to-me").offset().top
+  }, 1000, "swing");
 
-	// Color change
-	$("#talk-to-me").delay(100).animate({
-		color:"#008DFF"
-	}, 800).delay(200).animate({
-		color:"#000000"
-	}, 800);
+  // Color change
+  $("#talk-to-me").delay(100).animate({
+    color:"#008DFF"
+  }, 800).delay(200).animate({
+    color:"#000000"
+  }, 800);
+}
+
+// Animation
+function animateMouseMove() {
+  mouseX = calculateMousePos(mouseX, targetMouseX);
+  mouseY = calculateMousePos(mouseY, targetMouseY);
+  draw(mouseX, mouseY);
+  setTimeout(animateMouseMove, 20);
 }
 
 // Document ready!
 $(document).ready(function() {
 
-	$(window).resize(function() {
-		// On window resize, resize landing contents, and then redraw canvas contents
-		resizeLandingContent();
-		draw(cachedMouseX, cachedMouseY);
-	});
+  $(window).resize(function() {
+    // Resize landing area on window resize
+    resizeLandingContent();
+  });
 
-	$("#landing").mousemove(function (e) {
-		// On mouse move over landing area, redraw canvas contents
-		cachedMouseX = e.pageX;
-		cachedMouseY = e.pageY;
-		draw(cachedMouseX, cachedMouseY);
-	});
+  $("#landing").mousemove(function (e) {
+    // On mouse move over landing area, reset mouse target
+    targetMouseX = e.pageX;
+    targetMouseY = e.pageY;
+  });
 
-	$("#landing").bind('touchmove', function (e) {
-		// On touch move over landing area, redraw canvas contents
-		var touch = e.originalEvent.touches[0] || e.originalEvent.changedTouches[0];
-		cachedMouseX = touch.pageX;
-		cachedMouseY = touch.pageY;
-		draw(cachedMouseX, cachedMouseY);
-	});
+  $("#landing").bind('touchmove', function (e) {
+    // On touch move over landing area, reset mouse target
+    var touch = e.originalEvent.touches[0] || e.originalEvent.changedTouches[0];
+    targetMouseX = touch.pageX;
+    targetMouseY = touch.pageY;
+  });
 
-	// Set up laning element resize
-	resizeLandingContent();
+  // Set up laning element resize
+  resizeLandingContent();
 
-	// Initial drawing
-	cachedMouseX = $("#landing").width() / 2;
-	cachedMouseY = $("#landing").height() / 2;
-	draw(cachedMouseX, cachedMouseY);
+  // Initial drawing
+  targetMouseX = $("#landing").width() / 2;
+  targetMouseY = $("#landing").height() / 2;
+
+  // Kick off animation
+  animateMouseMove();
 });
