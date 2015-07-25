@@ -1,5 +1,5 @@
 body {
-	font-family: "Avenir Next", "Helvetica Neue", Helvetica, Arial, sans-serif;
+	font-family: "Avenir Next", "PingFang SC", "Hiragino Sans GB", "Helvetica Neue", Helvetica, sans-serif;
 	background-image: url("../images/bg-crossword.png");
 	background-repeat: repeat;
 }
@@ -21,7 +21,7 @@ a:hover {
 }
 
 h1, h2, h3, h4, h5, h6 {
-	font-family: "Avenir Next", "Helvetica Neue", Helvetica, Arial, sans-serif;
+	font-family: "Avenir Next", "PingFang SC", "Hiragino Sans GB", "Helvetica Neue", Helvetica, sans-serif;
 	font-style: normal;
 	font-weight: bold;
 	text-transform: lowercase;
@@ -81,7 +81,7 @@ pre {
 }
 
 #logo {
-	font-family: "Avenir Next", "Helvetica Neue", Helvetica, Arial, sans-serif;
+	font-family: "Avenir Next", "PingFang SC", "Hiragino Sans GB", "Helvetica Neue", Helvetica, sans-serif;
 	font-style: normal;
 	text-transform: lowercase;
 	padding: 0 10px;
