@@ -1,3 +1,6 @@
+// Constants
+var SMALL_DEVICE_WIDTH = 992;
+
 // Cached mouse position for animation
 var targetMouseX = 0, targetMouseY = 0;
 var mouseX = 0, mouseY = 0;
@@ -5,7 +8,8 @@ var mouseX = 0, mouseY = 0;
 // Resize landing div so that it's always the size of the window
 function resizeLandingContent() {
   var e = $(window).height();
-  $('#landing').css("height", e * 0.85 + "px");
+  e = ($(window).width() < SMALL_DEVICE_WIDTH) ? e : e * 0.85;
+  $('#landing').css("height", e + "px");
 }
 
 // Mouse movement calculation
