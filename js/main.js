@@ -141,12 +141,17 @@ $(document).ready(function() {
     var email = $("#form-input-email").val();
     var message = $("#form-input-content").val();
 
+    $("#form-input-name").val("");
+    $("#form-input-email").val("");
+    $("#form-input-content").val("");
+
+    toggleThankYou();
+
     $.ajax({
       url: "//formspree.io/shuyang.li.95@gmail.com",
       method: "POST",
       data: { name: name, email: email, content: message },
-      dataType: "json",
-      complete: toggleThankYou
+      dataType: "json"
     });
   });
   $("#form-submit-thank-you").hide();
