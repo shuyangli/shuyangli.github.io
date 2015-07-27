@@ -87,12 +87,12 @@
       <h2 id="talk-to-me">say hi, or share stuff with me</h2>
     </div>
     <div class="col-md-6 col-content">
-      <form class="sl-form" action="http://formspree.io/shuyang.li.95@gmail.com" method="POST">
-        <input type="text" name="name" placeholder="your name"><br />
-        <input type="email" name="_replyto" placeholder="your email"><br />
-        <textarea name="content" rows="2" placeholder="your ideas"></textarea><br />
-        <input type="text" name="_gotcha" style="display: none;">
-        <button type="submit" value="send">submit</button>
+      <form class="sl-form">
+        <input id="form-input-name" type="text" name="name" placeholder="your name"><br />
+        <input id="form-input-email" type="email" name="_replyto" placeholder="your email"><br />
+        <textarea id="form-input-content" name="content" rows="2" placeholder="your ideas"></textarea><br />
+        <button id="form-submit-button">submit</button>
+        <span id="form-submit-thank-you">thank you</span>
       </form>
     </div>
   </div>

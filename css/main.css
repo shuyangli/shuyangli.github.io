@@ -149,6 +149,11 @@ footer p {
 	text-decoration: underline;
 }
 
+#form-submit-thank-you {
+	color: #909090;
+	margin-left: 1em;
+}
+
 
 @media (max-width: 992px) {
 

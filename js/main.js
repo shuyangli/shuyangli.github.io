@@ -109,6 +109,10 @@ function animateMouseMove() {
   setTimeout(animateMouseMove, 20);
 }
 
+function toggleThankYou() {
+  $("#form-submit-thank-you").fadeIn(800).delay(2000).fadeOut(800);
+}
+
 // Document ready!
 $(document).ready(function() {
 
@@ -125,9 +129,27 @@ $(document).ready(function() {
 
   // Set up quote block toggling
   $("#quote-block-toggle").on("click", function() {
-    $("#quote-block").fadeToggle('400');
+    $("#quote-block").fadeToggle(400);
   });
   $("#quote-block").hide();
+
+  // Set up form submission
+  $("#form-submit-button").on("click", function(e) {
+    e.preventDefault();
+
+    var name = $("#form-input-name").val();
+    var email = $("#form-input-email").val();
+    var message = $("#form-input-content").val();
+
+    $.ajax({
+      url: "//formspree.io/shuyang.li.95@gmail.com",
+      method: "POST",
+      data: { name: name, email: email, content: message },
+      dataType: "json",
+      complete: toggleThankYou
+    });
+  });
+  $("#form-submit-thank-you").hide();
 
   // Set up laning element resize
   resizeLandingContent();
