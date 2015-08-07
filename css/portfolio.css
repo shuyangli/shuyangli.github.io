@@ -1,0 +1,136 @@
+body {
+  font-family: "Avenir Next", "PingFang SC", "Hiragino Sans GB", "Helvetica Neue", Helvetica, sans-serif;
+  background-image: url("../images/bg-crossword.png");
+  background-repeat: repeat;
+}
+
+a {
+  color: #008DFF;
+}
+
+a:hover {
+  color: #008DFF;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: "Avenir Next", "PingFang SC", "Hiragino Sans GB", "Helvetica Neue", Helvetica, sans-serif;
+  font-style: normal;
+  font-weight: bold;
+  text-transform: lowercase;
+}
+
+h1 {
+  font-size: 2.5em;
+}
+
+h2 {
+  font-size: 1.4em;
+}
+
+h4 {
+  font-size: 1.2em;
+}
+
+p {
+  -webkit-hyphens: auto;
+  -moz-hyphens: auto;
+  -ms-hyphens: auto;
+  hyphens: auto;
+  line-height: 1.6em;
+}
+
+pre {
+  font-size: 11px;
+  background: none;
+  border: none;
+  padding: 0 0 0 20px;
+}
+
+div.col-project-title h2 {
+  margin-top: 1.5em;
+}
+
+.col-content {
+  margin-top: 1em;
+  margin-bottom: 2.5em;
+}
+
+.col-title {
+  display: block;
+  margin-top: 2.5em;
+  margin-bottom: 1.5em;
+}
+
+.col-title h2 {
+  display: inline-block;
+}
+
+.col-title h2.title-back {
+  float: right;
+}
+
+img.img-hero {
+  width: 100%;
+}
+
+img.img-inline {
+  max-width: 100%;
+}
+
+small.img-caption {
+  display: block;
+  color: #909090;
+  line-height: 1.7em;
+  margin-bottom: 1.5em;
+}
+
+div.project-block {
+  margin-bottom: 2em;
+}
+
+div.project-block img {
+  opacity: 1.0;
+  width: 100%;
+  transition: opacity 0.5s;
+  -webkit-transition: opacity 0.5s;
+}
+
+div.project-block img:hover {
+  opacity: 0.85;
+  transition: opacity 0.5s;
+  -webkit-transition: opacity 0.5s;
+}
+
+footer {
+  margin-top: 4em;
+  margin-bottom: 4em;
+  color: #909090;
+}
+
+footer p {
+  margin: 0;
+  line-height: 1.5em;
+}
+
+
+@media (max-width: 992px) {
+
+/* Fix for vertical layout on small screens */
+.col-title h2 {
+  font-size: 2.5em;
+  margin-top: 2em;
+}
+
+.col-title {
+  text-align: left;
+}
+
+.col-content {
+  margin-top: 1em;
+}
+
+.col-content p:first-of-type, form {
+  margin-top: 0;
+}
+
+}
