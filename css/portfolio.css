@@ -49,7 +49,7 @@ pre {
   padding: 0 0 0 20px;
 }
 
-div.col-project-title h2 {
+.col-project-title h2 {
   margin-top: 1.5em;
 }
 
@@ -75,6 +75,28 @@ div.col-project-title h2 {
 
 .col-title h2.title-back {
   float: right;
+}
+
+.col-project-title {
+  text-align: center;
+  margin-top: 2.5em;
+  margin-bottom: 2.5em;
+}
+
+.project-title-wrapper {
+  display: inline-block;
+  padding-top: 1em;
+  padding-bottom: 1em;
+  border-top: 0.1em solid black;
+  border-bottom: 0.1em solid black;
+}
+
+.project-title-wrapper h2 {
+  margin-top: 10px;
+}
+
+.project-title-wrapper p {
+  color: #909090;
 }
 
 img.img-hero {
