@@ -16,6 +16,18 @@ a:hover {
 	color: #008DFF;
 }
 
+nav#main-navigation {
+	background-color: rgba(255, 255, 255, 0.8);
+}
+
+nav#main-navigation a.navbar-brand {
+	font-weight: bold;
+}
+
+nav#main-navigation a:hover {
+	text-decoration: underline;
+}
+
 #landing a {
 	color: #77BAF0;
 }

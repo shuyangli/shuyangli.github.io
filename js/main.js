@@ -127,6 +127,17 @@ $(document).ready(function() {
     targetMouseY = e.pageY;
   });
 
+  // Set up navbar display
+  $(window).scroll(function() {
+    var scrollDistance = $(window).scrollTop();
+    if (scrollDistance >= $("#landing").height()) {
+      $("#main-navigation").fadeIn(400);
+    } else {
+      $("#main-navigation").fadeOut(400);
+    }
+  });
+  $("#main-navigation").hide();
+
   // Set up quote block toggling
   $("#quote-block-toggle").on("click", function() {
     $("#quote-block").fadeToggle(400);
