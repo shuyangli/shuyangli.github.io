@@ -197,3 +197,9 @@ footer p {
 }
 
 }
+
+@media (max-width: 768px) {
+	nav#main-navigation {
+		display: none;
+	}
+}

@@ -119,6 +119,10 @@ $(document).ready(function() {
   $(window).resize(function() {
     // Resize landing area on window resize
     resizeLandingContent();
+
+    if ($(window).width() < 768) {
+      $("#main-navigation").hide();
+    }
   });
 
   $("#landing").mousemove(function (e) {
@@ -129,6 +133,11 @@ $(document).ready(function() {
 
   // Set up navbar display
   $(window).scroll(function() {
+    if ($(window).width() < 768) {
+      $("#main-navigation").hide();
+      return;
+    }
+
     var scrollDistance = $(window).scrollTop();
     if (scrollDistance >= $("#landing").height()) {
       $("#main-navigation").fadeIn(400);
