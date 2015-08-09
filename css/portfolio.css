@@ -1,5 +1,7 @@
 body {
   font-family: "Avenir Next", "PingFang SC", "Hiragino Sans GB", "Helvetica Neue", Helvetica, sans-serif;
+  font-variant-ligatures: common-ligatures;
+  -webkit-font-variant-ligatures: common-ligatures;
   background-image: url("../images/bg-crossword.png");
   background-repeat: repeat;
 }
@@ -37,6 +39,7 @@ p {
   -ms-hyphens: auto;
   hyphens: auto;
   line-height: 1.6em;
+  max-width: 66em;
 }
 
 pre {
@@ -56,13 +59,18 @@ div.col-project-title h2 {
 }
 
 .col-title {
+  text-align: center;
   display: block;
   margin-top: 2.5em;
-  margin-bottom: 1.5em;
+  margin-bottom: 2.5em;
 }
 
 .col-title h2 {
   display: inline-block;
+  padding-top: 1em;
+  padding-bottom: 1em;
+  border-top: 0.1em solid black;
+  border-bottom: 0.1em solid black;
 }
 
 .col-title h2.title-back {
@@ -115,14 +123,8 @@ footer p {
 
 @media (max-width: 992px) {
 
-/* Fix for vertical layout on small screens */
-.col-title h2 {
-  font-size: 2.5em;
-  margin-top: 2em;
-}
-
-.col-title {
-  text-align: left;
+.col-subtitle {
+  text-align: center;
 }
 
 .col-content {
