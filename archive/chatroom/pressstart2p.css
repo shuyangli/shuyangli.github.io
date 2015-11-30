@@ -1,8 +1,0 @@
-@font-face {
-    font-family: 'PressStart2PRegular';
-    src: url('pressstart2p.eot');
-    src: url('pressstart2p.eot') format('embedded-opentype'),
-         url('pressstart2p.woff') format('woff'),
-         url('pressstart2p.ttf') format('truetype'),
-         url('pressstart2p.svg#PressStart2PRegular') format('svg');
-}
