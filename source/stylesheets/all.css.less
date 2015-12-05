@@ -1,0 +1,52 @@
+@import 'constants';
+
+body {
+  padding-bottom: 4em;
+  font-family: "europa", sans-serif;
+
+  p {
+    max-width: 48em;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-size: 1em;
+    font-weight: 700;
+  }
+
+  pre {
+    font-family: Menlo, Monaco, Consolas, 'Courier New', monospace;
+    font-size: 0.8em;
+    margin: 0 0 5px 0;
+    background: none;
+    border: none;
+    padding: 0;
+    max-width: 72em;
+  }
+
+  img {
+    position: relative;
+    left: -3em;
+    width: 100%;
+
+    @media (max-width: @screen-sm) {
+      position: static;
+    }
+  }
+  img.inline {
+    margin-top: 2em;
+  }
+
+  a {
+    transition: color 0.25s ease;
+    color: @dark-yellow;
+  }
+  a:hover {
+    transition: color 0.25s ease;
+    color: @yellow;
+    text-decoration: none;
+  }
+
+  ::selection {
+    background: @yellow;
+  }
+}

@@ -1,0 +1,55 @@
+@import 'constants';
+
+#menu {
+  position: fixed;
+  width: 100%;
+  z-index: 1000;
+
+  margin-top: 2em;
+  color: @black;
+  font-weight: 700;
+
+  h1, h2, h3, h4, h5, h6 {
+    margin: 0;
+    font-size: 1em;
+  }
+
+  #name-wordmark {
+    color: @black;
+  }
+
+  ul {
+    list-style-type: none;
+    padding-left: 0;
+  }
+
+  a {
+    color: @light-gray;
+  }
+  a:hover {
+    color: @dark-gray;
+  }
+
+  @media (max-width: @screen-sm) {
+    position: static;
+  }
+}
+
+li.social-media-icons {
+  letter-spacing: 3px;
+}
+
+#menu-backdrop {
+  display: block;
+  height: 120px;
+
+  @media (max-width: @screen-sm) {
+    height: 2em;
+  }
+}
+
+.menu-col-right {
+  @media (max-width: @screen-sm) {
+    float: none !important;
+  }
+}
