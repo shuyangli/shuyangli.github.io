@@ -12,17 +12,17 @@ var rotate_description = function () {
   description_span.fadeOut(function () {
     description_span.html(description);
     description_span.fadeIn();
-    window.setTimeout(rotate_description, 10000);
+    window.setTimeout(rotate_description, 7000);
   });
 }
 
 var _fisher_yates = function (arr) {
   var i, swapIdx;
-  for (i = arr.length; i > 0; --i) {
+  for (i = arr.length - 1; i > 0; --i) {
     swapIdx = Math.floor(Math.random() * i);
     var tmp = arr[i];
     arr[i] = arr[swapIdx];
-    arr[swapIdx] = arr[i];
+    arr[swapIdx] = tmp;
   }
   return arr;
 }
