@@ -1,6 +1,8 @@
 $(document).ready(function () {
   // Deobfuscate email and write to proper email link
-  $("#_email_link").prop("href", "mailto:" + window._deobfuscate_email("vol;Cqg1hgx"));
+  var obfuscated_email = "vkx|dqj1ol1<8Cjpdlo1frp";
+
+  $("#_email_link").prop("href", "mailto:" + window._deobfuscate_email(obfuscated_email));
 
   // Toggle footer
   $("#_quote_block_toggle").on("click", function() {
