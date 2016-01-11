@@ -1,0 +1,23 @@
+[
+  {
+    "category": "Digital",
+    "projects": [
+      { "id": "starbucks", "title": "Starbucks Register Redesign" },
+      { "id": "snooze", "title": "SnoozeYouLose" },
+      { "id": "backthebend", "title": "Back the Bend" }
+    ]
+  },
+  {
+    "category": "Print",
+    "projects": [
+      { "id": "cep", "title": "Cross-Strait Exploration Project" },
+      { "id": "sss", "title": "Show Some Skin" }
+    ]
+  },
+  {
+    "category": "Other",
+    "projects": [
+      { "id": "sketching", "title": "Rapid Sketching" }
+    ]
+  }
+]
