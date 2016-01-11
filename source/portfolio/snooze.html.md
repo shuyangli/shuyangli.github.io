@@ -1,6 +1,6 @@
 ---
 title: SnoozeYouLose
-description: Adapt an interface spec for Android to iOS, and implement the specs to build a beautiful, functional app.
+description: adapt an interface spec for Android to iOS, and implement the specs to build a beautiful, functional app
 ---
 
 During MHacks Winter 2015, I worked on the iOS app SnoozeYouLose along with three friends. SnoozeYouLose is an alarm clock that sends money when you snooze.

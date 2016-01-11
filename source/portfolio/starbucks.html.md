@@ -1,6 +1,6 @@
 ---
 title: Starbucks Register Redesign
-description: Design a modern touch interface that’s beautiful, easy to understand, and quick to operate.
+description: design a modern touch interface that’s beautiful, easy to understand, and quick to operate
 ---
 
 For the Interaction Design class at Notre Dame, I evaluated, redesigned, and prototyped the starbucks cash register user interface as a course project.

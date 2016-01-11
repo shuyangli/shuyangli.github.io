@@ -1,6 +1,6 @@
 ---
 title: Rapid Sketching
-description: Explore form and function, and learn sketching and rendering techniques.
+description: explore form and function, and learn sketching and rendering techniques
 ---
 
 I had a lot of fun in our Design Drawing class at Notre Dame. It was a great experience to explore forms and learn sketching, drawing, and rendering at the same time.

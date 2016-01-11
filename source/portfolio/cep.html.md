@@ -1,6 +1,6 @@
 ---
 title: Cross-Strait Exploration Project
-description: Design an identity for an evolving organization that focuses on understanding modern Chinese culture.
+description: design an identity for an evolving organization that focuses on understanding modern Chinese culture
 ---
 
 Cross-Strait Exploration Project (CEP) is an annual, week-long forum that brings together students and scholars from Mainland China, Hong Kong, and Taiwan for cultural and civil dialogue.

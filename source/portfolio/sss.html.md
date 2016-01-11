@@ -1,6 +1,6 @@
 ---
 title: Show Some Skin
-description: Design three print campaigns for a theatrical production that’s dramatic, different, and show a focus on self-expression and storytelling.
+description: design three print campaigns for a theatrical production that’s dramatic, different, and show a focus on self-expression and storytelling
 ---
 
 Show Some Skin is an annual theatrical production at the University of Notre Dame. We collect anonymous monologues from students and perform them on-stage to shed light on the hidden diversity at Notre Dame. For 2013 – 2015, I am in charge of its concept and print design.
