@@ -15,4 +15,4 @@ Because of the traffic throughput in Starbucks, I also made sure the interface i
 ![](/images/portfolio-assets/starbucks-board.jpg)
 <small class="img-caption">Concept presentation</small>
 
-A functional, interactive prototype of this register is [live on my website](http://shuyang.li/project/vcd7-starbucks/) (best on an iPad). Also, check out [my course documentation](http://shuyang.li/vcd7/) for more details about the Interaction Design course as well as a journal for this project.
+A functional, interactive prototype of this register is [live on my website](http://shuyang.li/vcd7-starbucks/) (best on an iPad). Also, check out [my course documentation](http://shuyang.li/vcd7/) for more details about the Interaction Design course as well as a journal for this project.
