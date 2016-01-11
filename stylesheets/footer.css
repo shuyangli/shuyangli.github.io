@@ -2,3 +2,10 @@
   color: #8a8a8a;
   margin: 4em auto 4em auto;
 }
+#_quote_block_toggle {
+  cursor: pointer;
+  color: #8a8a8a;
+}
+#_quote_block_toggle :hover {
+  color: #2e2e2e;
+}
