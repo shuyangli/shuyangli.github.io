@@ -24,6 +24,7 @@ task :deploy do
   end
 
   cd DEST_ROOT do
+    sh "git pull --rebase"
     sh "git add ."
 
     if /nothing to commit/ =~ `git status`
