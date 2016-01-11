@@ -2,8 +2,6 @@
 # Compass
 ###
 
-require 'less'
-
 # Change Compass configuration
 # compass_config do |config|
 #   config.output_style = :compact
@@ -22,9 +20,9 @@ require 'less'
 # page "/path/to/file.html", :layout => :otherlayout
 #
 # A path which all have the same layout
-# with_layout :admin do
-#   page "/admin/*"
-# end
+with_layout "portfolio" do
+  page "/portfolio/*"
+end
 
 # Proxy pages (https://middlemanapp.com/advanced/dynamic_pages/)
 # proxy "/this-page-has-no-template.html", "/template-file.html", :locals => {
@@ -55,6 +53,10 @@ activate :directory_indexes
 set :css_dir, 'stylesheets'
 set :js_dir, 'javascripts'
 set :images_dir, 'images'
+
+set :markdown_engine, :kramdown
+set :markdown,  :layout_engine => :erb,
+                :smartypants => true
 
 # Build-specific configuration
 configure :build do

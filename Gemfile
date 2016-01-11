@@ -11,3 +11,6 @@ gem "less"
 
 # Foreman
 gem "foreman"
+
+# Markdown
+gem 'kramdown'
