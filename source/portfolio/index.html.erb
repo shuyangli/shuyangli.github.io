@@ -1,5 +1,6 @@
 ---
 title: Design Portfolio
+layout: "layout"
 css: ["portfolio"]
 ---
 
@@ -17,10 +18,10 @@ css: ["portfolio"]
     <div class="col-sm-2">
       <h2 class="heading-portfolio"><%= project_group.category %></h2>
     </div>
-    <div class="col-sm-10 project-column-wrapper">
+    <div class="col-sm-9 project-column-wrapper">
       <% project_group.projects.each do |project| %>
-        <a href="/portfolio/<%= project.id %>.html">
-          <div class="col-sm-5 project-wrapper">
+        <a href="/portfolio/<%= project.id %>">
+          <div class="col-sm-6 project-wrapper">
             <img src="images/portfolio-assets/<%= project.id %>-preview.png">
             <h4><%= project.title %></h4>
           </div>
