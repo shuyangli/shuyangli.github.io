@@ -1,4 +1,23 @@
+body {
+  padding-bottom: 10em;
+}
 div.article-wrapper p {
   line-height: 1.7em;
   max-width: 60em;
+}
+.page-title {
+  margin-top: 3em;
+  margin-bottom: 0;
+  line-height: 1.5em;
+}
+.page-description {
+  line-height: 1.5em;
+  margin-top: 0;
+  margin-bottom: 3em;
+  font-weight: normal;
+  font-style: italic;
+  color: #8a8a8a;
+}
+.img-caption {
+  color: #8a8a8a;
 }
