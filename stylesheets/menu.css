@@ -1,0 +1,52 @@
+#menu {
+  position: fixed;
+  width: 100%;
+  z-index: 1000;
+  margin-top: 2em;
+  color: #28292d;
+  font-weight: 700;
+}
+#menu h1,
+#menu h2,
+#menu h3,
+#menu h4,
+#menu h5,
+#menu h6 {
+  margin: 0;
+  font-size: 1em;
+}
+#menu #name-wordmark a {
+  color: #28292d;
+}
+#menu ul {
+  list-style-type: none;
+  padding-left: 0;
+}
+#menu a {
+  color: #8a8a8a;
+}
+#menu a:hover {
+  color: #2e2e2e;
+}
+@media (max-width: 768px) {
+  #menu {
+    position: static;
+  }
+}
+li.social-media-icons {
+  letter-spacing: 3px;
+}
+#menu-backdrop {
+  display: block;
+  height: 120px;
+}
+@media (max-width: 768px) {
+  #menu-backdrop {
+    height: 2em;
+  }
+}
+@media (max-width: 768px) {
+  .menu-col-right {
+    float: none !important;
+  }
+}
