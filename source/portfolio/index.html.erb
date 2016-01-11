@@ -22,7 +22,7 @@ css: ["portfolio"]
       <% project_group.projects.each do |project| %>
         <a href="/portfolio/<%= project.id %>">
           <div class="col-sm-6 project-wrapper">
-            <img src="images/portfolio-assets/<%= project.id %>-preview.png">
+            <img src="/images/portfolio-assets/<%= project.id %>-preview.png">
             <h4><%= project.title %></h4>
           </div>
         </a>
