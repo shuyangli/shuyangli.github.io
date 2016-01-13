@@ -32,8 +32,7 @@
       <% end %>
     <% end %>
 
-    <%= javascript_include_tag "all" %>
-    <%= javascript_include_tag "email" %>
+    <%= javascript_include_tag "all", "email", "tracking" %>
 
     <% if current_page.data.js %>
       <% current_page.data.js.each do |file| %>
