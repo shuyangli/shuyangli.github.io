@@ -14,3 +14,6 @@ gem "foreman"
 
 # Markdown
 gem 'kramdown'
+
+# Rake deploy task
+gem 'rake'

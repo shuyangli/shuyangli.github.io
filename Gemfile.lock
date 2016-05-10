@@ -99,6 +99,7 @@ GEM
       rack
     rack-test (0.6.3)
       rack (>= 1.0)
+    rake (11.1.2)
     rb-fsevent (0.9.6)
     rb-inotify (0.9.5)
       ffi (>= 0.5.0)
@@ -138,7 +139,8 @@ DEPENDENCIES
   less
   middleman (~> 3.3.12)
   middleman-livereload (~> 3.1.0)
+  rake
   therubyracer
 
 BUNDLED WITH
-   1.10.6
+   1.11.2
