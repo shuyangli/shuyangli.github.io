@@ -1,0 +1,63 @@
+@import 'constants';
+
+@dark-black: rgb(29, 29, 29);
+
+body.photography {
+  // font-family: monospace;
+  // background-color: @dark-black;
+
+  // div.menu {
+  //   a {
+  //     color: @mid-gray;
+  //   }
+  //   a:hover {
+  //     color: @light-gray;
+  //   }
+
+  //   div.name-wordmark a {
+  //     color: @white;
+  //   }
+  // }
+
+  // ::selection {
+  //   background: @white;
+  // }
+
+  .photography-heading {
+    margin-top: 0;
+  }
+
+  footer {
+    margin-top: 0;
+  }
+
+  div.introduction-wrapper {
+    margin-bottom: 5em;
+  }
+
+  div.project-wrapper {
+    margin-bottom: 20vh;
+
+    img {
+      max-height: 85vh;
+      max-width: 75vw;
+      width: auto;
+      opacity: 1;
+      transition: opacity 0.5s;
+      -webkit-transition: opacity 0.5s;
+    }
+
+    img:hover {
+      opacity: 0.75;
+      transition: opacity 0.5s;
+      -webkit-transition: opacity 0.5s;
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  body.photography div.project-wrapper img {
+    max-height: 100%;
+    max-width: 100%;
+  }
+}

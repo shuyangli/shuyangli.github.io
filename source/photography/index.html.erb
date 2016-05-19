@@ -1,0 +1,32 @@
+---
+title: Photography
+layout: "layout"
+css: ["photography"]
+---
+
+<%= partial "menu" %>
+
+<div class="container-fluid">
+
+  <div class="col-sm-2"></div>
+  <div class="col-sm-9 introduction-wrapper"><p>I'm interested in exploring what it means to be human—our relationship with ourselves, with each other, with our past and future, and with the vast, infinitely neutral space and time by which we're engulfed.</p></div>
+  <div class="col-sm-1"></div>
+
+  <% data.photography.each do |project| %>
+    <div class="col-sm-2">
+      <h2 class="photography-heading"><%= project.title %></h2>
+    </div>
+    <div class="col-sm-9 project-wrapper">
+      <a href="/photography/<%= project.id %>"><img src="/images/photography-assets/<%= project.id %>-preview.png"></a>
+    </div>
+    <div class="col-sm-1"></div>
+  <% end %>
+
+</div>
+
+<footer class="container-fluid" id="footer">
+  <div class="col-sm-10 col-sm-offset-2">
+    <p><a href="https://www.instagram.com/shuyangl/">or follow me on instagram for random updates of my way of seeing</a></p>
+  </div>
+</footer>
+

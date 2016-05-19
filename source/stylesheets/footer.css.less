@@ -1,15 +1,17 @@
 @import 'constants';
 
-#footer {
+footer {
   color: @light-gray;
   margin: 4em auto 4em auto;
-}
 
-#_quote_block_toggle {
-  cursor: pointer;
-  color: @light-gray;
-}
+  a {
+    color: @light-gray;
+  }
+  a:hover {
+    color: @dark-gray;
+  }
 
-#_quote_block_toggle:hover {
-  color: @dark-gray;
+  #_quote_block_toggle {
+    cursor: pointer;
+  }
 }
