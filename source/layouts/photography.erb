@@ -27,6 +27,7 @@
 
     <%= stylesheet_link_tag "normalize", "all" %>
     <%= stylesheet_link_tag "menu", "footer" %>
+    <%= stylesheet_link_tag "photography-page" %>
 
     <% if current_page.data.css %>
       <% current_page.data.css.each do |file| %>
@@ -48,15 +49,11 @@
   <body class="<%= page_classes %>">
     <%= partial "menu" %>
 
-    <div class="hero">
-      <img class="img-hero" src="/images/portfolio-assets/<%= file_id %>-hero.png">
-    </div>
-
     <div class="container-fluid">
-      <div class="col-sm-9 col-sm-offset-2">
+      <div class="col-sm-2">
         <h1 class="page-title"><%= current_page.data.title %></h1>
-        <h3 class="page-description"><%= current_page.data.description %></h3>
-
+      </div>
+      <div class="col-sm-9">
         <div class="article-wrapper">
           <%= yield %>
         </div>
