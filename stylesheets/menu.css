@@ -1,4 +1,4 @@
-#menu {
+div.menu {
   position: fixed;
   width: 100%;
   z-index: 1000;
@@ -6,30 +6,30 @@
   color: #28292d;
   font-weight: 700;
 }
-#menu h1,
-#menu h2,
-#menu h3,
-#menu h4,
-#menu h5,
-#menu h6 {
+div.menu h1,
+div.menu h2,
+div.menu h3,
+div.menu h4,
+div.menu h5,
+div.menu h6 {
   margin: 0;
   font-size: 1em;
 }
-#menu #name-wordmark a {
+div.menu div.name-wordmark a {
   color: #28292d;
 }
-#menu ul {
+div.menu ul {
   list-style-type: none;
   padding-left: 0;
 }
-#menu a {
+div.menu a {
   color: #8a8a8a;
 }
-#menu a:hover {
+div.menu a:hover {
   color: #2e2e2e;
 }
 @media (max-width: 768px) {
-  #menu {
+  div.menu {
     position: static;
   }
 }
