@@ -20,13 +20,8 @@
 # page "/path/to/file.html", :layout => :otherlayout
 #
 # A path which all have the same layout
-with_layout "portfolio" do
-  page "/portfolio/*"
-end
-
-with_layout "photography" do
-  page "/photography/*"
-end
+page "/portfolio/*", :layout => "portfolio"
+page "/photography/*", :layout => "photography"
 
 # Proxy pages (https://middlemanapp.com/advanced/dynamic_pages/)
 # proxy "/this-page-has-no-template.html", "/template-file.html", :locals => {
