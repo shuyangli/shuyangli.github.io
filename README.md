@@ -1,3 +1,3 @@
 Personal Website
 ================
-My website is live at http://shuyang.li. Check it out!
+My website is live at https://shuyang.li. Check it out!
