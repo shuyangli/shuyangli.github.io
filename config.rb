@@ -48,6 +48,7 @@ page "/photography/*", :layout => "photography"
 
 # Pretty url
 activate :directory_indexes
+page "/googled76a7d999e0db24c.html", :directory_index => false
 
 set :css_dir, 'stylesheets'
 set :js_dir, 'javascripts'
