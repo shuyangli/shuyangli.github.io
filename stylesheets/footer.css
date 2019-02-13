@@ -2,12 +2,6 @@ footer {
   color: #8a8a8a;
   margin: 4em auto 4em auto;
 }
-footer a {
+footer .quote {
   color: #8a8a8a;
-}
-footer a:hover {
-  color: #2e2e2e;
-}
-footer #_quote_block_toggle {
-  cursor: pointer;
 }
