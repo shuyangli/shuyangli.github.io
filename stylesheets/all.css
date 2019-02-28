@@ -39,13 +39,13 @@ body img.inline {
 }
 body a {
   transition: color 0.25s ease;
-  color: #f4b602;
+  color: #b67c83;
 }
 body a:hover {
   transition: color 0.25s ease;
-  color: #f9d300;
+  color: #dfb4b2;
   text-decoration: none;
 }
 body ::selection {
-  background: #f9d300;
+  background: #dfb4b2;
 }
