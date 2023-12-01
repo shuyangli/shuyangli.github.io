@@ -1,51 +1,40 @@
 body {
   padding-bottom: 4em;
-  font-family: "europa", sans-serif;
-}
-body p {
-  max-width: 48em;
-  line-height: 1.5em;
-  margin-bottom: 1.5em;
-}
-body h1,
-body h2,
-body h3,
-body h4,
-body h5,
-body h6 {
-  font-size: 1em;
-  font-weight: 700;
-}
-body pre {
-  font-family: Menlo, Monaco, Consolas, 'Courier New', monospace;
-  font-size: 0.8em;
-  margin: 0;
-  background: none;
-  border: none;
-  padding: 0 0 0.5em 2em;
-  max-width: 72em;
-}
-body img {
-  position: relative;
-  width: 100%;
-}
-@media (max-width: 768px) {
+  font-family: "europa", sans-serif; }
+  body p {
+    max-width: 48em;
+    line-height: 1.5em;
+    margin-bottom: 1.5em; }
+  body h1,
+  body h2,
+  body h3,
+  body h4,
+  body h5,
+  body h6 {
+    font-size: 1em;
+    font-weight: 700; }
+  body pre {
+    font-family: Menlo, Monaco, Consolas, 'Courier New', monospace;
+    font-size: 0.8em;
+    margin: 0;
+    background: none;
+    border: none;
+    padding: 0 0 0.5em 2em;
+    max-width: 72em; }
   body img {
-    position: static;
-  }
-}
-body img.inline {
-  margin-top: 2em;
-}
-body a {
-  transition: color 0.25s ease;
-  color: #b67c83;
-}
-body a:hover {
-  transition: color 0.25s ease;
-  color: #dfb4b2;
-  text-decoration: none;
-}
-body ::selection {
-  background: #dfb4b2;
-}
+    position: relative;
+    width: 100%; }
+    @media (max-width: 768px) {
+      body img {
+        position: static; } }
+  body img.inline {
+    margin-top: 2em; }
+  body a {
+    transition: color 0.25s ease;
+    color: #b67c83; }
+  body a:hover {
+    transition: color 0.25s ease;
+    color: #dfb4b2;
+    text-decoration: none; }
+  body ::selection {
+    background: #dfb4b2; }

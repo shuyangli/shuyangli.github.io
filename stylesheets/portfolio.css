@@ -1,19 +1,16 @@
 .heading-portfolio {
-  margin-top: 0;
-}
+  margin-top: 0; }
+
 div.project-column-wrapper {
-  padding: 0;
-}
+  padding: 0; }
+
 div.project-wrapper {
-  margin-bottom: 2em;
-}
-div.project-wrapper img {
-  opacity: 1;
-  transition: opacity 0.5s;
-  -webkit-transition: opacity 0.5s;
-}
-div.project-wrapper img:hover {
-  opacity: 0.85;
-  transition: opacity 0.5s;
-  -webkit-transition: opacity 0.5s;
-}
+  margin-bottom: 2em; }
+  div.project-wrapper img {
+    opacity: 1;
+    transition: opacity 0.5s;
+    -webkit-transition: opacity 0.5s; }
+  div.project-wrapper img:hover {
+    opacity: 0.85;
+    transition: opacity 0.5s;
+    -webkit-transition: opacity 0.5s; }
