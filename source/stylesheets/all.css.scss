@@ -10,7 +10,12 @@ body {
     margin-bottom: 1.5em;
   }
 
-  h1, h2, h3, h4, h5, h6 {
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
     font-size: 1em;
     font-weight: 700;
   }
@@ -29,25 +34,27 @@ body {
     position: relative;
     width: 100%;
 
-    @media (max-width: @screen-sm) {
+    @media (max-width: $screen-sm) {
       position: static;
     }
   }
+
   img.inline {
     margin-top: 2em;
   }
 
   a {
     transition: color 0.25s ease;
-    color: @dark-pink;
+    color: $dark-pink;
   }
+
   a:hover {
     transition: color 0.25s ease;
-    color: @pink;
+    color: $pink;
     text-decoration: none;
   }
 
   ::selection {
-    background: @pink;
+    background: $pink;
   }
 }

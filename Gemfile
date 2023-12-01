@@ -2,11 +2,10 @@
 # the following line to use "http://" instead
 source 'https://rubygems.org'
 
-gem "middleman", "~>4.2.1"
+gem "middleman", '~> 4.4'
 
-# LESS
-gem "therubyracer"
-gem "less"
+# Sass
+gem "sassc", '~> 2.4'
 
 # Foreman
 gem "foreman"

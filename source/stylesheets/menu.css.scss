@@ -6,16 +6,21 @@ div.menu {
   z-index: 1000;
 
   margin-top: 2em;
-  color: @black;
+  color: $black;
   font-weight: 700;
 
-  h1, h2, h3, h4, h5, h6 {
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
     margin: 0;
     font-size: 1em;
   }
 
   div.name-wordmark a {
-    color: @black;
+    color: $black;
   }
 
   ul {
@@ -24,13 +29,14 @@ div.menu {
   }
 
   a {
-    color: @light-gray;
-  }
-  a:hover {
-    color: @dark-gray;
+    color: $light-gray;
   }
 
-  @media (max-width: @screen-sm) {
+  a:hover {
+    color: $dark-gray;
+  }
+
+  @media (max-width: $screen-sm) {
     position: static;
   }
 }
@@ -43,13 +49,13 @@ li.social-media-icons {
   display: block;
   height: 120px;
 
-  @media (max-width: @screen-sm) {
+  @media (max-width: $screen-sm) {
     height: 2em;
   }
 }
 
 .menu-col-right {
-  @media (max-width: @screen-sm) {
+  @media (max-width: $screen-sm) {
     float: none !important;
   }
 }
