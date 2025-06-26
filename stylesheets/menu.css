@@ -30,7 +30,7 @@ li.social-media-icons {
 
 #menu-backdrop {
   display: block;
-  height: 120px; }
+  height: 192px; }
   @media (max-width: 768px) {
     #menu-backdrop {
       height: 2em; } }
