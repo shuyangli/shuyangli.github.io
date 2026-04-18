@@ -17,7 +17,8 @@ div.menu {
     color: #28292d; }
   div.menu ul {
     list-style-type: none;
-    padding-left: 0; }
+    padding-left: 0;
+    white-space: nowrap; }
   div.menu a {
     color: #8a8a8a; }
   div.menu a:hover {
