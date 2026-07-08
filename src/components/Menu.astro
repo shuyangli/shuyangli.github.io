@@ -23,9 +23,11 @@
     <ul>
       <li><a href="#" id="_email_link">Email</a></li>
       <li class="social-media-icons">
-        <a href="https://x.com/_shuyang_/"><i class="fa fa-twitter"></i></a>
-        <a href="https://www.instagram.com/shuyangl/"><i class="fa fa-instagram"></i></a>
-        <a href="https://github.com/shuyangli"><i class="fa fa-github"></i></a>
+        {/* Astro strips whitespace-only nodes between elements; the icons rely
+            on inter-element spaces, so emit them explicitly */}
+        <a href="https://x.com/_shuyang_/"><i class="fa fa-twitter"></i></a>{' '}
+        <a href="https://www.instagram.com/shuyangl/"><i class="fa fa-instagram"></i></a>{' '}
+        <a href="https://github.com/shuyangli"><i class="fa fa-github"></i></a>{' '}
         <a href="https://www.linkedin.com/in/shuyangli"><i class="fa fa-linkedin"></i></a>
       </li>
     </ul>
