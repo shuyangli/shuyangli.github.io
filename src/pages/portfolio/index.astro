@@ -1,0 +1,29 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Menu from '../../components/Menu.astro';
+import portfolio from '../../data/portfolio.json';
+import '../../styles/portfolio.scss';
+---
+<BaseLayout title="Design Portfolio">
+  <Menu />
+
+  <div class="container-fluid">
+    {portfolio.map((projectGroup) => projectGroup.projects.length > 0 && (
+      <Fragment>
+        <div class="col-sm-2">
+          <h2 class="heading-portfolio">{projectGroup.category}</h2>
+        </div>
+        <div class="col-sm-9 project-column-wrapper">
+          {projectGroup.projects.map((project) => (
+            <a href={`/portfolio/${project.id}`}>
+              <div class="col-sm-6 project-wrapper">
+                <img src={`/images/portfolio-assets/${project.id}-preview.png`} />
+                <h4>{project.title}</h4>
+              </div>
+            </a>
+          ))}
+        </div>
+      </Fragment>
+    ))}
+  </div>
+</BaseLayout>

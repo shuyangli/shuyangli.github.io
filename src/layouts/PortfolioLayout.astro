@@ -1,0 +1,25 @@
+---
+import BaseLayout from './BaseLayout.astro';
+import Menu from '../components/Menu.astro';
+import '../styles/portfolio-page.scss';
+
+const { title, description, id } = Astro.props;
+---
+<BaseLayout title={title}>
+  <Menu />
+
+  <div class="hero">
+    <img class="img-hero" src={`/images/portfolio-assets/${id}-hero.png`} />
+  </div>
+
+  <div class="container-fluid">
+    <div class="col-sm-9 col-sm-offset-2">
+      <h1 class="page-title">{title}</h1>
+      <h3 class="page-description">{description}</h3>
+
+      <div class="article-wrapper">
+        <slot />
+      </div>
+    </div>
+  </div>
+</BaseLayout>
