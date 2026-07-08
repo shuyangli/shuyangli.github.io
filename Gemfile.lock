@@ -33,6 +33,7 @@ GEM
     fast_blank (1.0.1)
     fastimage (2.4.0)
     ffi (1.17.2-arm64-darwin)
+    ffi (1.17.2-x86_64-linux-gnu)
     foreman (0.88.1)
     haml (6.3.0)
       temple (>= 0.8.2)
@@ -50,15 +51,15 @@ GEM
       rb-inotify (~> 0.9, >= 0.9.10)
     logger (1.7.0)
     memoist (0.16.2)
-    middleman (4.6.1)
-      middleman-cli (= 4.6.1)
-      middleman-core (= 4.6.1)
-    middleman-cli (4.6.1)
+    middleman (4.6.3)
+      middleman-cli (= 4.6.3)
+      middleman-core (= 4.6.3)
+    middleman-cli (4.6.3)
       thor (>= 0.17.0, < 2)
-    middleman-core (4.6.1)
+    middleman-core (4.6.3)
       activesupport (>= 6.1)
       addressable (~> 2.4)
-      bundler (~> 2.0)
+      bundler (> 2.0)
       coffee-script (~> 2.2)
       contracts
       dotenv
@@ -66,14 +67,14 @@ GEM
       execjs (~> 2.0)
       fast_blank
       fastimage (~> 2.0)
-      haml (>= 4.0.5)
+      haml (>= 4.0.5, < 7)
       hamster (~> 3.0)
       hashie (>= 3.4, < 6.0)
       i18n (>= 1.6, < 1.15)
       kramdown (~> 2.4)
       listen (~> 3.0)
       memoist (~> 0.14)
-      padrino-helpers (~> 0.15.0)
+      padrino-helpers (>= 0.15, < 0.17)
       parallel
       rack (>= 3)
       rackup
@@ -95,7 +96,6 @@ GEM
     rack (3.1.16)
     rackup (2.2.1)
       rack (>= 3)
-    rake (13.3.0)
     rb-fsevent (0.11.2)
     rb-inotify (0.11.1)
       ffi (~> 1.0)
@@ -119,13 +119,13 @@ GEM
 PLATFORMS
   arm64-darwin-21
   arm64-darwin-24
+  x86_64-linux
 
 DEPENDENCIES
   foreman
   kramdown
   middleman (~> 4.4)
-  rake
   sassc (~> 2.4)
 
 BUNDLED WITH
-   2.3.7
+  4.0.9
