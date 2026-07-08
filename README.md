@@ -7,4 +7,5 @@ For development:
 - bundle exec middleman server
 
 For deployment:
-- rake deploy
+- Push to the `source` branch. GitHub Actions builds the site with Middleman
+  and publishes it to GitHub Pages (see `.github/workflows/deploy.yml`).
