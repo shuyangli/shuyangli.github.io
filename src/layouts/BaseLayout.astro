@@ -1,0 +1,20 @@
+---
+import BaseHead from '../components/BaseHead.astro';
+import { pageClasses } from '../lib/pageClasses.js';
+
+const { title } = Astro.props;
+---
+<!doctype html>
+<html>
+  <head>
+    <BaseHead title={title} />
+    <slot name="head" />
+  </head>
+
+  <body class={pageClasses(Astro.url.pathname)}>
+    <slot />
+
+    <script is:inline src="https://use.typekit.net/bas7pmz.js"></script>
+    <script is:inline>try{Typekit.load({ async: true });}catch(e){}</script>
+  </body>
+</html>

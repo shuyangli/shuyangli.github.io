@@ -1,0 +1,21 @@
+---
+import BaseLayout from './BaseLayout.astro';
+import Menu from '../components/Menu.astro';
+import '../styles/photography-page.scss';
+
+const { title } = Astro.props;
+---
+<BaseLayout title={title}>
+  <Menu />
+
+  <div class="container-fluid">
+    <div class="col-sm-2">
+      <h1 class="page-title">{title}</h1>
+    </div>
+    <div class="col-sm-9">
+      <div class="article-wrapper">
+        <slot />
+      </div>
+    </div>
+  </div>
+</BaseLayout>

@@ -1,10 +1,6 @@
 <div class="container-fluid menu">
   <div class="col-sm-2 name-wordmark">
-    <% if defined? header_alt_link %>
-      <h1><a href="<%= header_alt_link[:link] %>" ><%= header_alt_link[:title] %></a></h1>
-    <% else %>
-      <h1><a href="/">Shuyang Li</a></h1>
-    <% end %>
+    <h1><a href="/">Shuyang Li</a></h1>
   </div>
 
   <div class="col-sm-2">
@@ -27,9 +23,11 @@
     <ul>
       <li><a href="#" id="_email_link">Email</a></li>
       <li class="social-media-icons">
-        <a href="https://x.com/_shuyang_/"><i class="fa fa-twitter"></i></a>
-        <a href="https://www.instagram.com/shuyangl/"><i class="fa fa-instagram"></i></a>
-        <a href="https://github.com/shuyangli"><i class="fa fa-github"></i></a>
+        {/* Astro strips whitespace-only nodes between elements; the icons rely
+            on inter-element spaces, so emit them explicitly */}
+        <a href="https://x.com/_shuyang_/"><i class="fa fa-twitter"></i></a>{' '}
+        <a href="https://www.instagram.com/shuyangl/"><i class="fa fa-instagram"></i></a>{' '}
+        <a href="https://github.com/shuyangli"><i class="fa fa-github"></i></a>{' '}
         <a href="https://www.linkedin.com/in/shuyangli"><i class="fa fa-linkedin"></i></a>
       </li>
     </ul>
