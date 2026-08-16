@@ -1,4 +1,4 @@
-@import 'constants';
+@use 'constants' as *;
 
 div.article-wrapper p {
   margin-top: 0;

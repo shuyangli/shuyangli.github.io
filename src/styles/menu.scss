@@ -1,4 +1,4 @@
-@import 'constants';
+@use 'constants' as *;
 
 div.menu {
   position: fixed;
