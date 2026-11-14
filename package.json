@@ -9,7 +9,7 @@
     "preview": "astro preview"
   },
   "devDependencies": {
-    "astro": "^7.3.3",
+    "astro": "^7.4.7",
     "sass": "^1.101.0"
   }
 }
